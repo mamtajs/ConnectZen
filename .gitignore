@@ -1,0 +1,27 @@
+# Based on https://thoughtbot.com/blog/xcode-and-git-bridging-the-gap
+# OS X Finder
+ConnectZen/.DS_Store
+~/ConnectZen/ConnectZen.xcodeproj/xcuserdata/
+~/ConnectZen/ConnectZen/ConnectZen.xcodeproj/xcuserdata/
+~/ConnectZen/ConnectZen.xcodeproj/project.xcworkspace/xcuserdata/
+
+# Xcode per-user config
+*.mode1
+*.mode1v3
+*.mode2v3
+*.perspective
+*.perspectivev3
+*.pbxuser
+
+# Build products
+build/
+*.o
+*.LinkFileList
+*.hmap
+
+# Automatic backup files
+*~.nib/
+*.swp
+*~
+*.dat
+*.dep
