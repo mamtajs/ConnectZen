@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		102B2A62178A42539B957E64 /* Pods_ConnectZen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39A789680A611C5450201D39 /* Pods_ConnectZen.framework */; };
+		221E32C8254638FA00310713 /* GoogleService-Info.plist in Sources */ = {isa = PBXBuildFile; fileRef = 221E32C7254638FA00310713 /* GoogleService-Info.plist */; };
 		22C809492541FF0000BB1C18 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C809482541FF0000BB1C18 /* RegisterViewController.swift */; };
 		22D4C35F25315BD10028A57D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4C35E25315BD10028A57D /* AppDelegate.swift */; };
 		22D4C36125315BD10028A57D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4C36025315BD10028A57D /* SceneDelegate.swift */; };
@@ -16,10 +18,8 @@
 		22D4C36B25315BD30028A57D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22D4C36925315BD30028A57D /* LaunchScreen.storyboard */; };
 		22D4C37625315BD30028A57D /* ConnectZenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4C37525315BD30028A57D /* ConnectZenTests.swift */; };
 		22D4C38125315BD30028A57D /* ConnectZenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4C38025315BD30028A57D /* ConnectZenUITests.swift */; };
-		77F2C1EE13E41343EFCC3E95 /* Pods_ConnectZen_ConnectZenUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D8FDD5D9F6AE682F03FEAA4 /* Pods_ConnectZen_ConnectZenUITests.framework */; };
-		7A05CA78DFA8984887D087F7 /* Pods_ConnectZen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4918A1CCBE853FA8306946F /* Pods_ConnectZen.framework */; };
-		B6E23B23253B44A200A49EB5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B6E23B22253B44A200A49EB5 /* GoogleService-Info.plist */; };
-		E8D337CC9E64E2FD7FE2DD43 /* Pods_ConnectZenTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5B1377633B7F070407862B2 /* Pods_ConnectZenTests.framework */; };
+		97B94D01CA825C2E999F0346 /* Pods_ConnectZenTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86AEFA305D4B19BB93D3E5E7 /* Pods_ConnectZenTests.framework */; };
+		D7AA1EADE4E0AA383A89E6EA /* Pods_ConnectZen_ConnectZenUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CB298A90B633170483794E6 /* Pods_ConnectZen_ConnectZenUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,8 +40,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		00E53CAD04FBEB55BCD8D31E /* Pods-ConnectZen-ConnectZenUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConnectZen-ConnectZenUITests.release.xcconfig"; path = "Target Support Files/Pods-ConnectZen-ConnectZenUITests/Pods-ConnectZen-ConnectZenUITests.release.xcconfig"; sourceTree = "<group>"; };
+		1554B226CE837EF9EC89D405 /* Pods-ConnectZen-ConnectZenUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConnectZen-ConnectZenUITests.debug.xcconfig"; path = "Target Support Files/Pods-ConnectZen-ConnectZenUITests/Pods-ConnectZen-ConnectZenUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		221E32C7254638FA00310713 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		22C809482541FF0000BB1C18 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
-		12AF0FD476EBE10B8556373B /* Pods-ConnectZenTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConnectZenTests.debug.xcconfig"; path = "Target Support Files/Pods-ConnectZenTests/Pods-ConnectZenTests.debug.xcconfig"; sourceTree = "<group>"; };
 		22D4C35B25315BD10028A57D /* ConnectZen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConnectZen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22D4C35E25315BD10028A57D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22D4C36025315BD10028A57D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,15 +58,13 @@
 		22D4C37C25315BD30028A57D /* ConnectZenUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConnectZenUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		22D4C38025315BD30028A57D /* ConnectZenUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectZenUITests.swift; sourceTree = "<group>"; };
 		22D4C38225315BD40028A57D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		31D94E4C6E6501EBA204CE1F /* Pods-ConnectZen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConnectZen.release.xcconfig"; path = "Target Support Files/Pods-ConnectZen/Pods-ConnectZen.release.xcconfig"; sourceTree = "<group>"; };
-		4D8FDD5D9F6AE682F03FEAA4 /* Pods_ConnectZen_ConnectZenUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ConnectZen_ConnectZenUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		80753EDAC5ED3BF6891A66CF /* Pods-ConnectZen-ConnectZenUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConnectZen-ConnectZenUITests.debug.xcconfig"; path = "Target Support Files/Pods-ConnectZen-ConnectZenUITests/Pods-ConnectZen-ConnectZenUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		B6E23B22253B44A200A49EB5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		D4918A1CCBE853FA8306946F /* Pods_ConnectZen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ConnectZen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DDB2102510E90BA8DB241284 /* Pods-ConnectZen-ConnectZenUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConnectZen-ConnectZenUITests.release.xcconfig"; path = "Target Support Files/Pods-ConnectZen-ConnectZenUITests/Pods-ConnectZen-ConnectZenUITests.release.xcconfig"; sourceTree = "<group>"; };
-		E6730CA479655A020CD9845F /* Pods-ConnectZen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConnectZen.debug.xcconfig"; path = "Target Support Files/Pods-ConnectZen/Pods-ConnectZen.debug.xcconfig"; sourceTree = "<group>"; };
-		E6A9DC9BBDCCA773F73F394F /* Pods-ConnectZenTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConnectZenTests.release.xcconfig"; path = "Target Support Files/Pods-ConnectZenTests/Pods-ConnectZenTests.release.xcconfig"; sourceTree = "<group>"; };
-		F5B1377633B7F070407862B2 /* Pods_ConnectZenTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ConnectZenTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		39A789680A611C5450201D39 /* Pods_ConnectZen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ConnectZen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B24EE06C5FBF1EEBCAA8BC6 /* Pods-ConnectZenTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConnectZenTests.debug.xcconfig"; path = "Target Support Files/Pods-ConnectZenTests/Pods-ConnectZenTests.debug.xcconfig"; sourceTree = "<group>"; };
+		7CB298A90B633170483794E6 /* Pods_ConnectZen_ConnectZenUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ConnectZen_ConnectZenUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		86AEFA305D4B19BB93D3E5E7 /* Pods_ConnectZenTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ConnectZenTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		985C2020BCBA2C044E716B46 /* Pods-ConnectZen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConnectZen.release.xcconfig"; path = "Target Support Files/Pods-ConnectZen/Pods-ConnectZen.release.xcconfig"; sourceTree = "<group>"; };
+		C156D97748ADDF9209A16D9C /* Pods-ConnectZen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConnectZen.debug.xcconfig"; path = "Target Support Files/Pods-ConnectZen/Pods-ConnectZen.debug.xcconfig"; sourceTree = "<group>"; };
+		CF8E982FD369E8CD3C665413 /* Pods-ConnectZenTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConnectZenTests.release.xcconfig"; path = "Target Support Files/Pods-ConnectZenTests/Pods-ConnectZenTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,7 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A05CA78DFA8984887D087F7 /* Pods_ConnectZen.framework in Frameworks */,
+				102B2A62178A42539B957E64 /* Pods_ConnectZen.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,7 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E8D337CC9E64E2FD7FE2DD43 /* Pods_ConnectZenTests.framework in Frameworks */,
+				97B94D01CA825C2E999F0346 /* Pods_ConnectZenTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,7 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				77F2C1EE13E41343EFCC3E95 /* Pods_ConnectZen_ConnectZenUITests.framework in Frameworks */,
+				D7AA1EADE4E0AA383A89E6EA /* Pods_ConnectZen_ConnectZenUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,14 +102,6 @@
 				22C809482541FF0000BB1C18 /* RegisterViewController.swift */,
 			);
 			path = ViewControllers;
-		116CA92703B06278EF3AE0EE /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				D4918A1CCBE853FA8306946F /* Pods_ConnectZen.framework */,
-				4D8FDD5D9F6AE682F03FEAA4 /* Pods_ConnectZen_ConnectZenUITests.framework */,
-				F5B1377633B7F070407862B2 /* Pods_ConnectZenTests.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		22D4C35225315BD10028A57D = {
@@ -119,8 +111,8 @@
 				22D4C37425315BD30028A57D /* ConnectZenTests */,
 				22D4C37F25315BD30028A57D /* ConnectZenUITests */,
 				22D4C35C25315BD10028A57D /* Products */,
-				9ABA95C368213C685B5B64F3 /* Pods */,
-				116CA92703B06278EF3AE0EE /* Frameworks */,
+				96D5B77B5997893F52160B62 /* Pods */,
+				6688596A4119D21DE5A83115 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -144,7 +136,7 @@
 				22D4C36725315BD30028A57D /* Assets.xcassets */,
 				22D4C36925315BD30028A57D /* LaunchScreen.storyboard */,
 				22D4C36C25315BD30028A57D /* Info.plist */,
-				B6E23B22253B44A200A49EB5 /* GoogleService-Info.plist */,
+				221E32C7254638FA00310713 /* GoogleService-Info.plist */,
 			);
 			path = ConnectZen;
 			sourceTree = "<group>";
@@ -167,17 +159,26 @@
 			path = ConnectZenUITests;
 			sourceTree = "<group>";
 		};
-		9ABA95C368213C685B5B64F3 /* Pods */ = {
+		6688596A4119D21DE5A83115 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E6730CA479655A020CD9845F /* Pods-ConnectZen.debug.xcconfig */,
-				31D94E4C6E6501EBA204CE1F /* Pods-ConnectZen.release.xcconfig */,
-				80753EDAC5ED3BF6891A66CF /* Pods-ConnectZen-ConnectZenUITests.debug.xcconfig */,
-				DDB2102510E90BA8DB241284 /* Pods-ConnectZen-ConnectZenUITests.release.xcconfig */,
-				12AF0FD476EBE10B8556373B /* Pods-ConnectZenTests.debug.xcconfig */,
-				E6A9DC9BBDCCA773F73F394F /* Pods-ConnectZenTests.release.xcconfig */,
+				39A789680A611C5450201D39 /* Pods_ConnectZen.framework */,
+				7CB298A90B633170483794E6 /* Pods_ConnectZen_ConnectZenUITests.framework */,
+				86AEFA305D4B19BB93D3E5E7 /* Pods_ConnectZenTests.framework */,
 			);
-			name = Pods;
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		96D5B77B5997893F52160B62 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C156D97748ADDF9209A16D9C /* Pods-ConnectZen.debug.xcconfig */,
+				985C2020BCBA2C044E716B46 /* Pods-ConnectZen.release.xcconfig */,
+				1554B226CE837EF9EC89D405 /* Pods-ConnectZen-ConnectZenUITests.debug.xcconfig */,
+				00E53CAD04FBEB55BCD8D31E /* Pods-ConnectZen-ConnectZenUITests.release.xcconfig */,
+				7B24EE06C5FBF1EEBCAA8BC6 /* Pods-ConnectZenTests.debug.xcconfig */,
+				CF8E982FD369E8CD3C665413 /* Pods-ConnectZenTests.release.xcconfig */,
+			);
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -188,11 +189,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 22D4C38525315BD40028A57D /* Build configuration list for PBXNativeTarget "ConnectZen" */;
 			buildPhases = (
-				D8C099CE3B8D82D30888B96B /* [CP] Check Pods Manifest.lock */,
+				35D1E8AD786F6C548078DF44 /* [CP] Check Pods Manifest.lock */,
 				22D4C35725315BD10028A57D /* Sources */,
 				22D4C35825315BD10028A57D /* Frameworks */,
 				22D4C35925315BD10028A57D /* Resources */,
-				FCC77709536BBFFE269302FE /* [CP] Embed Pods Frameworks */,
+				B84B95CF44F9201E1CB94CDC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -207,7 +208,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 22D4C38825315BD40028A57D /* Build configuration list for PBXNativeTarget "ConnectZenTests" */;
 			buildPhases = (
-				A7CB0C96AA78509B1699A9B2 /* [CP] Check Pods Manifest.lock */,
+				5F731D166A9425890ADB6A7C /* [CP] Check Pods Manifest.lock */,
 				22D4C36D25315BD30028A57D /* Sources */,
 				22D4C36E25315BD30028A57D /* Frameworks */,
 				22D4C36F25315BD30028A57D /* Resources */,
@@ -226,11 +227,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 22D4C38B25315BD40028A57D /* Build configuration list for PBXNativeTarget "ConnectZenUITests" */;
 			buildPhases = (
-				55FCC28203EAFC52B2E512EA /* [CP] Check Pods Manifest.lock */,
+				209B107AEAA304DC02470E44 /* [CP] Check Pods Manifest.lock */,
 				22D4C37825315BD30028A57D /* Sources */,
 				22D4C37925315BD30028A57D /* Frameworks */,
 				22D4C37A25315BD30028A57D /* Resources */,
-				0E558F1C08FA3FA89A4938A1 /* [CP] Embed Pods Frameworks */,
+				9B929076F3A31A93D350E3CF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -290,7 +291,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				22D4C36B25315BD30028A57D /* LaunchScreen.storyboard in Resources */,
-				B6E23B23253B44A200A49EB5 /* GoogleService-Info.plist in Resources */,
 				22D4C36825315BD30028A57D /* Assets.xcassets in Resources */,
 				22D4C36625315BD10028A57D /* Main.storyboard in Resources */,
 			);
@@ -313,24 +313,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0E558F1C08FA3FA89A4938A1 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ConnectZen-ConnectZenUITests/Pods-ConnectZen-ConnectZenUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ConnectZen-ConnectZenUITests/Pods-ConnectZen-ConnectZenUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ConnectZen-ConnectZenUITests/Pods-ConnectZen-ConnectZenUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		55FCC28203EAFC52B2E512EA /* [CP] Check Pods Manifest.lock */ = {
+		209B107AEAA304DC02470E44 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -352,29 +335,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A7CB0C96AA78509B1699A9B2 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ConnectZenTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D8C099CE3B8D82D30888B96B /* [CP] Check Pods Manifest.lock */ = {
+		35D1E8AD786F6C548078DF44 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -396,7 +357,46 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		FCC77709536BBFFE269302FE /* [CP] Embed Pods Frameworks */ = {
+		5F731D166A9425890ADB6A7C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ConnectZenTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9B929076F3A31A93D350E3CF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ConnectZen-ConnectZenUITests/Pods-ConnectZen-ConnectZenUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ConnectZen-ConnectZenUITests/Pods-ConnectZen-ConnectZenUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ConnectZen-ConnectZenUITests/Pods-ConnectZen-ConnectZenUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B84B95CF44F9201E1CB94CDC /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -421,6 +421,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22D4C36325315BD10028A57D /* LoginViewController.swift in Sources */,
+				221E32C8254638FA00310713 /* GoogleService-Info.plist in Sources */,
 				22D4C35F25315BD10028A57D /* AppDelegate.swift in Sources */,
 				22D4C36125315BD10028A57D /* SceneDelegate.swift in Sources */,
 				22C809492541FF0000BB1C18 /* RegisterViewController.swift in Sources */,
@@ -596,7 +597,7 @@
 		};
 		22D4C38625315BD40028A57D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E6730CA479655A020CD9845F /* Pods-ConnectZen.debug.xcconfig */;
+			baseConfigurationReference = C156D97748ADDF9209A16D9C /* Pods-ConnectZen.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -615,7 +616,7 @@
 		};
 		22D4C38725315BD40028A57D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 31D94E4C6E6501EBA204CE1F /* Pods-ConnectZen.release.xcconfig */;
+			baseConfigurationReference = 985C2020BCBA2C044E716B46 /* Pods-ConnectZen.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -634,7 +635,7 @@
 		};
 		22D4C38925315BD40028A57D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 12AF0FD476EBE10B8556373B /* Pods-ConnectZenTests.debug.xcconfig */;
+			baseConfigurationReference = 7B24EE06C5FBF1EEBCAA8BC6 /* Pods-ConnectZenTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -656,7 +657,7 @@
 		};
 		22D4C38A25315BD40028A57D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E6A9DC9BBDCCA773F73F394F /* Pods-ConnectZenTests.release.xcconfig */;
+			baseConfigurationReference = CF8E982FD369E8CD3C665413 /* Pods-ConnectZenTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -678,7 +679,7 @@
 		};
 		22D4C38C25315BD40028A57D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 80753EDAC5ED3BF6891A66CF /* Pods-ConnectZen-ConnectZenUITests.debug.xcconfig */;
+			baseConfigurationReference = 1554B226CE837EF9EC89D405 /* Pods-ConnectZen-ConnectZenUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -698,7 +699,7 @@
 		};
 		22D4C38D25315BD40028A57D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DDB2102510E90BA8DB241284 /* Pods-ConnectZen-ConnectZenUITests.release.xcconfig */;
+			baseConfigurationReference = 00E53CAD04FBEB55BCD8D31E /* Pods-ConnectZen-ConnectZenUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
