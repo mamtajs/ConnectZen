@@ -122,6 +122,9 @@
                                 <state key="normal" title="Next">
                                     <color key="titleColor" systemColor="systemBackgroundColor"/>
                                 </state>
+                                <connections>
+                                    <segue destination="eGT-0F-J2j" kind="presentation" modalPresentationStyle="overCurrentContext" modalTransitionStyle="coverVertical" id="ptR-bd-hBb"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9jJ-fN-UJA">
                                 <rect key="frame" x="41.5" y="299" width="331" height="34"/>
@@ -171,6 +174,145 @@
             </objects>
             <point key="canvasLocation" x="2208.695652173913" y="59.598214285714285"/>
         </scene>
+        <!--PermissionsPopUp-->
+        <scene sceneID="NNz-GT-HiL">
+            <objects>
+                <viewController modalPresentationStyle="overCurrentContext" id="eGT-0F-J2j" userLabel="PermissionsPopUp" customClass="PopUpViewController" customModule="ConnectZen" customModuleProvider="target" sceneMemberID="viewController">
+                    <visualEffectView key="view" opaque="NO" contentMode="scaleToFill" id="zme-ie-6Fo">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Wh7-Mc-UM4">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jls-i7-uLX" userLabel="DismissButton">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                    <connections>
+                                        <action selector="DismissPopUp:" destination="eGT-0F-J2j" eventType="touchUpInside" id="jlz-HF-yOp"/>
+                                    </connections>
+                                </button>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yoK-cs-fnl" userLabel="PopUpView" customClass="DesignableView" customModule="ConnectZen" customModuleProvider="target">
+                                    <rect key="frame" x="41.5" y="224" width="331" height="448"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ttY-M7-ZaP">
+                                            <rect key="frame" x="16.5" y="85" width="298" height="314"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ljp-0S-6HS">
+                                                    <rect key="frame" x="149" y="0.0" width="0.0" height="0.0"/>
+                                                    <color key="tintColor" systemColor="labelColor"/>
+                                                    <attributedString key="attributedText"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Th4-NF-IP2">
+                                                    <rect key="frame" x="0.0" y="27" width="298" height="91"/>
+                                                    <color key="tintColor" systemColor="labelColor"/>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="To keep in touch with Friends and Family simply add them by choosing from the contacts list on your phone. ">
+                                                            <attributes>
+                                                                <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                <font key="NSFont" size="20" name="Georgia"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P7H-bL-15U">
+                                                    <rect key="frame" x="0.0" y="145" width="298" height="45.5"/>
+                                                    <color key="tintColor" systemColor="labelColor"/>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="Otherwise, you'll have to type in the contacts manually.">
+                                                            <attributes>
+                                                                <color key="NSColor" red="0.00921547445455876" green="0.0091709552542951923" blue="0.0092599936548223294" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                <font key="NSFont" size="20" name="Georgia"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="peO-4I-cVR">
+                                                    <rect key="frame" x="0.0" y="217" width="298" height="35"/>
+                                                    <color key="backgroundColor" red="0.005744885188" green="0.3975281417" blue="0.28626120090000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="20"/>
+                                                    <state key="normal" title="Use Address Book">
+                                                        <color key="titleColor" systemColor="systemBackgroundColor"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="UseAddressBookClicked:" destination="eGT-0F-J2j" eventType="touchUpInside" id="bkL-GI-vzM"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3CY-8p-YTr">
+                                                    <rect key="frame" x="0.0" y="279" width="298" height="35"/>
+                                                    <color key="backgroundColor" red="0.005744885188" green="0.3975281417" blue="0.28626120090000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="20"/>
+                                                    <state key="normal" title="I'll Enter Contact Info">
+                                                        <color key="titleColor" systemColor="systemBackgroundColor"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="EnterContactManuallyClicked:" destination="eGT-0F-J2j" eventType="touchUpInside" id="E8v-EQ-GVA"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="peO-4I-cVR" firstAttribute="width" secondItem="ttY-M7-ZaP" secondAttribute="width" id="7J5-9B-ZoJ"/>
+                                                <constraint firstItem="3CY-8p-YTr" firstAttribute="width" secondItem="ttY-M7-ZaP" secondAttribute="width" id="Rum-gz-0Xm"/>
+                                            </constraints>
+                                        </stackView>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MWd-iD-6n8" userLabel="Close">
+                                            <rect key="frame" x="311" y="0.0" width="20" height="22"/>
+                                            <color key="tintColor" systemColor="labelColor"/>
+                                            <state key="normal" image="x.circle" catalog="system"/>
+                                            <connections>
+                                                <action selector="CloseClicked:" destination="eGT-0F-J2j" eventType="touchUpInside" id="6OU-v0-DZD"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.6243644357" green="0.94405275580000003" blue="0.73330658670000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <constraints>
+                                        <constraint firstItem="ttY-M7-ZaP" firstAttribute="centerX" secondItem="yoK-cs-fnl" secondAttribute="centerX" id="C6d-Oa-H0r"/>
+                                        <constraint firstAttribute="trailing" secondItem="MWd-iD-6n8" secondAttribute="trailing" id="E9Y-db-N1S"/>
+                                        <constraint firstItem="MWd-iD-6n8" firstAttribute="top" secondItem="yoK-cs-fnl" secondAttribute="top" id="GKR-6h-VNj"/>
+                                        <constraint firstItem="ttY-M7-ZaP" firstAttribute="width" secondItem="yoK-cs-fnl" secondAttribute="width" multiplier="0.9" id="LiY-d6-H63"/>
+                                        <constraint firstItem="ttY-M7-ZaP" firstAttribute="height" secondItem="yoK-cs-fnl" secondAttribute="height" multiplier="0.7" id="cnS-jP-bFQ"/>
+                                        <constraint firstItem="ttY-M7-ZaP" firstAttribute="centerY" secondItem="yoK-cs-fnl" secondAttribute="centerY" constant="18" id="sQ6-j1-28c"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="10"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LogoNoBackground" translatesAutoresizingMaskIntoConstraints="NO" id="S6F-Uy-l65">
+                                    <rect key="frame" x="145" y="134.5" width="124" height="179"/>
+                                </imageView>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="jls-i7-uLX" firstAttribute="centerY" secondItem="Wh7-Mc-UM4" secondAttribute="centerY" id="895-p5-LRU"/>
+                                <constraint firstItem="yoK-cs-fnl" firstAttribute="centerX" secondItem="Wh7-Mc-UM4" secondAttribute="centerX" id="BNh-dF-EkL"/>
+                                <constraint firstItem="yoK-cs-fnl" firstAttribute="centerY" secondItem="Wh7-Mc-UM4" secondAttribute="centerY" id="I51-Nf-o0M"/>
+                                <constraint firstItem="jls-i7-uLX" firstAttribute="width" secondItem="Wh7-Mc-UM4" secondAttribute="width" id="Jxx-9h-7Kp"/>
+                                <constraint firstItem="jls-i7-uLX" firstAttribute="centerX" secondItem="Wh7-Mc-UM4" secondAttribute="centerX" id="MM0-AG-qJr"/>
+                                <constraint firstItem="S6F-Uy-l65" firstAttribute="width" secondItem="Wh7-Mc-UM4" secondAttribute="width" multiplier="0.3" id="gWB-Qa-yfd"/>
+                                <constraint firstItem="S6F-Uy-l65" firstAttribute="centerX" secondItem="Wh7-Mc-UM4" secondAttribute="centerX" id="mMJ-2r-l6E"/>
+                                <constraint firstItem="yoK-cs-fnl" firstAttribute="centerY" secondItem="Wh7-Mc-UM4" secondAttribute="centerY" id="n0E-YM-xak"/>
+                                <constraint firstItem="jls-i7-uLX" firstAttribute="height" secondItem="Wh7-Mc-UM4" secondAttribute="height" id="oLb-kx-nSq"/>
+                                <constraint firstItem="S6F-Uy-l65" firstAttribute="centerY" secondItem="Wh7-Mc-UM4" secondAttribute="centerY" multiplier="0.5" id="r9P-dt-M7V"/>
+                                <constraint firstItem="yoK-cs-fnl" firstAttribute="centerX" secondItem="Wh7-Mc-UM4" secondAttribute="centerX" id="v8d-wL-Ew0"/>
+                                <constraint firstItem="S6F-Uy-l65" firstAttribute="height" secondItem="Wh7-Mc-UM4" secondAttribute="height" multiplier="0.2" id="wUp-eh-YC6"/>
+                            </constraints>
+                        </view>
+                        <constraints>
+                            <constraint firstItem="yoK-cs-fnl" firstAttribute="height" secondItem="zme-ie-6Fo" secondAttribute="height" multiplier="0.5" id="MSf-k1-fgk"/>
+                            <constraint firstItem="yoK-cs-fnl" firstAttribute="width" secondItem="zme-ie-6Fo" secondAttribute="width" multiplier="0.8" id="zgv-D1-alq"/>
+                        </constraints>
+                        <blurEffect style="regular"/>
+                    </visualEffectView>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IUZ-oA-7zO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3081.1594202898555" y="58.258928571428569"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="0aC-S9-LWN">
             <objects>
@@ -192,6 +334,11 @@
     </scenes>
     <resources>
         <image name="Logo" width="338" height="339"/>
+        <image name="LogoNoBackground" width="249.5" height="250"/>
+        <image name="x.circle" catalog="system" width="128" height="121"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
