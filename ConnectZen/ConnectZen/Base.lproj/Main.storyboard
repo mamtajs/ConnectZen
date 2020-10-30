@@ -204,13 +204,13 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Th4-NF-IP2">
-                                                    <rect key="frame" x="0.0" y="27" width="298" height="91"/>
+                                                    <rect key="frame" x="0.0" y="30" width="298" height="84"/>
                                                     <color key="tintColor" systemColor="labelColor"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="To keep in touch with Friends and Family simply add them by choosing from the contacts list on your phone. ">
                                                             <attributes>
                                                                 <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                                <font key="NSFont" size="20" name="Georgia"/>
+                                                                <font key="NSFont" size="19" name="Palatino-Roman"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                                             </attributes>
                                                         </fragment>
@@ -218,13 +218,13 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P7H-bL-15U">
-                                                    <rect key="frame" x="0.0" y="145" width="298" height="45.5"/>
+                                                    <rect key="frame" x="0.0" y="144" width="298" height="42"/>
                                                     <color key="tintColor" systemColor="labelColor"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="Otherwise, you'll have to type in the contacts manually.">
                                                             <attributes>
                                                                 <color key="NSColor" red="0.00921547445455876" green="0.0091709552542951923" blue="0.0092599936548223294" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                                <font key="NSFont" size="20" name="Georgia"/>
+                                                                <font key="NSFont" size="19" name="Palatino-Roman"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                                             </attributes>
                                                         </fragment>
@@ -232,9 +232,9 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="peO-4I-cVR">
-                                                    <rect key="frame" x="0.0" y="217" width="298" height="35"/>
+                                                    <rect key="frame" x="0.0" y="216" width="298" height="33"/>
                                                     <color key="backgroundColor" red="0.005744885188" green="0.3975281417" blue="0.28626120090000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                    <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="20"/>
+                                                    <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="19"/>
                                                     <state key="normal" title="Use Address Book">
                                                         <color key="titleColor" systemColor="systemBackgroundColor"/>
                                                     </state>
@@ -246,7 +246,7 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3CY-8p-YTr">
                                                     <rect key="frame" x="0.0" y="279" width="298" height="35"/>
                                                     <color key="backgroundColor" red="0.005744885188" green="0.3975281417" blue="0.28626120090000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                    <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="20"/>
+                                                    <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="20"/>
                                                     <state key="normal" title="I'll Enter Contact Info">
                                                         <color key="titleColor" systemColor="systemBackgroundColor"/>
                                                     </state>
@@ -323,7 +323,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SVY-nw-zdR">
-                                <rect key="frame" x="0.0" y="61" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="89.5" width="414" height="697"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ContactTableViewCell" rowHeight="60" id="sNa-s1-JDo" customClass="ContactTableViewCell" customModule="ConnectZen" customModuleProvider="target">
@@ -375,14 +375,27 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IQw-hu-kGn" userLabel="Contacts Selected">
+                                <rect key="frame" x="103.5" y="786.5" width="207" height="38.5"/>
+                                <color key="backgroundColor" red="0.0" green="0.28533291816711426" blue="0.30435478687286377" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="19"/>
+                                <color key="tintColor" red="0.0" green="0.28533291816711426" blue="0.30435478687286377" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Contacts Selected">
+                                    <color key="titleColor" systemColor="systemBackgroundColor"/>
+                                </state>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Mwu-k8-Y5G"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="IQw-hu-kGn" firstAttribute="width" secondItem="Mwu-k8-Y5G" secondAttribute="width" multiplier="0.5" id="GeQ-3z-Qzf"/>
                             <constraint firstItem="SVY-nw-zdR" firstAttribute="centerX" secondItem="6bb-pM-G3a" secondAttribute="centerX" id="OaS-wG-XYq"/>
+                            <constraint firstItem="IQw-hu-kGn" firstAttribute="height" secondItem="Mwu-k8-Y5G" secondAttribute="height" multiplier="0.05" id="Q9p-2z-iyF"/>
                             <constraint firstItem="SVY-nw-zdR" firstAttribute="width" secondItem="Mwu-k8-Y5G" secondAttribute="width" id="S4h-MM-K15"/>
-                            <constraint firstItem="SVY-nw-zdR" firstAttribute="height" secondItem="Mwu-k8-Y5G" secondAttribute="height" id="cqT-2g-PbY"/>
-                            <constraint firstItem="SVY-nw-zdR" firstAttribute="centerY" secondItem="6bb-pM-G3a" secondAttribute="centerY" id="dwM-cV-uHD"/>
+                            <constraint firstItem="IQw-hu-kGn" firstAttribute="centerX" secondItem="6bb-pM-G3a" secondAttribute="centerX" id="cGc-9w-NR6"/>
+                            <constraint firstItem="SVY-nw-zdR" firstAttribute="height" secondItem="Mwu-k8-Y5G" secondAttribute="height" multiplier="0.9" id="cqT-2g-PbY"/>
+                            <constraint firstItem="SVY-nw-zdR" firstAttribute="centerY" secondItem="6bb-pM-G3a" secondAttribute="centerY" constant="-10" id="dwM-cV-uHD"/>
+                            <constraint firstItem="IQw-hu-kGn" firstAttribute="top" secondItem="SVY-nw-zdR" secondAttribute="bottom" id="gqa-x3-6Cp"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Add Contacts To Connect With" id="o3z-te-YWH"/>

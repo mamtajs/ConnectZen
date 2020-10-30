@@ -13,6 +13,7 @@
 		221E32D92548061000310713 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221E32D82548061000310713 /* PopUpViewController.swift */; };
 		221E32DE2548ED0900310713 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221E32DD2548ED0900310713 /* ContactsViewController.swift */; };
 		226E5E11254B901700834214 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E5E10254B901700834214 /* ContactTableViewCell.swift */; };
+		226E5E14254BBA7900834214 /* ConstantStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E5E13254BBA7900834214 /* ConstantStructs.swift */; };
 		22C809492541FF0000BB1C18 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C809482541FF0000BB1C18 /* RegisterViewController.swift */; };
 		22D4C35F25315BD10028A57D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4C35E25315BD10028A57D /* AppDelegate.swift */; };
 		22D4C36125315BD10028A57D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4C36025315BD10028A57D /* SceneDelegate.swift */; };
@@ -51,6 +52,7 @@
 		221E32D82548061000310713 /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
 		221E32DD2548ED0900310713 /* ContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
 		226E5E10254B901700834214 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
+		226E5E13254BBA7900834214 /* ConstantStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantStructs.swift; sourceTree = "<group>"; };
 		22C809482541FF0000BB1C18 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		22D4C35B25315BD10028A57D /* ConnectZen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConnectZen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22D4C35E25315BD10028A57D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -119,6 +121,14 @@
 			path = TableViewCells;
 			sourceTree = "<group>";
 		};
+		226E5E12254BBA5C00834214 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				226E5E13254BBA7900834214 /* ConstantStructs.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
 		22C809472541FECF00BB1C18 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -155,6 +165,7 @@
 		22D4C35D25315BD10028A57D /* ConnectZen */ = {
 			isa = PBXGroup;
 			children = (
+				226E5E12254BBA5C00834214 /* Constants */,
 				226E5E0F254A620500834214 /* TableViewCells */,
 				221E32CF2548045400310713 /* IBDesignables */,
 				22C809472541FECF00BB1C18 /* ViewControllers */,
@@ -448,6 +459,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				226E5E14254BBA7900834214 /* ConstantStructs.swift in Sources */,
 				22D4C36325315BD10028A57D /* LoginViewController.swift in Sources */,
 				221E32C8254638FA00310713 /* GoogleService-Info.plist in Sources */,
 				221E32D92548061000310713 /* PopUpViewController.swift in Sources */,

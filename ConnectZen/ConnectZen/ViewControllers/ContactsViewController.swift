@@ -11,6 +11,7 @@ import Contacts
 class ContactsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var contacts = [CNContact]()
     var contactNames = [String]()
+    var connectWith = Dictionary<Int, Person>() // Saved selected contacts
     
     @IBOutlet weak var ContactsTableView: UITableView!
     
@@ -33,7 +34,7 @@ class ContactsViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func fetchContacts(){
         let contactStore = CNContactStore()
-        let keys = [CNContactFormatter.descriptorForRequiredKeys(for: .fullName)]
+        let keys = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactPhoneNumbersKey] as [CNKeyDescriptor]
         let request = CNContactFetchRequest(keysToFetch: keys)
 
         do {
@@ -94,12 +95,13 @@ extension ContactsViewController: ContactTableViewCellDelegate {
             cell.ActionButton.tintColor = UIColor(red: 0.836095, green: 0.268795, blue: 0.178868, alpha: 1)
             
             // TODO: Add person to dictonary of contacts
-            
+            let p = Person(contactName: String(cell.ContactName.text!), PhoneNumber: contacts[indexPath.row].phoneNumbers[0].value.stringValue);
+            connectWith[indexPath.row] = p
             
             // Show tool tip of added to contacts
             showToast(controller: self, message: "\(String(cell.ContactName.text!)) added", seconds: 0.5)
             
-            
+            print(connectWith)
         }
         else{ // Button color is red
             // Change image to plus
@@ -109,10 +111,12 @@ extension ContactsViewController: ContactTableViewCellDelegate {
             cell.ActionButton.tintColor = UIColor(red: 0, green: 0.405262, blue: 0.277711, alpha: 1)
             
             // TODO: Remove person from dictonary of contacts
-
+            connectWith[indexPath.row] = nil
             
             // Show tool tip of removed from connection
             showToast(controller: self, message: "\(String(cell.ContactName.text!)) removed", seconds: 0.5)
+            
+            print(connectWith)
         }
         
     }
