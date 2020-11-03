@@ -70,7 +70,7 @@ class ContactsViewController: UIViewController, UITableViewDataSource, UITableVi
 //MARK: Cell Deleagte
 extension ContactsViewController: ContactTableViewCellDelegate {
     
-    func showToast(controller: UIViewController, message : String, seconds: Double){
+    /*func showToast(controller: UIViewController, message : String, seconds: Double){
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
         alert.view.backgroundColor = .black
         alert.view.alpha = 0.5
@@ -80,7 +80,7 @@ extension ContactsViewController: ContactTableViewCellDelegate {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + seconds) {
             alert.dismiss(animated: true)
         }
-    }
+    }*/
     
     func ContactTableViewCell(cell: ContactTableViewCell, didTappedThe button: UIButton?) {
         guard let indexPath = ContactsTableView.indexPath(for: cell) else  { return }
@@ -94,12 +94,12 @@ extension ContactsViewController: ContactTableViewCellDelegate {
             // Change color to red
             cell.ActionButton.tintColor = UIColor(red: 0.836095, green: 0.268795, blue: 0.178868, alpha: 1)
             
-            // TODO: Add person to dictonary of contacts
+            // Add person to dictonary of contacts
             let p = Person(contactName: String(cell.ContactName.text!), PhoneNumber: contacts[indexPath.row].phoneNumbers[0].value.stringValue);
             connectWith[indexPath.row] = p
             
             // Show tool tip of added to contacts
-            showToast(controller: self, message: "\(String(cell.ContactName.text!)) added", seconds: 0.5)
+            showToast(controller: self, message: "\(String(cell.ContactName.text!)) added", seconds: 0.5, colorBackground: .systemGreen)
             
             print(connectWith)
         }
@@ -110,11 +110,11 @@ extension ContactsViewController: ContactTableViewCellDelegate {
             // Change color to green
             cell.ActionButton.tintColor = UIColor(red: 0, green: 0.405262, blue: 0.277711, alpha: 1)
             
-            // TODO: Remove person from dictonary of contacts
+            //Remove person from dictonary of contacts
             connectWith[indexPath.row] = nil
             
             // Show tool tip of removed from connection
-            showToast(controller: self, message: "\(String(cell.ContactName.text!)) removed", seconds: 0.5)
+            showToast(controller: self, message: "\(String(cell.ContactName.text!)) removed", seconds: 0.5, colorBackground: .systemRed)
             
             print(connectWith)
         }
