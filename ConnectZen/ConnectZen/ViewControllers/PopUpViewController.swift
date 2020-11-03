@@ -27,10 +27,22 @@ class PopUpViewController: UIViewController {
 
             let contactStore = CNContactStore()
             contactStore.requestAccess(for: .contacts) { (access, error) in
-                print("Access: \(access)")
                 if(access){ // contact Store access is granted by the user
+                    
+                    // Navigate to the contacts view controller using root navigation controller
                     let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ContactsVC") as? ContactsViewController
-                    self.navigationController?.pushViewController(vc!, animated: true)
+                    if let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
+                   
+                        navigationController.pushViewController(vc!, animated: true)
+                        
+                    }
+                    
+                    // dismiss the popup
+                    self.dismiss(animated: true, completion: nil)
+                    
+                }
+                else{
+                    // TODO: Error state
                 }
       
                 
@@ -39,5 +51,14 @@ class PopUpViewController: UIViewController {
     }
     
     @IBAction func EnterContactManuallyClicked(_ sender: Any) {
+        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ManualContactsVC") as? ManualContactsViewController
+        if let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
+       
+            navigationController.pushViewController(vc!, animated: true)
+            
+        }
+        // dismiss the popup
+        self.dismiss(animated: true, completion: nil)
+        
     }
 }

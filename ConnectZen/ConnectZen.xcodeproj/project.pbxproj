@@ -23,6 +23,7 @@
 		22D4C36B25315BD30028A57D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22D4C36925315BD30028A57D /* LaunchScreen.storyboard */; };
 		22D4C37625315BD30028A57D /* ConnectZenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4C37525315BD30028A57D /* ConnectZenTests.swift */; };
 		22D4C38125315BD30028A57D /* ConnectZenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4C38025315BD30028A57D /* ConnectZenUITests.swift */; };
+		22E911652550F69000A00F00 /* ManualContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E911642550F69000A00F00 /* ManualContactsViewController.swift */; };
 		97B94D01CA825C2E999F0346 /* Pods_ConnectZenTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86AEFA305D4B19BB93D3E5E7 /* Pods_ConnectZenTests.framework */; };
 		D7AA1EADE4E0AA383A89E6EA /* Pods_ConnectZen_ConnectZenUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CB298A90B633170483794E6 /* Pods_ConnectZen_ConnectZenUITests.framework */; };
 /* End PBXBuildFile section */
@@ -68,6 +69,7 @@
 		22D4C37C25315BD30028A57D /* ConnectZenUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConnectZenUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		22D4C38025315BD30028A57D /* ConnectZenUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectZenUITests.swift; sourceTree = "<group>"; };
 		22D4C38225315BD40028A57D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		22E911642550F69000A00F00 /* ManualContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualContactsViewController.swift; sourceTree = "<group>"; };
 		39A789680A611C5450201D39 /* Pods_ConnectZen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ConnectZen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B24EE06C5FBF1EEBCAA8BC6 /* Pods-ConnectZenTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConnectZenTests.debug.xcconfig"; path = "Target Support Files/Pods-ConnectZenTests/Pods-ConnectZenTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7CB298A90B633170483794E6 /* Pods_ConnectZen_ConnectZenUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ConnectZen_ConnectZenUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -136,6 +138,7 @@
 				22C809482541FF0000BB1C18 /* RegisterViewController.swift */,
 				221E32D82548061000310713 /* PopUpViewController.swift */,
 				221E32DD2548ED0900310713 /* ContactsViewController.swift */,
+				22E911642550F69000A00F00 /* ManualContactsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -461,6 +464,7 @@
 			files = (
 				226E5E14254BBA7900834214 /* ConstantStructs.swift in Sources */,
 				22D4C36325315BD10028A57D /* LoginViewController.swift in Sources */,
+				22E911652550F69000A00F00 /* ManualContactsViewController.swift in Sources */,
 				221E32C8254638FA00310713 /* GoogleService-Info.plist in Sources */,
 				221E32D92548061000310713 /* PopUpViewController.swift in Sources */,
 				221E32D1254804A200310713 /* DesignableView.swift in Sources */,

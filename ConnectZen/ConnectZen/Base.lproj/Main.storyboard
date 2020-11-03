@@ -204,7 +204,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Th4-NF-IP2">
-                                                    <rect key="frame" x="0.0" y="30" width="298" height="84"/>
+                                                    <rect key="frame" x="0.0" y="30.5" width="298" height="84"/>
                                                     <color key="tintColor" systemColor="labelColor"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="To keep in touch with Friends and Family simply add them by choosing from the contacts list on your phone. ">
@@ -218,7 +218,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P7H-bL-15U">
-                                                    <rect key="frame" x="0.0" y="144" width="298" height="42"/>
+                                                    <rect key="frame" x="0.0" y="145" width="298" height="42"/>
                                                     <color key="tintColor" systemColor="labelColor"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="Otherwise, you'll have to type in the contacts manually.">
@@ -232,7 +232,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="peO-4I-cVR">
-                                                    <rect key="frame" x="0.0" y="216" width="298" height="33"/>
+                                                    <rect key="frame" x="0.0" y="217.5" width="298" height="33"/>
                                                     <color key="backgroundColor" red="0.005744885188" green="0.3975281417" blue="0.28626120090000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="19"/>
                                                     <state key="normal" title="Use Address Book">
@@ -240,13 +240,12 @@
                                                     </state>
                                                     <connections>
                                                         <action selector="UseAddressBookClicked:" destination="eGT-0F-J2j" eventType="touchUpInside" id="bkL-GI-vzM"/>
-                                                        <segue destination="4QI-21-566" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="3EL-Xa-RTd"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3CY-8p-YTr">
-                                                    <rect key="frame" x="0.0" y="279" width="298" height="35"/>
+                                                    <rect key="frame" x="0.0" y="281" width="298" height="33"/>
                                                     <color key="backgroundColor" red="0.005744885188" green="0.3975281417" blue="0.28626120090000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                    <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="20"/>
+                                                    <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="19"/>
                                                     <state key="normal" title="I'll Enter Contact Info">
                                                         <color key="titleColor" systemColor="systemBackgroundColor"/>
                                                     </state>
@@ -314,16 +313,16 @@
             </objects>
             <point key="canvasLocation" x="3081.1594202898555" y="58.258928571428569"/>
         </scene>
-        <!--Add Contacts To Connect With-->
+        <!--ContactsVC-->
         <scene sceneID="UgV-Q7-dTG">
             <objects>
-                <viewController storyboardIdentifier="ContactsVC" id="zG5-iA-uwP" customClass="ContactsViewController" customModule="ConnectZen" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ContactsVC" title="ContactsVC" id="zG5-iA-uwP" customClass="ContactsViewController" customModule="ConnectZen" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6bb-pM-G3a">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SVY-nw-zdR">
-                                <rect key="frame" x="0.0" y="89.5" width="414" height="697"/>
+                                <rect key="frame" x="0.0" y="70" width="414" height="736"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ContactTableViewCell" rowHeight="60" id="sNa-s1-JDo" customClass="ContactTableViewCell" customModule="ConnectZen" customModuleProvider="target">
@@ -376,7 +375,7 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IQw-hu-kGn" userLabel="Contacts Selected">
-                                <rect key="frame" x="103.5" y="786.5" width="207" height="38.5"/>
+                                <rect key="frame" x="103.5" y="806" width="207" height="41"/>
                                 <color key="backgroundColor" red="0.0" green="0.28533291816711426" blue="0.30435478687286377" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="19"/>
                                 <color key="tintColor" red="0.0" green="0.28533291816711426" blue="0.30435478687286377" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -405,12 +404,67 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l4R-Hz-lvK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4747.826086956522" y="66.964285714285708"/>
+            <point key="canvasLocation" x="3964" y="-343"/>
+        </scene>
+        <!--Add Contacts To Connect With-->
+        <scene sceneID="2Is-mb-8rT">
+            <objects>
+                <viewController storyboardIdentifier="ManualContactsVC" title="Add Contacts To Connect With" id="GdW-St-K2n" customClass="ManualContactsViewController" customModule="ConnectZen" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Zph-t5-usA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bKW-Za-MVo">
+                                <rect key="frame" x="0.0" y="121" width="414" height="654"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="382-ss-Mjg">
+                                <rect key="frame" x="103.5" y="44" width="207" height="82"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
+                                <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Add Contact" image="plus.circle" catalog="system">
+                                    <color key="titleColor" systemColor="linkColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="AddNewContact:" destination="GdW-St-K2n" eventType="touchUpInside" id="Ny9-Sh-Nlw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nMk-Iw-pGr" userLabel="Contacts Selected">
+                                <rect key="frame" x="103.5" y="775" width="207" height="41"/>
+                                <color key="backgroundColor" red="0.0" green="0.28533291820000001" blue="0.30435478690000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="19"/>
+                                <color key="tintColor" red="0.0" green="0.28533291820000001" blue="0.30435478690000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Contacts Selected">
+                                    <color key="titleColor" systemColor="systemBackgroundColor"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="iRY-Op-gAu"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="nMk-Iw-pGr" firstAttribute="top" secondItem="bKW-Za-MVo" secondAttribute="bottom" id="4DJ-cC-voL"/>
+                            <constraint firstItem="382-ss-Mjg" firstAttribute="centerX" secondItem="Zph-t5-usA" secondAttribute="centerX" id="7la-iF-iA9"/>
+                            <constraint firstItem="nMk-Iw-pGr" firstAttribute="height" secondItem="iRY-Op-gAu" secondAttribute="height" multiplier="0.05" id="7y1-2z-HHh"/>
+                            <constraint firstItem="nMk-Iw-pGr" firstAttribute="width" secondItem="iRY-Op-gAu" secondAttribute="width" multiplier="0.5" id="C7e-Ga-ioU"/>
+                            <constraint firstItem="382-ss-Mjg" firstAttribute="top" secondItem="iRY-Op-gAu" secondAttribute="top" id="DOA-B4-YK3"/>
+                            <constraint firstItem="bKW-Za-MVo" firstAttribute="centerY" secondItem="Zph-t5-usA" secondAttribute="centerY" id="Tbb-Fx-W56"/>
+                            <constraint firstItem="382-ss-Mjg" firstAttribute="width" secondItem="iRY-Op-gAu" secondAttribute="width" multiplier="0.5" id="X1u-gA-jKu"/>
+                            <constraint firstItem="bKW-Za-MVo" firstAttribute="centerX" secondItem="Zph-t5-usA" secondAttribute="centerX" id="aCl-jh-684"/>
+                            <constraint firstItem="bKW-Za-MVo" firstAttribute="height" secondItem="iRY-Op-gAu" secondAttribute="height" multiplier="0.8" id="aGl-p6-dVe"/>
+                            <constraint firstItem="bKW-Za-MVo" firstAttribute="width" secondItem="iRY-Op-gAu" secondAttribute="width" id="esp-eV-L3a"/>
+                            <constraint firstItem="nMk-Iw-pGr" firstAttribute="centerX" secondItem="Zph-t5-usA" secondAttribute="centerX" id="fFW-zF-BZY"/>
+                            <constraint firstItem="382-ss-Mjg" firstAttribute="height" secondItem="iRY-Op-gAu" secondAttribute="height" multiplier="0.1" id="rW5-p0-12R"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wgx-4u-WEx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3963.7681159420295" y="405.80357142857139"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0aC-S9-LWN">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6rB-t2-e2d" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="Navigator" automaticallyAdjustsScrollViewInsets="NO" id="6rB-t2-e2d" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="bxf-af-gon">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -425,32 +479,18 @@
             </objects>
             <point key="canvasLocation" x="460.86956521739131" y="59.598214285714285"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Amx-ak-AsB">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4QI-21-566" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="0mC-lF-Kw7">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="zG5-iA-uwP" kind="relationship" relationship="rootViewController" id="qOA-U5-k7C"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1Cg-Lc-S5W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3837.68115942029" y="66.964285714285708"/>
-        </scene>
     </scenes>
     <resources>
         <image name="Logo" width="338" height="339"/>
         <image name="LogoNoBackground" width="249.5" height="250"/>
+        <image name="plus.circle" catalog="system" width="128" height="121"/>
         <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
         <image name="x.circle" catalog="system" width="128" height="121"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
