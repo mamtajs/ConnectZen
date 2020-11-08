@@ -30,15 +30,17 @@ class PopUpViewController: UIViewController {
                 if(access){ // contact Store access is granted by the user
                     
                     // Navigate to the contacts view controller using root navigation controller
-                    let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ContactsVC") as? ContactsViewController
-                    if let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
-                   
-                        navigationController.pushViewController(vc!, animated: true)
+                    DispatchQueue.main.async{
+                        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ContactsVC") as? ContactsViewController
+                        if let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
+                       navigationController.pushViewController(vc!, animated: true)
+                            
+                        }
+                        
+                        // dismiss the popup
+                        self.dismiss(animated: true, completion: nil)
                         
                     }
-                    
-                    // dismiss the popup
-                    self.dismiss(animated: true, completion: nil)
                     
                 }
                 else{

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ManualContactsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
+class ManualContactsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var NewContactsTableView: UITableView!
     var connectWith = Array<Person>()
@@ -18,17 +18,18 @@ class ManualContactsViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //let cell = tableView.dequeueReusableCell(withIdentifier: "ContactTableViewCell") as! ContactTableViewCell
-        //cell.ActionButton.tintColor = UIColor(red: 0, green: 0.405262, blue: 0.277711, alpha: 1)
-        //cell.cellDelegate = self
         print("Adding new cell")
-        let cell = UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ContactTableViewCell") as! ContactTableViewCell
+        cell.ActionButton.tintColor =  UIColor(red: 0.836095, green: 0.268795, blue: 0.178868, alpha: 1)
+        cell.cellDelegate = self
+       
+        //let cell = UITableViewCell()
         print(indexPath)
-        cell.textLabel?.text = "\(connectWith[indexPath.row].contactName) \t \(connectWith[indexPath.row].PhoneNumber)"
+        //cell.textLabel?.text = "\(connectWith[indexPath.row].contactName) \t \(connectWith[indexPath.row].PhoneNumber)"
+        cell.ContactName.text = "\(connectWith[indexPath.row].contactName)"
         
         return cell
     }
-    
     
     
     override func viewDidLoad() {
@@ -41,8 +42,6 @@ class ManualContactsViewController: UIViewController, UITableViewDataSource, UIT
 
     @IBAction func AddNewContact(_ sender: Any) {
         showAlertWithTextField()
-        
-       // NewContactsTableView.reloadData()
     }
     
     //  Simple Alert with Text input
@@ -57,6 +56,10 @@ class ManualContactsViewController: UIViewController, UITableViewDataSource, UIT
                 // operations
                 print("Name==>" + text!)
                 print("Phone==>" + phone!)
+                
+                // Check if phoneNumber is valid, if not show error
+                
+                
                 self.connectWith.append(Person(contactName: text!, PhoneNumber: phone!))
                 
                 NewContactsTableView.reloadData()
@@ -72,13 +75,54 @@ class ManualContactsViewController: UIViewController, UITableViewDataSource, UIT
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
         alertController.addTextField { (textField) in
+            textField.delegate = self
             textField.placeholder = "Contact name"
+            textField.keyboardType = UIKeyboardType.namePhonePad
         }
         alertController.addTextField { (textField) in
+            textField.delegate = self
             textField.placeholder = "Phone number"
+            textField.keyboardType = UIKeyboardType.phonePad
         }
         alertController.addAction(confirmAction)
         alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    @IBAction func ContactsAdded(_ sender: Any) {
+        // TODO: Find people already registered with app
+        
+        // TODO: For people not registered show popUp Message/Invitation screen
+        
+        // TODO: Add the people already registered on the app as friends
+        
+        // Direct to time and day preferences scene
+        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "TimeDayPref") as? TimeDayPrefViewController
+        self.navigationController?.pushViewController(vc!, animated: true)
+    }
+}
+
+extension ManualContactsViewController: ContactTableViewCellDelegate {
+    func ContactTableViewCell(cell: ContactTableViewCell, didTappedThe button: UIButton?) {
+        guard let indexPath = NewContactsTableView.indexPath(for: cell) else  { return }
+        print("Cell action in row: \(indexPath.row) \(String(describing: cell.ActionButton.tintColor))")
+        
+        // Button color is green
+        if(cell.ActionButton.tintColor == UIColor(red: 0, green: 0.405262, blue: 0.277711, alpha: 1)){
+            // Can not happen so error
+            print("Error: Color can not be found")
+        }
+        else{ // Button color is red
+            
+            // Show tool tip of removed from connection
+            showToast(controller: self, message: "\(String(cell.ContactName.text!)) removed", seconds: 0.5, colorBackground: .systemRed)
+            
+            //Remove person from list of contacts
+            connectWith.remove(at: indexPath.row)
+            
+            print(connectWith)
+            NewContactsTableView.reloadData()
+        }
+        
     }
 }

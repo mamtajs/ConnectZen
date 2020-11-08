@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6rB-t2-e2d">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6rB-t2-e2d">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17124"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -48,7 +48,7 @@
                                 </connections>
                             </button>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="7" currentPage="1" translatesAutoresizingMaskIntoConstraints="NO" id="ZBx-18-WH1">
-                                <rect key="frame" x="41.5" y="832.5" width="331" height="29.5"/>
+                                <rect key="frame" x="41.5" y="834.5" width="331" height="27.5"/>
                             </pageControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -93,7 +93,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="7" currentPage="2" translatesAutoresizingMaskIntoConstraints="NO" id="oh9-fp-KeU">
-                                <rect key="frame" x="41.5" y="832.5" width="331" height="29.5"/>
+                                <rect key="frame" x="41.5" y="834.5" width="331" height="27.5"/>
                             </pageControl>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ENo-Ai-2dM">
                                 <rect key="frame" x="41.5" y="343" width="331" height="34"/>
@@ -382,6 +382,9 @@
                                 <state key="normal" title="Contacts Selected">
                                     <color key="titleColor" systemColor="systemBackgroundColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="ContactsSelected:" destination="zG5-iA-uwP" eventType="touchUpInside" id="sXo-e9-aQg"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Mwu-k8-Y5G"/>
@@ -414,13 +417,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bKW-Za-MVo" userLabel="New Contacts Table View">
-                                <rect key="frame" x="0.0" y="121" width="414" height="654"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="382-ss-Mjg">
-                                <rect key="frame" x="103.5" y="44" width="207" height="82"/>
-                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
+                                <rect key="frame" x="103.5" y="111" width="207" height="40.5"/>
+                                <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="19"/>
                                 <inset key="contentEdgeInsets" minX="0.0" minY="5" maxX="0.0" maxY="0.0"/>
                                 <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="Add Contact" image="plus.circle" catalog="system">
@@ -430,31 +429,87 @@
                                     <action selector="AddNewContact:" destination="GdW-St-K2n" eventType="touchUpInside" id="Ny9-Sh-Nlw"/>
                                 </connections>
                             </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bKW-Za-MVo" userLabel="New Contacts Table View">
+                                <rect key="frame" x="0.0" y="161.5" width="414" height="573"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ContactTableViewCell" rowHeight="60" id="NFA-24-soh" customClass="ContactTableViewCell" customModule="ConnectZen" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NFA-24-soh" id="EZ2-aq-tHe">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ezs-Ip-oeC">
+                                                    <rect key="frame" x="20.5" y="-5" width="373" height="70"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name Of Contact" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZXY-9L-9QK">
+                                                            <rect key="frame" x="0.0" y="24.5" width="317" height="21"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="ZXY-9L-9QK" secondAttribute="height" multiplier="317:21" id="acc-CC-kq3"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="19"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mXI-Dx-MRn" userLabel="Action Button">
+                                                            <rect key="frame" x="331" y="14.5" width="42" height="41"/>
+                                                            <color key="tintColor" red="0.0" green="0.28533291820000001" blue="0.30435478690000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <state key="normal" backgroundImage="minus.circle.fill" catalog="system"/>
+                                                            <connections>
+                                                                <action selector="ActionButtonPressed:" destination="NFA-24-soh" eventType="touchUpInside" id="NTC-Qd-tnp"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="mXI-Dx-MRn" firstAttribute="width" secondItem="ezs-Ip-oeC" secondAttribute="height" multiplier="0.6" id="Kag-Dq-1my"/>
+                                                        <constraint firstItem="mXI-Dx-MRn" firstAttribute="height" secondItem="ezs-Ip-oeC" secondAttribute="height" multiplier="0.6" id="csj-8O-vD6"/>
+                                                        <constraint firstItem="ZXY-9L-9QK" firstAttribute="width" secondItem="ezs-Ip-oeC" secondAttribute="width" multiplier="0.85" id="gxl-pl-Dmp"/>
+                                                        <constraint firstAttribute="height" constant="70" id="z9l-tr-DwL"/>
+                                                    </constraints>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="ezs-Ip-oeC" firstAttribute="centerY" secondItem="EZ2-aq-tHe" secondAttribute="centerY" id="Npt-Vp-RQK"/>
+                                                <constraint firstItem="ezs-Ip-oeC" firstAttribute="centerX" secondItem="EZ2-aq-tHe" secondAttribute="centerX" id="Pfk-yE-irT"/>
+                                                <constraint firstItem="ezs-Ip-oeC" firstAttribute="width" secondItem="EZ2-aq-tHe" secondAttribute="width" multiplier="0.9" id="UoQ-wo-Msx"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="ActionButton" destination="mXI-Dx-MRn" id="FcV-s5-fn8"/>
+                                            <outlet property="ContactName" destination="ZXY-9L-9QK" id="vM6-Mc-OYL"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nMk-Iw-pGr" userLabel="Contacts Selected">
-                                <rect key="frame" x="103.5" y="775" width="207" height="41"/>
+                                <rect key="frame" x="103.5" y="784.5" width="207" height="40.5"/>
                                 <color key="backgroundColor" red="0.0" green="0.28533291820000001" blue="0.30435478690000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="19"/>
                                 <color key="tintColor" red="0.0" green="0.28533291820000001" blue="0.30435478690000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Contacts Selected">
+                                <state key="normal" title="Contacts Added">
                                     <color key="titleColor" systemColor="systemBackgroundColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="ContactsAdded:" destination="GdW-St-K2n" eventType="touchUpInside" id="ISi-cT-Ugq"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="iRY-Op-gAu"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="nMk-Iw-pGr" firstAttribute="top" secondItem="bKW-Za-MVo" secondAttribute="bottom" id="4DJ-cC-voL"/>
+                            <constraint firstItem="nMk-Iw-pGr" firstAttribute="top" secondItem="bKW-Za-MVo" secondAttribute="bottom" constant="50" id="4DJ-cC-voL"/>
                             <constraint firstItem="382-ss-Mjg" firstAttribute="centerX" secondItem="Zph-t5-usA" secondAttribute="centerX" id="7la-iF-iA9"/>
                             <constraint firstItem="nMk-Iw-pGr" firstAttribute="height" secondItem="iRY-Op-gAu" secondAttribute="height" multiplier="0.05" id="7y1-2z-HHh"/>
                             <constraint firstItem="nMk-Iw-pGr" firstAttribute="width" secondItem="iRY-Op-gAu" secondAttribute="width" multiplier="0.5" id="C7e-Ga-ioU"/>
-                            <constraint firstItem="382-ss-Mjg" firstAttribute="top" secondItem="iRY-Op-gAu" secondAttribute="top" id="DOA-B4-YK3"/>
+                            <constraint firstItem="bKW-Za-MVo" firstAttribute="top" secondItem="382-ss-Mjg" secondAttribute="bottom" constant="10" id="HgH-od-9eF"/>
                             <constraint firstItem="bKW-Za-MVo" firstAttribute="centerY" secondItem="Zph-t5-usA" secondAttribute="centerY" id="Tbb-Fx-W56"/>
                             <constraint firstItem="382-ss-Mjg" firstAttribute="width" secondItem="iRY-Op-gAu" secondAttribute="width" multiplier="0.5" id="X1u-gA-jKu"/>
                             <constraint firstItem="bKW-Za-MVo" firstAttribute="centerX" secondItem="Zph-t5-usA" secondAttribute="centerX" id="aCl-jh-684"/>
-                            <constraint firstItem="bKW-Za-MVo" firstAttribute="height" secondItem="iRY-Op-gAu" secondAttribute="height" multiplier="0.8" id="aGl-p6-dVe"/>
+                            <constraint firstItem="bKW-Za-MVo" firstAttribute="height" secondItem="iRY-Op-gAu" secondAttribute="height" multiplier="0.7" id="aGl-p6-dVe"/>
                             <constraint firstItem="bKW-Za-MVo" firstAttribute="width" secondItem="iRY-Op-gAu" secondAttribute="width" id="esp-eV-L3a"/>
                             <constraint firstItem="nMk-Iw-pGr" firstAttribute="centerX" secondItem="Zph-t5-usA" secondAttribute="centerX" id="fFW-zF-BZY"/>
-                            <constraint firstItem="382-ss-Mjg" firstAttribute="height" secondItem="iRY-Op-gAu" secondAttribute="height" multiplier="0.1" id="rW5-p0-12R"/>
+                            <constraint firstItem="382-ss-Mjg" firstAttribute="height" secondItem="iRY-Op-gAu" secondAttribute="height" multiplier="0.05" id="rW5-p0-12R"/>
                         </constraints>
                     </view>
                     <connections>
@@ -483,10 +538,26 @@
             </objects>
             <point key="canvasLocation" x="460.86956521739131" y="59.598214285714285"/>
         </scene>
+        <!--Time and Day Preference-->
+        <scene sceneID="Fnf-69-t0b">
+            <objects>
+                <viewController storyboardIdentifier="TimeDayPref" title="Time and Day Preference" useStoryboardIdentifierAsRestorationIdentifier="YES" id="dKd-He-gsM" customClass="TimeDayPrefViewController" customModule="ConnectZen" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="d5z-1t-D2D">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="yTc-0l-197"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qTJ-ch-N0c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4751" y="60"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Logo" width="338" height="339"/>
         <image name="LogoNoBackground" width="249.5" height="250"/>
+        <image name="minus.circle.fill" catalog="system" width="128" height="121"/>
         <image name="plus.circle" catalog="system" width="128" height="121"/>
         <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
         <image name="x.circle" catalog="system" width="128" height="121"/>

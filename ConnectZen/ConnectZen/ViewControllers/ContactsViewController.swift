@@ -64,23 +64,21 @@ class ContactsViewController: UIViewController, UITableViewDataSource, UITableVi
         fetchContacts()
     }
     
-
+    @IBAction func ContactsSelected(_ sender: Any) {
+        // TODO: Find people already registered with app
+        
+        // TODO: For people not registered show popUp Message/Invitation screen
+        
+        // TODO: Add the people already registered on the app as friends
+        
+        // Direct to time and day preferences scene
+        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "TimeDayPref") as? TimeDayPrefViewController
+        self.navigationController?.pushViewController(vc!, animated: true)
+    }
+    
 }
 
-//MARK: Cell Deleagte
 extension ContactsViewController: ContactTableViewCellDelegate {
-    
-    /*func showToast(controller: UIViewController, message : String, seconds: Double){
-        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-        alert.view.backgroundColor = .black
-        alert.view.alpha = 0.5
-        alert.view.layer.cornerRadius = 15
-        controller.present(alert, animated: true)
-        
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + seconds) {
-            alert.dismiss(animated: true)
-        }
-    }*/
     
     func ContactTableViewCell(cell: ContactTableViewCell, didTappedThe button: UIButton?) {
         guard let indexPath = ContactsTableView.indexPath(for: cell) else  { return }
