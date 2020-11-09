@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import PhoneNumberKit
 
 class ManualContactsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var NewContactsTableView: UITableView!
     var connectWith = Array<Person>()
+    let phoneNumberKit = PhoneNumberKit()
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("Count \(connectWith.count)")
@@ -38,10 +40,25 @@ class ManualContactsViewController: UIViewController, UITableViewDataSource, UIT
         NewContactsTableView.delegate = self
         NewContactsTableView.dataSource = self
         
+        
     }
 
     @IBAction func AddNewContact(_ sender: Any) {
         showAlertWithTextField()
+    }
+    
+    // Return true if phone number is valid and false otherwise
+    func PhoneNumberIsValid(phone: String, region: String) -> Bool{
+        do {
+            let phoneNumber = try phoneNumberKit.parse(phone)
+            //let phoneNumberCustomDefaultRegion = try phoneNumberKit.parse(phone, withRegion: region, ignoreType: true)
+            //print("phoneNumberCustomDefaultRegion: \(phoneNumberCustomDefaultRegion)")
+            return true
+        }
+        catch {
+            print("Generic parser error")
+            return false
+        }
     }
     
     //  Simple Alert with Text input
@@ -58,19 +75,22 @@ class ManualContactsViewController: UIViewController, UITableViewDataSource, UIT
                 print("Phone==>" + phone!)
                 
                 // Check if phoneNumber is valid, if not show error
-                
-                
-                self.connectWith.append(Person(contactName: text!, PhoneNumber: phone!))
-                
-                NewContactsTableView.reloadData()
-                
-                // show message of added
-                showToast(controller: self, message: "Contact \(text!) added", seconds: 2, colorBackground: .systemGreen)
+                if(PhoneNumberIsValid(phone: phone!, region: "US")){
+                    self.connectWith.append(Person(contactName: text!, PhoneNumber: phone!))
+                    
+                    NewContactsTableView.reloadData()
+                    
+                    // show message of added
+                    showToast(controller: self, message: "Contact \(text!) added", seconds: 2, colorBackground: .systemGreen, title: "Success")
+                }
+                else{
+                    showToast(controller: self, message: "Contact Number is Invalid! ", seconds: 3, colorBackground: .systemRed, title: "Error")
+                }
                 
             }
             else{
                 // Show error
-                showToast(controller: self, message: "Error: Please enter both contact name and phone number to connect.", seconds: 2, colorBackground: .systemRed)
+                showToast(controller: self, message: "Error: Please enter both contact name and phone number to connect.", seconds: 2, colorBackground: .systemRed, title: "Error")
             }
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
@@ -115,7 +135,7 @@ extension ManualContactsViewController: ContactTableViewCellDelegate {
         else{ // Button color is red
             
             // Show tool tip of removed from connection
-            showToast(controller: self, message: "\(String(cell.ContactName.text!)) removed", seconds: 0.5, colorBackground: .systemRed)
+            showToast(controller: self, message: "\(String(cell.ContactName.text!)) removed", seconds: 0.5, colorBackground: .systemGreen, title: "Success")
             
             //Remove person from list of contacts
             connectWith.remove(at: indexPath.row)

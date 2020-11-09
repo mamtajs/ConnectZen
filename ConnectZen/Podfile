@@ -9,6 +9,7 @@ target 'ConnectZen' do
 
   pod 'Firebase/Core'
   pod 'Firebase/Database'
+  pod 'PhoneNumberKit', '~> 3.3'
 
   target 'ConnectZenTests' do
     inherit! :search_paths
@@ -18,5 +19,6 @@ target 'ConnectZen' do
   target 'ConnectZenUITests' do
     # Pods for testing
   end
+
 
 end

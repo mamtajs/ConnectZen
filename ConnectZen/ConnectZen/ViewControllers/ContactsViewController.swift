@@ -97,7 +97,7 @@ extension ContactsViewController: ContactTableViewCellDelegate {
             connectWith[indexPath.row] = p
             
             // Show tool tip of added to contacts
-            showToast(controller: self, message: "\(String(cell.ContactName.text!)) added", seconds: 0.5, colorBackground: .systemGreen)
+            showToast(controller: self, message: "\(String(cell.ContactName.text!)) added", seconds: 0.5, colorBackground: .systemGreen, title: "Success")
             
             print(connectWith)
         }
@@ -112,7 +112,7 @@ extension ContactsViewController: ContactTableViewCellDelegate {
             connectWith[indexPath.row] = nil
             
             // Show tool tip of removed from connection
-            showToast(controller: self, message: "\(String(cell.ContactName.text!)) removed", seconds: 0.5, colorBackground: .systemRed)
+            showToast(controller: self, message: "\(String(cell.ContactName.text!)) removed", seconds: 0.5, colorBackground: .systemGreen, title: "Success")
             
             print(connectWith)
         }

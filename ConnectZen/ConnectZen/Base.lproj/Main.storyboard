@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -545,13 +546,201 @@
                     <view key="view" contentMode="scaleToFill" id="d5z-1t-D2D">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="cGJ-Q3-wL6" userLabel="H Stack1">
+                                <rect key="frame" x="20.5" y="93.5" width="373" height="82"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F1h-SH-0LD">
+                                        <rect key="frame" x="0.0" y="18.5" width="261" height="44.5"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="I would like to connect with">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <font key="NSFont" size="19" name="Palatino-Roman"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" paragraphSpacingBefore="10" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content=" 1 ">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <font key="NSFont" size="20" name="Palatino-Roman"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" paragraphSpacingBefore="10" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content="friend(s)">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <font key="NSFont" size="19" name="Palatino-Roman"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" paragraphSpacingBefore="10" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content=" ">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <font key="NSFont" size="20" name="Palatino-Roman"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" paragraphSpacingBefore="10" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content="per day">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <font key="NSFont" size="19" name="Palatino-Roman"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" paragraphSpacingBefore="10" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="hHR-tU-wqr">
+                                        <rect key="frame" x="261" y="25" width="112" height="32"/>
+                                    </stepper>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="F1h-SH-0LD" firstAttribute="width" secondItem="cGJ-Q3-wL6" secondAttribute="width" multiplier="0.7" id="4lD-XH-MRQ"/>
+                                </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="HHl-Hn-Dtm" userLabel="H Stack2">
+                                <rect key="frame" x="20.5" y="183" width="373" height="82"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eJA-RA-zmw">
+                                        <rect key="frame" x="0.0" y="19" width="261" height="44.5"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="I would like to connect for">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <font key="NSFont" size="19" name="Palatino-Roman"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" paragraphSpacingBefore="10" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content=" 15 ">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <font key="NSFont" size="20" name="Palatino-Roman"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" paragraphSpacingBefore="10" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content="minutes">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <font key="NSFont" size="19" name="Palatino-Roman"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" paragraphSpacingBefore="10" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content=" ">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <font key="NSFont" size="20" name="Palatino-Roman"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" paragraphSpacingBefore="10" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content="per meeting">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <font key="NSFont" size="19" name="Palatino-Roman"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" paragraphSpacingBefore="10" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="120" translatesAutoresizingMaskIntoConstraints="NO" id="4lc-Uj-fnY">
+                                        <rect key="frame" x="261" y="25" width="112" height="32"/>
+                                    </stepper>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="eJA-RA-zmw" firstAttribute="width" secondItem="HHl-Hn-Dtm" secondAttribute="width" multiplier="0.7" id="tzB-Nb-dAB"/>
+                                </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FlE-je-qhq" userLabel="H Stack3">
+                                <rect key="frame" x="20.5" y="272.5" width="373" height="82"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add preferred Days and Time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2mc-MI-YFM">
+                                        <rect key="frame" x="0.0" y="0.0" width="373" height="82"/>
+                                        <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="19"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7vf-pS-pMt" userLabel="H Stack4">
+                                <rect key="frame" x="20.5" y="362.5" width="373" height="81.5"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3gj-rC-P6g">
+                                        <rect key="frame" x="0.0" y="0.0" width="373" height="81.5"/>
+                                        <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="19"/>
+                                        <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="Add Day and Time" image="plus.circle" catalog="system">
+                                            <color key="titleColor" name="AccentColor"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oUz-Yp-1ay" userLabel="H Stack5">
+                                <rect key="frame" x="20.5" y="459.5" width="373" height="245.5"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cbg-5B-h8i">
+                                        <rect key="frame" x="0.0" y="0.0" width="373" height="245.5"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </tableView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="cbg-5B-h8i" firstAttribute="centerX" secondItem="oUz-Yp-1ay" secondAttribute="centerX" id="6g1-H4-9kd"/>
+                                    <constraint firstItem="cbg-5B-h8i" firstAttribute="height" secondItem="oUz-Yp-1ay" secondAttribute="height" id="LK9-Tt-9lU"/>
+                                    <constraint firstItem="cbg-5B-h8i" firstAttribute="centerY" secondItem="oUz-Yp-1ay" secondAttribute="centerY" id="hR4-tt-0pT"/>
+                                    <constraint firstItem="cbg-5B-h8i" firstAttribute="width" secondItem="oUz-Yp-1ay" secondAttribute="width" id="rwv-UI-xfa"/>
+                                </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9fR-s7-ZFE" userLabel="H Stack6">
+                                <rect key="frame" x="103.5" y="768" width="207" height="41"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uhb-Ww-k2V" userLabel="Contacts Selected">
+                                        <rect key="frame" x="0.0" y="0.0" width="207" height="41"/>
+                                        <color key="backgroundColor" red="0.0" green="0.28533291820000001" blue="0.30435478690000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="19"/>
+                                        <color key="tintColor" red="0.0" green="0.28533291820000001" blue="0.30435478690000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Next">
+                                            <color key="titleColor" systemColor="systemBackgroundColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="ContactsSelected:" destination="zG5-iA-uwP" eventType="touchUpInside" id="Gyk-Pv-HpM"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="yTc-0l-197"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="HHl-Hn-Dtm" firstAttribute="centerX" secondItem="d5z-1t-D2D" secondAttribute="centerX" id="0An-WA-Awg"/>
+                            <constraint firstItem="9fR-s7-ZFE" firstAttribute="height" secondItem="yTc-0l-197" secondAttribute="height" multiplier="0.05" id="0oB-3U-czT"/>
+                            <constraint firstItem="FlE-je-qhq" firstAttribute="centerY" secondItem="d5z-1t-D2D" secondAttribute="centerY" multiplier="0.7" id="2UN-rf-um6"/>
+                            <constraint firstItem="9fR-s7-ZFE" firstAttribute="centerX" secondItem="d5z-1t-D2D" secondAttribute="centerX" id="3QR-Uq-nzp"/>
+                            <constraint firstItem="FlE-je-qhq" firstAttribute="height" secondItem="yTc-0l-197" secondAttribute="height" multiplier="0.1" id="3tx-0Y-lSm"/>
+                            <constraint firstItem="cGJ-Q3-wL6" firstAttribute="width" secondItem="yTc-0l-197" secondAttribute="width" multiplier="0.9" id="4fe-oB-qQg"/>
+                            <constraint firstItem="HHl-Hn-Dtm" firstAttribute="centerY" secondItem="d5z-1t-D2D" secondAttribute="centerY" multiplier="0.5" id="5AA-bx-b1G"/>
+                            <constraint firstItem="9fR-s7-ZFE" firstAttribute="centerY" secondItem="d5z-1t-D2D" secondAttribute="centerY" multiplier="1.76" id="73p-wY-CIN"/>
+                            <constraint firstItem="7vf-pS-pMt" firstAttribute="centerY" secondItem="d5z-1t-D2D" secondAttribute="centerY" multiplier="0.9" id="7NR-m3-eVr"/>
+                            <constraint firstItem="oUz-Yp-1ay" firstAttribute="width" secondItem="yTc-0l-197" secondAttribute="width" multiplier="0.9" id="AWK-at-hmG"/>
+                            <constraint firstItem="7vf-pS-pMt" firstAttribute="height" secondItem="yTc-0l-197" secondAttribute="height" multiplier="0.1" id="DJc-po-slc"/>
+                            <constraint firstItem="FlE-je-qhq" firstAttribute="centerX" secondItem="d5z-1t-D2D" secondAttribute="centerX" id="Fx5-1E-Ibf"/>
+                            <constraint firstItem="HHl-Hn-Dtm" firstAttribute="height" secondItem="yTc-0l-197" secondAttribute="height" multiplier="0.1" id="OTK-Bo-eck"/>
+                            <constraint firstItem="oUz-Yp-1ay" firstAttribute="height" secondItem="yTc-0l-197" secondAttribute="height" multiplier="0.3" id="WYj-Sj-8bN"/>
+                            <constraint firstItem="cGJ-Q3-wL6" firstAttribute="centerY" secondItem="d5z-1t-D2D" secondAttribute="centerY" multiplier="0.3" id="Wh1-2b-xro"/>
+                            <constraint firstItem="cGJ-Q3-wL6" firstAttribute="centerX" secondItem="d5z-1t-D2D" secondAttribute="centerX" id="Wq9-bq-xLb"/>
+                            <constraint firstItem="7vf-pS-pMt" firstAttribute="centerX" secondItem="d5z-1t-D2D" secondAttribute="centerX" id="Y48-cZ-Z98"/>
+                            <constraint firstItem="oUz-Yp-1ay" firstAttribute="centerX" secondItem="d5z-1t-D2D" secondAttribute="centerX" id="Z4k-4o-6rf"/>
+                            <constraint firstItem="oUz-Yp-1ay" firstAttribute="centerY" secondItem="d5z-1t-D2D" secondAttribute="centerY" multiplier="1.3" id="bTg-k3-nY1"/>
+                            <constraint firstItem="9fR-s7-ZFE" firstAttribute="width" secondItem="yTc-0l-197" secondAttribute="width" multiplier="0.5" id="hc2-wD-y4V"/>
+                            <constraint firstItem="FlE-je-qhq" firstAttribute="width" secondItem="yTc-0l-197" secondAttribute="width" multiplier="0.9" id="lWy-gs-P2b"/>
+                            <constraint firstItem="HHl-Hn-Dtm" firstAttribute="width" secondItem="yTc-0l-197" secondAttribute="width" multiplier="0.9" id="rSM-yw-9Lx"/>
+                            <constraint firstItem="7vf-pS-pMt" firstAttribute="width" secondItem="yTc-0l-197" secondAttribute="width" multiplier="0.9" id="sAO-8b-L9h"/>
+                            <constraint firstItem="cGJ-Q3-wL6" firstAttribute="height" secondItem="yTc-0l-197" secondAttribute="height" multiplier="0.1" id="vXt-if-tI7"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qTJ-ch-N0c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4751" y="60"/>
+            <point key="canvasLocation" x="4750.7246376811599" y="59.598214285714285"/>
         </scene>
     </scenes>
     <resources>
@@ -561,6 +750,9 @@
         <image name="plus.circle" catalog="system" width="128" height="121"/>
         <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
         <image name="x.circle" catalog="system" width="128" height="121"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

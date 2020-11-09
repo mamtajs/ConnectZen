@@ -8,8 +8,8 @@
 import Foundation
 import UIKit
 
-func showToast(controller: UIViewController, message : String, seconds: Double, colorBackground: UIColor){
-    let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+func showToast(controller: UIViewController, message : String, seconds: Double, colorBackground: UIColor, title: String){
+    let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
     alert.view.backgroundColor = colorBackground
     alert.view.alpha = 0.5
     alert.view.layer.cornerRadius = 15
