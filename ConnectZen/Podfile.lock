@@ -66,11 +66,18 @@ PODS:
     - nanopb/encode (= 1.30906.0)
   - nanopb/decode (1.30906.0)
   - nanopb/encode (1.30906.0)
+  - PhoneNumberKit (3.3.1):
+    - PhoneNumberKit/PhoneNumberKitCore (= 3.3.1)
+    - PhoneNumberKit/UIKit (= 3.3.1)
+  - PhoneNumberKit/PhoneNumberKitCore (3.3.1)
+  - PhoneNumberKit/UIKit (3.3.1):
+    - PhoneNumberKit/PhoneNumberKitCore
   - PromisesObjC (1.2.11)
 
 DEPENDENCIES:
   - Firebase/Core
   - Firebase/Database
+  - PhoneNumberKit (~> 3.3)
 
 SPEC REPOS:
   trunk:
@@ -85,6 +92,7 @@ SPEC REPOS:
     - GoogleUtilities
     - leveldb-library
     - nanopb
+    - PhoneNumberKit
     - PromisesObjC
 
 SPEC CHECKSUMS:
@@ -99,8 +107,9 @@ SPEC CHECKSUMS:
   GoogleUtilities: 7f2f5a07f888cdb145101d6042bc4422f57e70b3
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
+  PhoneNumberKit: ff153d5e299f6da566cb73c6aa71e354933b2932
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
 
-PODFILE CHECKSUM: 690f1a12a7727e58dc332baf7128a6c8ba659eee
+PODFILE CHECKSUM: 1c73bbc78ed6a6a1584cf53675ec1395e52aa26b
 
 COCOAPODS: 1.9.3
