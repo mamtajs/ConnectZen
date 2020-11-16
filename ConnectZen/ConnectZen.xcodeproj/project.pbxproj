@@ -13,6 +13,8 @@
 		221E32D1254804A200310713 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221E32D0254804A200310713 /* DesignableView.swift */; };
 		221E32D92548061000310713 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221E32D82548061000310713 /* PopUpViewController.swift */; };
 		221E32DE2548ED0900310713 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221E32DD2548ED0900310713 /* ContactsViewController.swift */; };
+		223DACE525620B99001FF194 /* UserPrefDayTime.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 223DACE425620B99001FF194 /* UserPrefDayTime.storyboard */; };
+		223DACEA25620C78001FF194 /* UserPrefDayTimePopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223DACE925620C78001FF194 /* UserPrefDayTimePopUpViewController.swift */; };
 		226E5E11254B901700834214 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E5E10254B901700834214 /* ContactTableViewCell.swift */; };
 		226E5E14254BBA7900834214 /* ConstantStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E5E13254BBA7900834214 /* ConstantStructs.swift */; };
 		22C809492541FF0000BB1C18 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C809482541FF0000BB1C18 /* RegisterViewController.swift */; };
@@ -26,6 +28,8 @@
 		22D4C38125315BD30028A57D /* ConnectZenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4C38025315BD30028A57D /* ConnectZenUITests.swift */; };
 		22E911652550F69000A00F00 /* ManualContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E911642550F69000A00F00 /* ManualContactsViewController.swift */; };
 		22E911682551E36E00A00F00 /* UtilityFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E911672551E36E00A00F00 /* UtilityFunctions.swift */; };
+		22FFCD242563162C00A280F4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FFCD232563162C00A280F4 /* Constants.swift */; };
+		22FFCD26256318CC00A280F4 /* PrefDayTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FFCD25256318CC00A280F4 /* PrefDayTimeTableViewCell.swift */; };
 		97B94D01CA825C2E999F0346 /* Pods_ConnectZenTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86AEFA305D4B19BB93D3E5E7 /* Pods_ConnectZenTests.framework */; };
 		D7AA1EADE4E0AA383A89E6EA /* Pods_ConnectZen_ConnectZenUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CB298A90B633170483794E6 /* Pods_ConnectZen_ConnectZenUITests.framework */; };
 /* End PBXBuildFile section */
@@ -55,6 +59,8 @@
 		221E32D0254804A200310713 /* DesignableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
 		221E32D82548061000310713 /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
 		221E32DD2548ED0900310713 /* ContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
+		223DACE425620B99001FF194 /* UserPrefDayTime.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserPrefDayTime.storyboard; sourceTree = "<group>"; };
+		223DACE925620C78001FF194 /* UserPrefDayTimePopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPrefDayTimePopUpViewController.swift; sourceTree = "<group>"; };
 		226E5E10254B901700834214 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
 		226E5E13254BBA7900834214 /* ConstantStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantStructs.swift; sourceTree = "<group>"; };
 		22C809482541FF0000BB1C18 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -74,6 +80,9 @@
 		22D4C38225315BD40028A57D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22E911642550F69000A00F00 /* ManualContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualContactsViewController.swift; sourceTree = "<group>"; };
 		22E911672551E36E00A00F00 /* UtilityFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityFunctions.swift; sourceTree = "<group>"; };
+		22FFCD212562259300A280F4 /* iOSDropDown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = iOSDropDown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		22FFCD232563162C00A280F4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		22FFCD25256318CC00A280F4 /* PrefDayTimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefDayTimeTableViewCell.swift; sourceTree = "<group>"; };
 		39A789680A611C5450201D39 /* Pods_ConnectZen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ConnectZen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B24EE06C5FBF1EEBCAA8BC6 /* Pods-ConnectZenTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConnectZenTests.debug.xcconfig"; path = "Target Support Files/Pods-ConnectZenTests/Pods-ConnectZenTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7CB298A90B633170483794E6 /* Pods_ConnectZen_ConnectZenUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ConnectZen_ConnectZenUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -123,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				226E5E10254B901700834214 /* ContactTableViewCell.swift */,
+				22FFCD25256318CC00A280F4 /* PrefDayTimeTableViewCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -131,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				226E5E13254BBA7900834214 /* ConstantStructs.swift */,
+				22FFCD232563162C00A280F4 /* Constants.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -144,6 +155,7 @@
 				221E32DD2548ED0900310713 /* ContactsViewController.swift */,
 				22E911642550F69000A00F00 /* ManualContactsViewController.swift */,
 				22121FE82558B3EC0001BC05 /* TimeDayPrefViewController.swift */,
+				223DACE925620C78001FF194 /* UserPrefDayTimePopUpViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -181,6 +193,7 @@
 				22D4C35E25315BD10028A57D /* AppDelegate.swift */,
 				22D4C36025315BD10028A57D /* SceneDelegate.swift */,
 				22D4C36425315BD10028A57D /* Main.storyboard */,
+				223DACE425620B99001FF194 /* UserPrefDayTime.storyboard */,
 				22D4C36725315BD30028A57D /* Assets.xcassets */,
 				22D4C36925315BD30028A57D /* LaunchScreen.storyboard */,
 				22D4C36C25315BD30028A57D /* Info.plist */,
@@ -218,6 +231,7 @@
 		6688596A4119D21DE5A83115 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				22FFCD212562259300A280F4 /* iOSDropDown.framework */,
 				39A789680A611C5450201D39 /* Pods_ConnectZen.framework */,
 				7CB298A90B633170483794E6 /* Pods_ConnectZen_ConnectZenUITests.framework */,
 				86AEFA305D4B19BB93D3E5E7 /* Pods_ConnectZenTests.framework */,
@@ -348,6 +362,7 @@
 			files = (
 				22D4C36B25315BD30028A57D /* LaunchScreen.storyboard in Resources */,
 				22D4C36825315BD30028A57D /* Assets.xcassets in Resources */,
+				223DACE525620B99001FF194 /* UserPrefDayTime.storyboard in Resources */,
 				22D4C36625315BD10028A57D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -481,10 +496,13 @@
 				22E911652550F69000A00F00 /* ManualContactsViewController.swift in Sources */,
 				221E32C8254638FA00310713 /* GoogleService-Info.plist in Sources */,
 				221E32D92548061000310713 /* PopUpViewController.swift in Sources */,
+				22FFCD242563162C00A280F4 /* Constants.swift in Sources */,
+				22FFCD26256318CC00A280F4 /* PrefDayTimeTableViewCell.swift in Sources */,
 				221E32D1254804A200310713 /* DesignableView.swift in Sources */,
 				22E911682551E36E00A00F00 /* UtilityFunctions.swift in Sources */,
 				22D4C35F25315BD10028A57D /* AppDelegate.swift in Sources */,
 				221E32DE2548ED0900310713 /* ContactsViewController.swift in Sources */,
+				223DACEA25620C78001FF194 /* UserPrefDayTimePopUpViewController.swift in Sources */,
 				22121FE92558B3EC0001BC05 /* TimeDayPrefViewController.swift in Sources */,
 				226E5E11254B901700834214 /* ContactTableViewCell.swift in Sources */,
 				22D4C36125315BD10028A57D /* SceneDelegate.swift in Sources */,

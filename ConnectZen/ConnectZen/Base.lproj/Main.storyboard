@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6rB-t2-e2d">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6rB-t2-e2d">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17124"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -49,7 +49,7 @@
                                 </connections>
                             </button>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="7" currentPage="1" translatesAutoresizingMaskIntoConstraints="NO" id="ZBx-18-WH1">
-                                <rect key="frame" x="41.5" y="834.5" width="331" height="27.5"/>
+                                <rect key="frame" x="41.5" y="832.5" width="331" height="29.5"/>
                             </pageControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -94,7 +94,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="7" currentPage="2" translatesAutoresizingMaskIntoConstraints="NO" id="oh9-fp-KeU">
-                                <rect key="frame" x="41.5" y="834.5" width="331" height="27.5"/>
+                                <rect key="frame" x="41.5" y="832.5" width="331" height="29.5"/>
                             </pageControl>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ENo-Ai-2dM">
                                 <rect key="frame" x="41.5" y="343" width="331" height="34"/>
@@ -581,7 +581,7 @@
                                                     <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" paragraphSpacingBefore="10" tighteningFactorForTruncation="0.0"/>
                                                 </attributes>
                                             </fragment>
-                                            <fragment content="per day">
+                                            <fragment content="per month">
                                                 <attributes>
                                                     <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <font key="NSFont" size="19" name="Palatino-Roman"/>
@@ -591,8 +591,11 @@
                                         </attributedString>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="hHR-tU-wqr">
+                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="hHR-tU-wqr" userLabel="FrequencyStepper">
                                         <rect key="frame" x="261" y="25" width="112" height="32"/>
+                                        <connections>
+                                            <action selector="FrequencyStepper:" destination="dKd-He-gsM" eventType="valueChanged" id="wNX-Cj-NoS"/>
+                                        </connections>
                                     </stepper>
                                 </subviews>
                                 <constraints>
@@ -643,8 +646,11 @@
                                         </attributedString>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="120" translatesAutoresizingMaskIntoConstraints="NO" id="4lc-Uj-fnY">
+                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" autorepeat="NO" value="15" minimumValue="5" maximumValue="120" translatesAutoresizingMaskIntoConstraints="NO" id="4lc-Uj-fnY" userLabel="TimeStepper">
                                         <rect key="frame" x="261" y="25" width="112" height="32"/>
+                                        <connections>
+                                            <action selector="TimeStepper:" destination="dKd-He-gsM" eventType="valueChanged" id="NBc-go-o46"/>
+                                        </connections>
                                     </stepper>
                                 </subviews>
                                 <constraints>
@@ -672,16 +678,91 @@
                                         <state key="normal" title="Add Day and Time" image="plus.circle" catalog="system">
                                             <color key="titleColor" name="AccentColor"/>
                                         </state>
+                                        <connections>
+                                            <action selector="AddDayTimeClicked:" destination="dKd-He-gsM" eventType="touchUpInside" id="Y3H-zH-GhZ"/>
+                                            <segue destination="k13-CA-9Aw" kind="presentation" modalPresentationStyle="overFullScreen" modalTransitionStyle="coverVertical" id="31c-26-DhP"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oUz-Yp-1ay" userLabel="H Stack5">
                                 <rect key="frame" x="20.5" y="459.5" width="373" height="245.5"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cbg-5B-h8i">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cbg-5B-h8i" userLabel="PrefTableView">
                                         <rect key="frame" x="0.0" y="0.0" width="373" height="245.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PrefDayTimeTableViewCell" rowHeight="60" id="pgr-0s-yHn" customClass="PrefDayTimeTableViewCell" customModule="ConnectZen" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="28" width="373" height="60"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pgr-0s-yHn" id="CbA-FA-tN2">
+                                                    <rect key="frame" x="0.0" y="0.0" width="373" height="60"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="NjJ-SD-kG3">
+                                                            <rect key="frame" x="0.0" y="0.0" width="373" height="60"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lYs-go-zCU" userLabel="Day">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="112" height="60"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" secondItem="lYs-go-zCU" secondAttribute="height" multiplier="28:15" id="Bn5-bO-5nd"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="19"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sTime" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ChY-f8-p9n" userLabel="sTime">
+                                                                    <rect key="frame" x="112" y="19.5" width="112" height="21"/>
+                                                                    <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="19"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="eTime" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0QE-oH-eZI" userLabel="eTime">
+                                                                    <rect key="frame" x="224" y="19.5" width="111.5" height="21"/>
+                                                                    <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="19"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8EG-ec-UPP" userLabel="Action Button">
+                                                                    <rect key="frame" x="335.5" y="12.5" width="37.5" height="35"/>
+                                                                    <color key="tintColor" red="0.0" green="0.28533291820000001" blue="0.30435478690000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <state key="normal" backgroundImage="minus.circle.fill" catalog="system"/>
+                                                                    <connections>
+                                                                        <action selector="ActionButtonClicked:" destination="pgr-0s-yHn" eventType="touchUpInside" id="6PC-7g-OaD"/>
+                                                                    </connections>
+                                                                </button>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="ChY-f8-p9n" firstAttribute="width" secondItem="lYs-go-zCU" secondAttribute="width" id="4Je-fI-ePr"/>
+                                                                <constraint firstItem="0QE-oH-eZI" firstAttribute="width" secondItem="lYs-go-zCU" secondAttribute="width" id="Fl3-cX-LAr"/>
+                                                                <constraint firstItem="8EG-ec-UPP" firstAttribute="height" secondItem="NjJ-SD-kG3" secondAttribute="height" multiplier="0.6" id="Q0e-Q5-cM7"/>
+                                                                <constraint firstItem="lYs-go-zCU" firstAttribute="width" secondItem="NjJ-SD-kG3" secondAttribute="width" multiplier="0.3" id="ddp-5s-IHF"/>
+                                                            </constraints>
+                                                        </stackView>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="NjJ-SD-kG3" firstAttribute="centerY" secondItem="CbA-FA-tN2" secondAttribute="centerY" id="6MB-eM-XLe"/>
+                                                        <constraint firstItem="NjJ-SD-kG3" firstAttribute="width" secondItem="CbA-FA-tN2" secondAttribute="width" id="6Uo-6k-Bgw"/>
+                                                        <constraint firstItem="NjJ-SD-kG3" firstAttribute="height" secondItem="CbA-FA-tN2" secondAttribute="height" id="Vf8-ZW-Fb3"/>
+                                                        <constraint firstItem="NjJ-SD-kG3" firstAttribute="centerX" secondItem="CbA-FA-tN2" secondAttribute="centerX" id="bI8-zC-wE4"/>
+                                                    </constraints>
+                                                </tableViewCellContentView>
+                                                <accessibility key="accessibilityConfiguration" identifier="PrefDayTimeTableViewCell"/>
+                                                <connections>
+                                                    <outlet property="ActionButton" destination="8EG-ec-UPP" id="7Lc-kB-VY1"/>
+                                                    <outlet property="DayLabel" destination="lYs-go-zCU" id="oo8-CC-jiQ"/>
+                                                    <outlet property="EndTimeLabel" destination="0QE-oH-eZI" id="Nms-GT-2NH"/>
+                                                    <outlet property="StartTimeLabel" destination="ChY-f8-p9n" id="TYJ-TR-cqe"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
                                     </tableView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iVT-h4-eez">
+                                        <rect key="frame" x="373" y="0.0" width="0.0" height="245.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="cbg-5B-h8i" firstAttribute="centerX" secondItem="oUz-Yp-1ay" secondAttribute="centerX" id="6g1-H4-9kd"/>
@@ -737,10 +818,27 @@
                             <constraint firstItem="cGJ-Q3-wL6" firstAttribute="height" secondItem="yTc-0l-197" secondAttribute="height" multiplier="0.1" id="vXt-if-tI7"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="FrequencyLabel" destination="F1h-SH-0LD" id="Iyh-wZ-lo8"/>
+                        <outlet property="FrequencyStepperElem" destination="hHR-tU-wqr" id="UzZ-VT-Jrp"/>
+                        <outlet property="PrefTableView" destination="cbg-5B-h8i" id="mzs-Gl-X2a"/>
+                        <outlet property="TimeLabel" destination="eJA-RA-zmw" id="rSg-uj-B2T"/>
+                        <outlet property="TimeStepperElem" destination="4lc-Uj-fnY" id="LD9-qV-Nkn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qTJ-ch-N0c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4750.7246376811599" y="59.598214285714285"/>
+        </scene>
+        <!--UserPrefDayTime-->
+        <scene sceneID="k9v-FM-Fg1">
+            <objects>
+                <viewControllerPlaceholder storyboardName="UserPrefDayTime" id="k13-CA-9Aw" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="s6V-Lh-xoi"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g15-mu-CYb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5384" y="90"/>
         </scene>
     </scenes>
     <resources>
