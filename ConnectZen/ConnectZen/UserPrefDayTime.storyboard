@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cXU-IA-9IK">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17124"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--User Pref Day Time Pop Up View Controller-->
+        <scene sceneID="hY2-RF-V0w">
+            <objects>
+                <viewController storyboardIdentifier="UserPrefDayTimePopUp" id="cXU-IA-9IK" customClass="UserPrefDayTimePopUpViewController" customModule="ConnectZen" customModuleProvider="target" sceneMemberID="viewController">
+                    <visualEffectView key="view" opaque="NO" contentMode="scaleToFill" id="Dsj-1r-2LY">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="mL5-Ha-u6C">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jXi-6P-3tL" userLabel="DismissButton">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                    <accessibility key="accessibilityConfiguration" identifier="UserPrefDayTimePopUp"/>
+                                </button>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eNg-hN-RNn" userLabel="PopUpView" customClass="DesignableView" customModule="ConnectZen" customModuleProvider="target">
+                                    <rect key="frame" x="41.5" y="224" width="331" height="448"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="EnO-gN-aQu">
+                                            <rect key="frame" x="16.5" y="85" width="298" height="314"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="njf-dk-Bf8" userLabel="HStack1">
+                                                    <rect key="frame" x="15" y="0.0" width="268" height="63"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Day" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LqO-ib-MmQ">
+                                                            <rect key="frame" x="0.0" y="0.0" width="107" height="63"/>
+                                                            <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="19"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vG2-G6-eK3">
+                                                            <rect key="frame" x="107" y="0.0" width="161" height="63"/>
+                                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </pickerView>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="vG2-G6-eK3" firstAttribute="width" secondItem="njf-dk-Bf8" secondAttribute="width" multiplier="0.6" id="GUv-c9-mTb"/>
+                                                        <constraint firstItem="LqO-ib-MmQ" firstAttribute="width" secondItem="njf-dk-Bf8" secondAttribute="width" multiplier="0.4" id="dBc-0s-Tf5"/>
+                                                    </constraints>
+                                                </stackView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u21-pW-Fch" userLabel="HStack2">
+                                                    <rect key="frame" x="15" y="89" width="268" height="62.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start Time" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PWm-Ua-dDG">
+                                                            <rect key="frame" x="0.0" y="0.0" width="107" height="62.5"/>
+                                                            <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="19"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="ybV-9d-vmp" userLabel="Start Time Date Picker">
+                                                            <rect key="frame" x="107" y="0.0" width="161" height="62"/>
+                                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </datePicker>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="ybV-9d-vmp" firstAttribute="width" secondItem="u21-pW-Fch" secondAttribute="width" multiplier="0.6" id="H2i-fX-ehE"/>
+                                                        <constraint firstItem="PWm-Ua-dDG" firstAttribute="width" secondItem="u21-pW-Fch" secondAttribute="width" multiplier="0.4" id="lkL-xb-dYg"/>
+                                                    </constraints>
+                                                </stackView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wvj-0O-pdm" userLabel="HStack3">
+                                                    <rect key="frame" x="15" y="177.5" width="268" height="62.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="End Time" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nen-ba-fzn" userLabel="End Time">
+                                                            <rect key="frame" x="0.0" y="0.0" width="107" height="62.5"/>
+                                                            <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="19"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="T6S-9W-OJU" userLabel="End Time Date Picker">
+                                                            <rect key="frame" x="107" y="0.0" width="161" height="63"/>
+                                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </datePicker>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="nen-ba-fzn" firstAttribute="width" secondItem="Wvj-0O-pdm" secondAttribute="width" multiplier="0.4" id="VnA-TC-Y6p"/>
+                                                    </constraints>
+                                                </stackView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tIC-IJ-tgs" userLabel="Add">
+                                                    <rect key="frame" x="15" y="281" width="268" height="33"/>
+                                                    <color key="backgroundColor" red="0.005744885188" green="0.3975281417" blue="0.28626120090000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="19"/>
+                                                    <state key="normal" title="Add">
+                                                        <color key="titleColor" systemColor="systemBackgroundColor"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="AddPreference:" destination="cXU-IA-9IK" eventType="touchUpInside" id="dak-um-c6O"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="njf-dk-Bf8" firstAttribute="width" secondItem="EnO-gN-aQu" secondAttribute="width" multiplier="0.9" id="7yq-lz-0Xo"/>
+                                                <constraint firstItem="njf-dk-Bf8" firstAttribute="height" secondItem="EnO-gN-aQu" secondAttribute="height" multiplier="0.2" id="9Zk-VL-pNs"/>
+                                                <constraint firstItem="u21-pW-Fch" firstAttribute="width" secondItem="EnO-gN-aQu" secondAttribute="width" multiplier="0.9" id="Axd-3M-Lts"/>
+                                                <constraint firstItem="u21-pW-Fch" firstAttribute="height" secondItem="njf-dk-Bf8" secondAttribute="height" id="FxV-Sb-SET"/>
+                                                <constraint firstItem="Wvj-0O-pdm" firstAttribute="width" secondItem="njf-dk-Bf8" secondAttribute="width" id="HGb-kY-uZ2"/>
+                                                <constraint firstItem="Wvj-0O-pdm" firstAttribute="height" secondItem="njf-dk-Bf8" secondAttribute="height" id="ZFZ-Nw-Fwg"/>
+                                                <constraint firstItem="tIC-IJ-tgs" firstAttribute="width" secondItem="EnO-gN-aQu" secondAttribute="width" multiplier="0.9" id="hZA-sf-iTX"/>
+                                            </constraints>
+                                        </stackView>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o3k-q5-Fdf" userLabel="Close">
+                                            <rect key="frame" x="311" y="0.0" width="20" height="22"/>
+                                            <color key="tintColor" systemColor="labelColor"/>
+                                            <state key="normal" image="x.circle" catalog="system"/>
+                                            <connections>
+                                                <action selector="ClosePopUp:" destination="cXU-IA-9IK" eventType="touchUpInside" id="zTZ-lL-TD5"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.6243644357" green="0.94405275580000003" blue="0.73330658670000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="o3k-q5-Fdf" secondAttribute="trailing" id="0WD-ur-AeE"/>
+                                        <constraint firstItem="o3k-q5-Fdf" firstAttribute="top" secondItem="eNg-hN-RNn" secondAttribute="top" id="GqN-cb-djC"/>
+                                        <constraint firstItem="EnO-gN-aQu" firstAttribute="height" secondItem="eNg-hN-RNn" secondAttribute="height" multiplier="0.7" id="Q5a-ms-MAs"/>
+                                        <constraint firstItem="EnO-gN-aQu" firstAttribute="width" secondItem="eNg-hN-RNn" secondAttribute="width" multiplier="0.9" id="oVL-Ri-pRI"/>
+                                        <constraint firstItem="EnO-gN-aQu" firstAttribute="centerX" secondItem="eNg-hN-RNn" secondAttribute="centerX" id="p7v-rb-tqz"/>
+                                        <constraint firstItem="EnO-gN-aQu" firstAttribute="centerY" secondItem="eNg-hN-RNn" secondAttribute="centerY" constant="18" id="yu0-R6-iDE"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="10"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LogoNoBackground" translatesAutoresizingMaskIntoConstraints="NO" id="gmL-g4-bej">
+                                    <rect key="frame" x="145" y="134.5" width="124" height="179"/>
+                                </imageView>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="jXi-6P-3tL" firstAttribute="centerY" secondItem="mL5-Ha-u6C" secondAttribute="centerY" id="220-3r-a1i"/>
+                                <constraint firstItem="jXi-6P-3tL" firstAttribute="centerX" secondItem="mL5-Ha-u6C" secondAttribute="centerX" id="3nH-sj-BIG"/>
+                                <constraint firstItem="gmL-g4-bej" firstAttribute="centerX" secondItem="mL5-Ha-u6C" secondAttribute="centerX" id="ER7-8i-Stn"/>
+                                <constraint firstItem="eNg-hN-RNn" firstAttribute="centerY" secondItem="mL5-Ha-u6C" secondAttribute="centerY" id="FjK-md-Czc"/>
+                                <constraint firstItem="gmL-g4-bej" firstAttribute="width" secondItem="mL5-Ha-u6C" secondAttribute="width" multiplier="0.3" id="QFT-HA-w5n"/>
+                                <constraint firstItem="gmL-g4-bej" firstAttribute="height" secondItem="mL5-Ha-u6C" secondAttribute="height" multiplier="0.2" id="SIA-72-OML"/>
+                                <constraint firstItem="gmL-g4-bej" firstAttribute="centerY" secondItem="mL5-Ha-u6C" secondAttribute="centerY" multiplier="0.5" id="U83-a4-zPw"/>
+                                <constraint firstItem="jXi-6P-3tL" firstAttribute="width" secondItem="mL5-Ha-u6C" secondAttribute="width" id="dGW-vZ-WDf"/>
+                                <constraint firstItem="eNg-hN-RNn" firstAttribute="centerX" secondItem="mL5-Ha-u6C" secondAttribute="centerX" id="lw7-Ps-OR0"/>
+                                <constraint firstItem="jXi-6P-3tL" firstAttribute="height" secondItem="mL5-Ha-u6C" secondAttribute="height" id="x8Q-hf-eaj"/>
+                            </constraints>
+                        </view>
+                        <constraints>
+                            <constraint firstItem="eNg-hN-RNn" firstAttribute="width" secondItem="Dsj-1r-2LY" secondAttribute="width" multiplier="0.8" id="9Gq-kd-l5w"/>
+                            <constraint firstItem="eNg-hN-RNn" firstAttribute="height" secondItem="Dsj-1r-2LY" secondAttribute="height" multiplier="0.5" id="jku-xH-yLl"/>
+                        </constraints>
+                        <blurEffect style="regular"/>
+                    </visualEffectView>
+                    <connections>
+                        <outlet property="DayPickerView" destination="vG2-G6-eK3" id="ho9-oK-fpN"/>
+                        <outlet property="EndTimeTimePicker" destination="T6S-9W-OJU" id="koY-4q-e0K"/>
+                        <outlet property="StartTimeTimePicker" destination="ybV-9d-vmp" id="Z0R-cZ-Qsy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vh2-eT-oxB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2807.2463768115945" y="75"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="LogoNoBackground" width="249.5" height="250"/>
+        <image name="x.circle" catalog="system" width="128" height="121"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

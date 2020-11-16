@@ -19,3 +19,7 @@ func showToast(controller: UIViewController, message : String, seconds: Double, 
         alert.dismiss(animated: true)
     }
 }
+
+protocol PassBackPreference {
+    func OnPrefAddition(Day: String, StartTime: String, EndTime: String)
+}
