@@ -4,6 +4,8 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>ConnectZen</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -61,6 +63,8 @@
 	<true/>
 	<key>NSCalendarsUsageDescription</key>
 	<string>The Application needs access to your calender to check your availability and schedule activities</string>
+	<key>NSContactsUsageDescription</key>
+	<string>Access is needed to add your friends/family information to your ConnectZen Contacts list.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

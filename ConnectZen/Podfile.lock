@@ -375,6 +375,12 @@ PODS:
     - nanopb/encode (= 1.30906.0)
   - nanopb/decode (1.30906.0)
   - nanopb/encode (1.30906.0)
+  - PhoneNumberKit (3.3.1):
+    - PhoneNumberKit/PhoneNumberKitCore (= 3.3.1)
+    - PhoneNumberKit/UIKit (= 3.3.1)
+  - PhoneNumberKit/PhoneNumberKitCore (3.3.1)
+  - PhoneNumberKit/UIKit (3.3.1):
+    - PhoneNumberKit/PhoneNumberKitCore
   - PromisesObjC (1.2.11)
   - TinyConstraints (4.0.1)
 
@@ -389,6 +395,8 @@ DEPENDENCIES:
   - FirebaseUI/Facebook
   - FirebaseUI/Google
   - TinyConstraints
+  - PhoneNumberKit (~> 3.3)
+
 
 SPEC REPOS:
   trunk:
@@ -418,6 +426,7 @@ SPEC REPOS:
     - GTMSessionFetcher
     - leveldb-library
     - nanopb
+    - PhoneNumberKit
     - PromisesObjC
     - TinyConstraints
 
@@ -448,9 +457,11 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: b3503b20a988c4e20cc189aa798fd18220133f52
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
+  PhoneNumberKit: ff153d5e299f6da566cb73c6aa71e354933b2932
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
   TinyConstraints: 8dd91295e56797648c7bc335dd20e1d91ec4c192
 
 PODFILE CHECKSUM: 18741d8db13b43967f4016181d438b90510e73fb
+
 
 COCOAPODS: 1.9.3

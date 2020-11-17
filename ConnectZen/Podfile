@@ -16,10 +16,10 @@ target 'ConnectZen' do
   pod 'Firebase/Firestore'
   pod 'Charts'
   pod 'TinyConstraints'
-
-
+  
   # Optionally, include the Swift extensions if you're using Swift.
   pod 'FirebaseFirestoreSwift'
+  pod 'PhoneNumberKit', '~> 3.3'
 
   target 'ConnectZenTests' do
     inherit! :search_paths
@@ -29,5 +29,6 @@ target 'ConnectZen' do
   target 'ConnectZenUITests' do
     # Pods for testing
   end
+
 
 end
