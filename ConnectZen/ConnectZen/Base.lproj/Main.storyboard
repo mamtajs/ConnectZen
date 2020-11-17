@@ -44,9 +44,6 @@
                                     <action selector="LoginNormal:" destination="BYZ-38-t0r" eventType="touchUpInside" id="APE-JS-AMq"/>
                                 </connections>
                             </button>
-                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="7" currentPage="1" translatesAutoresizingMaskIntoConstraints="NO" id="ZBx-18-WH1">
-                                <rect key="frame" x="41.5" y="834" width="331" height="28"/>
-                            </pageControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hmd-fa-LYE">
                                 <rect key="frame" x="41.5" y="603" width="331" height="50"/>
                                 <color key="backgroundColor" red="0.084165594964202964" green="0.38969397668393779" blue="0.27278364462794141" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -116,7 +113,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1371.0144927536232" y="59.598214285714285"/>
+            <point key="canvasLocation" x="1307" y="60"/>
         </scene>
         <!--Register-->
         <scene sceneID="YHa-3k-z6c">
@@ -292,7 +289,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dtz-CJ-x4e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2798.5507246376815" y="59.598214285714285"/>
+            <point key="canvasLocation" x="5903" y="60"/>
         </scene>
         <!--PermissionsPopUp-->
         <scene sceneID="NNz-GT-HiL">
@@ -431,7 +428,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IUZ-oA-7zO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3081.1594202898555" y="58.258928571428569"/>
+            <point key="canvasLocation" x="3045" y="60"/>
         </scene>
         <!--ContactsVC-->
         <scene sceneID="UgV-Q7-dTG">
@@ -661,7 +658,6 @@
             </objects>
             <point key="canvasLocation" x="460.86956521739131" y="59.598214285714285"/>
         </scene>
-
         <!--Home Screen-->
         <scene sceneID="9iZ-eE-uEK">
             <objects>
@@ -754,7 +750,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uoe-5O-TYj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3524.6376811594205" y="59.598214285714285"/>
+            <point key="canvasLocation" x="6614" y="60"/>
         </scene>
         <!--Analytics Dashboard-->
         <scene sceneID="3l5-gU-VDi">
@@ -771,7 +767,8 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H5M-y8-Mi6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4198" y="202"/>
+            <point key="canvasLocation" x="6613" y="710"/>
+        </scene>
         <!--Time and Day Preference-->
         <scene sceneID="Fnf-69-t0b">
             <objects>
@@ -1076,17 +1073,14 @@
     </scenes>
     <resources>
         <image name="Logo" width="338" height="339"/>
+        <image name="LogoNoBackground" width="249.5" height="250"/>
         <image name="calendar" catalog="system" width="128" height="106"/>
         <image name="chart.bar.xaxis" catalog="system" width="128" height="98"/>
         <image name="gearshape.fill" catalog="system" width="128" height="121"/>
-        <image name="star.circle" catalog="system" width="128" height="121"/>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <image name="LogoNoBackground" width="249.5" height="250"/>
         <image name="minus.circle.fill" catalog="system" width="128" height="121"/>
         <image name="plus.circle" catalog="system" width="128" height="121"/>
         <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="star.circle" catalog="system" width="128" height="121"/>
         <image name="x.circle" catalog="system" width="128" height="121"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
