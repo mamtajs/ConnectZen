@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -31,6 +31,14 @@
 		22FFCD242563162C00A280F4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FFCD232563162C00A280F4 /* Constants.swift */; };
 		22FFCD26256318CC00A280F4 /* PrefDayTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FFCD25256318CC00A280F4 /* PrefDayTimeTableViewCell.swift */; };
 		97B94D01CA825C2E999F0346 /* Pods_ConnectZenTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86AEFA305D4B19BB93D3E5E7 /* Pods_ConnectZenTests.framework */; };
+		B64E0444255F7368002107A9 /* AnalyticsDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64E0443255F7368002107A9 /* AnalyticsDashboardViewController.swift */; };
+		B65E5D212558862900ED241F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65E5D202558862900ED241F /* HomeViewController.swift */; };
+		B69230AC254B573C0009295D /* FacebookShare in Frameworks */ = {isa = PBXBuildFile; productRef = B69230AB254B573C0009295D /* FacebookShare */; };
+		B69230AE254B573C0009295D /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = B69230AD254B573C0009295D /* FacebookLogin */; };
+		B69230B0254B573C0009295D /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = B69230AF254B573C0009295D /* FacebookCore */; };
+		B6936AAA2558FF0B005E8DD9 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6936AA92558FF0B005E8DD9 /* Utilities.swift */; };
+		B6936AAF2559979C005E8DD9 /* NotificationBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6936AAE2559979B005E8DD9 /* NotificationBanner.swift */; };
+		B6936AB7255ED072005E8DD9 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6936AB6255ED072005E8DD9 /* CalendarViewController.swift */; };
 		D7AA1EADE4E0AA383A89E6EA /* Pods_ConnectZen_ConnectZenUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CB298A90B633170483794E6 /* Pods_ConnectZen_ConnectZenUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -88,6 +96,12 @@
 		7CB298A90B633170483794E6 /* Pods_ConnectZen_ConnectZenUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ConnectZen_ConnectZenUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		86AEFA305D4B19BB93D3E5E7 /* Pods_ConnectZenTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ConnectZenTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		985C2020BCBA2C044E716B46 /* Pods-ConnectZen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConnectZen.release.xcconfig"; path = "Target Support Files/Pods-ConnectZen/Pods-ConnectZen.release.xcconfig"; sourceTree = "<group>"; };
+		B64E0443255F7368002107A9 /* AnalyticsDashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsDashboardViewController.swift; sourceTree = "<group>"; };
+		B65E5D202558862900ED241F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		B69230CF254B5F9E0009295D /* ConnectZen.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ConnectZen.entitlements; sourceTree = "<group>"; };
+		B6936AA92558FF0B005E8DD9 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		B6936AAE2559979B005E8DD9 /* NotificationBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationBanner.swift; sourceTree = "<group>"; };
+		B6936AB6255ED072005E8DD9 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		C156D97748ADDF9209A16D9C /* Pods-ConnectZen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConnectZen.debug.xcconfig"; path = "Target Support Files/Pods-ConnectZen/Pods-ConnectZen.debug.xcconfig"; sourceTree = "<group>"; };
 		CF8E982FD369E8CD3C665413 /* Pods-ConnectZenTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConnectZenTests.release.xcconfig"; path = "Target Support Files/Pods-ConnectZenTests/Pods-ConnectZenTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -97,7 +111,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B69230AC254B573C0009295D /* FacebookShare in Frameworks */,
 				102B2A62178A42539B957E64 /* Pods_ConnectZen.framework in Frameworks */,
+				B69230AE254B573C0009295D /* FacebookLogin in Frameworks */,
+				B69230B0254B573C0009295D /* FacebookCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,6 +168,9 @@
 			children = (
 				22D4C36225315BD10028A57D /* LoginViewController.swift */,
 				22C809482541FF0000BB1C18 /* RegisterViewController.swift */,
+				B65E5D202558862900ED241F /* HomeViewController.swift */,
+				B6936AB6255ED072005E8DD9 /* CalendarViewController.swift */,
+				B64E0443255F7368002107A9 /* AnalyticsDashboardViewController.swift */,
 				221E32D82548061000310713 /* PopUpViewController.swift */,
 				221E32DD2548ED0900310713 /* ContactsViewController.swift */,
 				22E911642550F69000A00F00 /* ManualContactsViewController.swift */,
@@ -185,6 +205,8 @@
 		22D4C35D25315BD10028A57D /* ConnectZen */ = {
 			isa = PBXGroup;
 			children = (
+				B6936AA92558FF0B005E8DD9 /* Utilities.swift */,
+				B69230CF254B5F9E0009295D /* ConnectZen.entitlements */,
 				22E911662551E0F300A00F00 /* Utilities */,
 				226E5E12254BBA5C00834214 /* Constants */,
 				226E5E0F254A620500834214 /* TableViewCells */,
@@ -198,6 +220,7 @@
 				22D4C36925315BD30028A57D /* LaunchScreen.storyboard */,
 				22D4C36C25315BD30028A57D /* Info.plist */,
 				221E32C7254638FA00310713 /* GoogleService-Info.plist */,
+				B6936AAE2559979B005E8DD9 /* NotificationBanner.swift */,
 			);
 			path = ConnectZen;
 			sourceTree = "<group>";
@@ -264,12 +287,18 @@
 				22D4C35825315BD10028A57D /* Frameworks */,
 				22D4C35925315BD10028A57D /* Resources */,
 				B84B95CF44F9201E1CB94CDC /* [CP] Embed Pods Frameworks */,
+				97DF84879EBE729B3C181AE2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = ConnectZen;
+			packageProductDependencies = (
+				B69230AB254B573C0009295D /* FacebookShare */,
+				B69230AD254B573C0009295D /* FacebookLogin */,
+				B69230AF254B573C0009295D /* FacebookCore */,
+			);
 			productName = ConnectZen;
 			productReference = 22D4C35B25315BD10028A57D /* ConnectZen.app */;
 			productType = "com.apple.product-type.application";
@@ -302,6 +331,7 @@
 				22D4C37925315BD30028A57D /* Frameworks */,
 				22D4C37A25315BD30028A57D /* Resources */,
 				9B929076F3A31A93D350E3CF /* [CP] Embed Pods Frameworks */,
+				6CCB34BF04C66C01006617CC /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -344,6 +374,9 @@
 				Base,
 			);
 			mainGroup = 22D4C35225315BD10028A57D;
+			packageReferences = (
+				B69230AA254B573B0009295D /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
+			);
 			productRefGroup = 22D4C35C25315BD10028A57D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -450,6 +483,40 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		6CCB34BF04C66C01006617CC /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ConnectZen-ConnectZenUITests/Pods-ConnectZen-ConnectZenUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ConnectZen-ConnectZenUITests/Pods-ConnectZen-ConnectZenUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ConnectZen-ConnectZenUITests/Pods-ConnectZen-ConnectZenUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		97DF84879EBE729B3C181AE2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ConnectZen/Pods-ConnectZen-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ConnectZen/Pods-ConnectZen-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ConnectZen/Pods-ConnectZen-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		9B929076F3A31A93D350E3CF /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -491,10 +558,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+
+				B64E0444255F7368002107A9 /* AnalyticsDashboardViewController.swift in Sources */,
+				B6936AAF2559979C005E8DD9 /* NotificationBanner.swift in Sources */,
 				226E5E14254BBA7900834214 /* ConstantStructs.swift in Sources */,
 				22D4C36325315BD10028A57D /* LoginViewController.swift in Sources */,
 				22E911652550F69000A00F00 /* ManualContactsViewController.swift in Sources */,
 				221E32C8254638FA00310713 /* GoogleService-Info.plist in Sources */,
+				B6936AAA2558FF0B005E8DD9 /* Utilities.swift in Sources */,
 				221E32D92548061000310713 /* PopUpViewController.swift in Sources */,
 				22FFCD242563162C00A280F4 /* Constants.swift in Sources */,
 				22FFCD26256318CC00A280F4 /* PrefDayTimeTableViewCell.swift in Sources */,
@@ -506,7 +577,9 @@
 				22121FE92558B3EC0001BC05 /* TimeDayPrefViewController.swift in Sources */,
 				226E5E11254B901700834214 /* ContactTableViewCell.swift in Sources */,
 				22D4C36125315BD10028A57D /* SceneDelegate.swift in Sources */,
+				B6936AB7255ED072005E8DD9 /* CalendarViewController.swift in Sources */,
 				22C809492541FF0000BB1C18 /* RegisterViewController.swift in Sources */,
+				B65E5D212558862900ED241F /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -685,13 +758,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ConnectZen/ConnectZen.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8GBM72U45J;
 				INFOPLIST_FILE = ConnectZen/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.mamta.ConnectZen;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mamta.ConnectZenn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -704,13 +780,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ConnectZen/ConnectZen.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8GBM72U45J;
 				INFOPLIST_FILE = ConnectZen/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.mamta.ConnectZen;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mamta.ConnectZenn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -841,6 +920,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B69230AA254B573B0009295D /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B69230AB254B573C0009295D /* FacebookShare */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B69230AA254B573B0009295D /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookShare;
+		};
+		B69230AD254B573C0009295D /* FacebookLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B69230AA254B573B0009295D /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookLogin;
+		};
+		B69230AF254B573C0009295D /* FacebookCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B69230AA254B573B0009295D /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookCore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 22D4C35325315BD10028A57D /* Project object */;
 }
