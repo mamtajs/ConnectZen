@@ -13,7 +13,7 @@ class TimeDayPrefViewController: UIViewController, UITableViewDataSource, UITabl
     @IBOutlet weak var FrequencyStepperElem: UIStepper!
     @IBOutlet weak var TimeStepperElem: UIStepper!
     @IBOutlet weak var PrefTableView: UITableView!
-    
+    @IBOutlet weak var NextButton: UIButton!
     var SavedPreference = Array<PrefDayTime>() // saved preferences of user
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -46,6 +46,8 @@ class TimeDayPrefViewController: UIViewController, UITableViewDataSource, UITabl
         
         PrefTableView.delegate = self
         PrefTableView.dataSource = self
+        
+        Utilities.styleFilledButton(NextButton)
         //print("Initial \(TimeStepperElem.value)")
     }
     
@@ -82,6 +84,12 @@ class TimeDayPrefViewController: UIViewController, UITableViewDataSource, UITabl
         }
     }
     
+    @IBAction func NextPressed(_ sender: Any) {
+        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "CalendarVC") as? CalendarViewController
+                self.navigationController?.pushViewController(vc!, animated: true)
+    }
+    
+    
 }
 
 extension TimeDayPrefViewController: PrefDayTimeTableViewCellDelegate {
@@ -98,7 +106,7 @@ extension TimeDayPrefViewController: PrefDayTimeTableViewCellDelegate {
         else{ // Button color is red
             
             // Show tool tip of removed from connection
-            showToast(controller: self, message: "Preference removed", seconds: 0.5, colorBackground: .systemGreen, title: "Success")
+            //showToast(controller: self, message: "Preference removed", seconds: 0.5, colorBackground: .systemGreen, title: "Success")
             
             //Remove person from list of contacts
             SavedPreference.remove(at: indexPath.row)

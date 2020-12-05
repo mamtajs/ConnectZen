@@ -13,7 +13,7 @@ class ManualContactsViewController: UIViewController, UITableViewDataSource, UIT
     @IBOutlet weak var NewContactsTableView: UITableView!
     var connectWith = Array<Person>()
     let phoneNumberKit = PhoneNumberKit()
-    
+    @IBOutlet weak var ContactsAddedButton: UIButton!
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("Count \(connectWith.count)")
         return connectWith.count
@@ -40,7 +40,7 @@ class ManualContactsViewController: UIViewController, UITableViewDataSource, UIT
         NewContactsTableView.delegate = self
         NewContactsTableView.dataSource = self
         
-        
+        Utilities.styleFilledButton(ContactsAddedButton)
     }
 
     @IBAction func AddNewContact(_ sender: Any) {

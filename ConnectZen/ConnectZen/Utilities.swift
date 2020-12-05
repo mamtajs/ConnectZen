@@ -30,18 +30,53 @@ class Utilities {
     static func styleFilledButton(_ button:UIButton) {
         
         // Filled rounded corner style
-        button.backgroundColor = UIColor.init(red: 48/255, green: 200/255, blue: 120/255, alpha: 1)
-        button.layer.cornerRadius = 25.0
-        button.tintColor = UIColor.white
+        button.backgroundColor = UIColor.init(red: 8/255, green: 232/255, blue: 222/255, alpha: 1)
+        button.layer.cornerRadius = 15
+        button.tintColor = UIColor.black
+        button.setTitleColor(UIColor.black, for: .normal)
+        
+       
     }
     
+   
     static func styleHollowButton(_ button:UIButton) {
         
-        // Hollow rounded corner style
+       // button.backgroundColor = UIColor.init(red: 8/255, green: 232/255, blue: 222/255, alpha: 1)
         button.layer.borderWidth = 2
         button.layer.borderColor = UIColor.black.cgColor
-        button.layer.cornerRadius = 25.0
+        button.layer.cornerRadius = 15
         button.tintColor = UIColor.black
+        button.layer.shadowColor = UIColor(named: "buttonShadow")?.cgColor
+        button.layer.shadowOpacity = 0.8
+        button.layer.shadowOffset = CGSize(width: 1, height: 1)
+    }
+    
+    static func styleFilledButtonWithShadow(_ button:UIButton) {
+        
+        button.backgroundColor = UIColor.white
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor.black.cgColor
+        button.layer.cornerRadius = 10
+        button.tintColor = UIColor.black
+        button.layer.shadowColor = UIColor(named: "buttonShadow")?.cgColor
+        button.layer.shadowOpacity = 0.3
+        button.layer.shadowOffset = CGSize(width: 1, height: 1)
+        button.showsTouchWhenHighlighted = true
+        button.setTitleColor(UIColor.gray, for: .highlighted)
+    }
+    
+    static func styleFilledButtonWithShadowDestructive(_ button:UIButton) {
+        
+        button.backgroundColor = UIColor.white
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor.black.cgColor
+        button.layer.cornerRadius = 10
+        button.tintColor = UIColor.red
+        button.layer.shadowColor = UIColor(named: "buttonShadow")?.cgColor
+        button.layer.shadowOpacity = 0.3
+        button.layer.shadowOffset = CGSize(width: 1, height: 1)
+        button.showsTouchWhenHighlighted = true
+        button.setTitleColor(UIColor.gray, for: .highlighted)
     }
     
     static func isPasswordValid(_ password : String) -> Bool {
@@ -57,4 +92,18 @@ class Utilities {
         return emailTest.evaluate(with: email)
     }
     
+    
 }
+
+/*extension UIButton{
+    override open var isHighlighted:Bool{
+        didSet{
+            if(isHighlighted){
+                self.backgroundColor = lightColor
+            }
+            else{
+                self.backgroundColor = brightColor
+            }
+        }
+    }
+}*/

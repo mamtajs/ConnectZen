@@ -55,8 +55,7 @@ class RegisterViewController: UIViewController, FUIAuthDelegate, UIApplicationDe
         return nil
     }
     
-    
-    @IBAction func Next(_ sender: Any) {
+    @IBAction func NextTapped(_ sender: Any) {
         let error = validateFields()
         if error != nil{
             NotificationBanner.show(error!)
@@ -83,12 +82,13 @@ class RegisterViewController: UIViewController, FUIAuthDelegate, UIApplicationDe
                         }
                     }
                     // Going to calendar (for now) screen (ANOTHER WAY IN VIDEO)
-                    let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "CalendarVC") as? CalendarViewController
+                    let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "PopUpVC") as? PopUpViewController
                     self.navigationController?.pushViewController(vc!, animated: true)
                 }
             }
         }
     }
+    
     
     @IBAction func SignUpGoogleFacebook(_ sender: Any) {
         let authUI = FUIAuth.defaultAuthUI()

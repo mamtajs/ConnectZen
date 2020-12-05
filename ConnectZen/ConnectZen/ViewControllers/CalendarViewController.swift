@@ -43,8 +43,8 @@ class CalendarViewController: UIViewController {
                 default:
                     print("Case default")
         }
-        /*let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HomeVC") as? HomeViewController
-        self.navigationController?.pushViewController(vc!, animated: true)*/
+        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HomeVC") as? HomeViewController
+        self.navigationController?.pushViewController(vc!, animated: true)
     }
     
     @IBAction func NoTapped(_ sender: Any) {
