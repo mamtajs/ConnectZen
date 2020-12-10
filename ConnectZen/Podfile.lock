@@ -382,6 +382,7 @@ PODS:
   - PhoneNumberKit/UIKit (3.3.1):
     - PhoneNumberKit/PhoneNumberKitCore
   - PromisesObjC (1.2.11)
+  - SideMenu (6.5.0)
   - TinyConstraints (4.0.1)
 
 DEPENDENCIES:
@@ -394,9 +395,9 @@ DEPENDENCIES:
   - FirebaseUI/Email
   - FirebaseUI/Facebook
   - FirebaseUI/Google
-  - TinyConstraints
   - PhoneNumberKit (~> 3.3)
-
+  - SideMenu
+  - TinyConstraints
 
 SPEC REPOS:
   trunk:
@@ -428,6 +429,7 @@ SPEC REPOS:
     - nanopb
     - PhoneNumberKit
     - PromisesObjC
+    - SideMenu
     - TinyConstraints
 
 SPEC CHECKSUMS:
@@ -459,9 +461,9 @@ SPEC CHECKSUMS:
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   PhoneNumberKit: ff153d5e299f6da566cb73c6aa71e354933b2932
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
+  SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
   TinyConstraints: 8dd91295e56797648c7bc335dd20e1d91ec4c192
 
-PODFILE CHECKSUM: 18741d8db13b43967f4016181d438b90510e73fb
-
+PODFILE CHECKSUM: 0cf1c07ea74a339311a5335aaf38d9356bffe788
 
 COCOAPODS: 1.9.3

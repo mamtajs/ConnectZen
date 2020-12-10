@@ -31,7 +31,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.618880173361-vkl63a247k665aprmevb8a18g3ccliee</string>
+				<string>com.googleusercontent.apps.535800232509-m2uc52setsiektj2dqm1td77rt9offqg</string>
 			</array>
 		</dict>
 	</array>
@@ -41,6 +41,8 @@
 	<string>793046121478634</string>
 	<key>FacebookDisplayName</key>
 	<string>ConnectZen</string>
+	<key>FirebaseScreenReportingEnabled</key>
+	<false/>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>
@@ -107,7 +109,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>FirebaseScreenReportingEnabled</key>
-	<false/>
 </dict>
 </plist>

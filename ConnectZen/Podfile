@@ -16,6 +16,7 @@ target 'ConnectZen' do
   pod 'Firebase/Firestore'
   pod 'Charts'
   pod 'TinyConstraints'
+  pod 'SideMenu'
   
   # Optionally, include the Swift extensions if you're using Swift.
   pod 'FirebaseFirestoreSwift'

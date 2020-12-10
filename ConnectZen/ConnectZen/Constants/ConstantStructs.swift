@@ -17,3 +17,9 @@ struct PrefDayTime {
     var StartTime:String
     var EndTime:String
 }
+
+
+struct registeredPerson {
+    var emailID: String
+    var ID: String
+}

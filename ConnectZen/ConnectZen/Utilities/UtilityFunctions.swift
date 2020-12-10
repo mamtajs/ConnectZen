@@ -20,6 +20,13 @@ func showToast(controller: UIViewController, message : String, seconds: Double, 
     }
 }
 
+
+func += <K, V> (left: inout [K:V], right: [K:V]) {
+    for (k, v) in right {
+        left[k] = v
+    }
+}
+
 protocol PassBackPreference {
     func OnPrefAddition(Day: String, StartTime: String, EndTime: String)
 }

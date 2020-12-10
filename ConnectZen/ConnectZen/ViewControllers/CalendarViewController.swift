@@ -26,8 +26,12 @@ class CalendarViewController: UIViewController {
         let eventStore = EKEventStore()
         switch EKEventStore.authorizationStatus(for: .event) {
         case .authorized:
-            insertEvent(store: eventStore)
-            loadEvents(store: eventStore)
+            var startdate = getDate(day: 28, nextMonth: 11, year: 2020, hour: 00, minute:00)
+            var enddate = getDate(day: 29, nextMonth: 11, year: 2020, hour: 00, minute:00)
+            //insertEvent(store: eventStore)
+            loadEvents(store: eventStore, startDate: startdate, endDate: enddate)
+            
+            //exit(20)
             case .denied:
                 print("Access denied")
             case .notDetermined:
@@ -35,7 +39,7 @@ class CalendarViewController: UIViewController {
                   {[weak self] (granted: Bool, error: Error?) -> Void in
                       if granted {
                         self!.insertEvent(store: eventStore)
-                        self!.loadEvents(store: eventStore)
+                        //self!.loadEvents(store: eventStore)
                       } else {
                             print("Access denied")
                       }
@@ -43,35 +47,76 @@ class CalendarViewController: UIViewController {
                 default:
                     print("Case default")
         }
-        /*let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HomeVC") as? HomeViewController
-        self.navigationController?.pushViewController(vc!, animated: true)*/
+        //exit(20)
+        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HomeVC") as? HomeViewController
+        self.navigationController?.pushViewController(vc!, animated: true)
     }
+    
+    func getHourMinuteOfEvent(date: Date) -> [Int]{
+            let dateFormatter = DateFormatter()
+            dateFormatter.locale = Locale(identifier: "en_US")
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+            dateFormatter.timeZone = TimeZone(identifier: "PST")
+            
+            //print(dateFormatter.string(from: date))
+            let pstDate = dateFormatter.date(from: dateFormatter.string(from: date))
+            print(pstDate)
+            
+        let hour = Calendar.current.component(.hour, from: pstDate!)
+            let minute = Calendar.current.component(.minute, from: pstDate!)
+            print(hour, minute)
+            return [hour, minute]
+        }
     
     @IBAction func NoTapped(_ sender: Any) {
-        NotificationBanner.show("We cannot check your availabilty or add scheduled events to your calendar without this permission")
+        NotificationBanner.show("Calendar access not given. You can change this later in notification settings.")
+        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HomeVC") as? HomeViewController
+        self.navigationController?.pushViewController(vc!, animated: true)
     }
     
-    func loadEvents(store: EKEventStore){
+    func getDate(day: Int, nextMonth: Int, year: Int, hour: Int, minute: Int) -> Date{
+            let calendar = Calendar.current
+
+            var components = DateComponents()
+
+            components.day = day
+            components.month = nextMonth
+            components.year = year
+        components.hour = hour
+        components.minute = minute
+            return calendar.date(from: components)!
+            
+        }
+    
+    func loadEvents(store: EKEventStore, startDate: Date, endDate: Date){
         let eventstore:EKEventStore = store
-        let startDate = Date()
-        let weekFromNow = startDate.addingTimeInterval(7 * 24 * 60 * 60)
-        let predicate = eventstore.predicateForEvents(withStart: startDate, end: weekFromNow, calendars: nil)
+        //let weekFromNow = startDate.addingTimeInterval(7 * 24 * 60 * 60)
+        let predicate = eventstore.predicateForEvents(withStart: startDate, end: endDate, calendars: nil)
         let events = eventstore.events(matching: predicate)
         for event in events{
-            print("Event: \(String(describing: event.title))")
+            getHourMinuteOfEvent(date: event.startDate)
+            print("Event: \(String(describing: event.title)) , \(String(describing: event.startDate)), \(String(describing: event.timeZone))")
+            
+            
         }
+        
+        print(type(of: events))
     }
     
     func insertEvent(store: EKEventStore) {
+        let components = DateComponents(calendar: Calendar.current, timeZone: TimeZone(abbreviation: "PST"), year: 2020, month: 11, day: 1)
+        print(components.date)
           let event:EKEvent = EKEvent(eventStore: store)
-          let startDate = Date()
+        let startDate = components.date
+            //Date()
           // 2 hours
-          let endDate = startDate.addingTimeInterval(2 * 60 * 60)
+        let endDate = startDate!.addingTimeInterval(2 * 60 * 60)
           event.title = "Meeting with friends"
           event.startDate = startDate
           event.endDate = endDate
           event.notes = "This is a note"
           event.calendar = store.defaultCalendarForNewEvents
+    
           do {
               try store.save(event, span: .thisEvent)
           } catch let error as NSError {

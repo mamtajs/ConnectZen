@@ -9,13 +9,6 @@ import UIKit
 import Firebase
 import FirebaseUI
 
-/*extension FUIAuthBaseViewController {
-    open override func viewWillAppear(_ animated: Bool) {
-        self.navigationItem.leftBarButtonItem = nil
-        self.navigationItem.title = "Login"
-    }
-}*/
-
 class LoginViewController: UIViewController, FUIAuthDelegate, UIApplicationDelegate{
 
     var authUI: FUIAuth?
@@ -23,18 +16,22 @@ class LoginViewController: UIViewController, FUIAuthDelegate, UIApplicationDeleg
     @IBOutlet weak var emailIDText: UITextField!
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var loginGFButton: UIButton!
-    
+    var changePassFlag = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpButtons()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.emailIDText.text = ""
+        self.passwordText.text = ""
     }
     
     
     
     func setUpButtons(){
         Utilities.styleFilledButton(loginButton)
-        Utilities.styleFilledButton(loginGFButton)
     }
 
     func validateFields() -> String?{
@@ -51,10 +48,29 @@ class LoginViewController: UIViewController, FUIAuthDelegate, UIApplicationDeleg
         }else{
             let email = emailIDText.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let password = passwordText.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            userEmail = email
+            userPassword = password
             Auth.auth().signIn(withEmail: email, password: password) { (result, err) in
-                if err != nil {
-                    NotificationBanner.show(err!.localizedDescription)
+                if let err = err as? NSError {
+                    //NotificationBanner.show(err!.localizedDescription)
+                    switch AuthErrorCode(rawValue: err.code) {
+                    case .operationNotAllowed:
+                        NotificationBanner.show("This operation is not allowed")
+                    case .userDisabled:
+                        NotificationBanner.show("This user has been disabled")
+                    case .invalidEmail:
+                        NotificationBanner.show("The email-ID entered is ill-formed")
+                    case .wrongPassword:
+                        NotificationBanner.show("Wrong password has been entered")
+                    default:
+                        NotificationBanner.show("There is no registered user with given credentials")
+                        print(err.localizedDescription)
+                    }
                 }else{
+                    if self.changePassFlag == 1{
+                        self.changePassFlag = 0
+                        self.navigationController?.popViewController(animated: true)
+                    }
                     let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HomeVC") as? HomeViewController
                     self.navigationController?.pushViewController(vc!, animated: true)
                 }
@@ -64,47 +80,14 @@ class LoginViewController: UIViewController, FUIAuthDelegate, UIApplicationDeleg
     }
     
     
-    @IBAction func LoginGoogleFacebook(_ sender: Any) {
-        let authUI = FUIAuth.defaultAuthUI()
-        authUI?.delegate = self
-        let providers: [FUIAuthProvider] = [
-            FUIGoogleAuth(),
-            FUIFacebookAuth()
-        ]
-        authUI!.providers = providers
-        let authViewController = authUI!.authViewController()
-        self.present(authViewController, animated: true, completion: nil)
+    @IBAction func ForgotPassword(_ sender: Any) {
+        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ResetPassVC") as? ResetPasswordViewController
+        self.navigationController?.pushViewController(vc!, animated: true)
     }
-    
     
     @IBAction func RegisterNewUser(_ sender: Any) {
         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "RegisterVC") as? RegisterViewController
         self.navigationController?.pushViewController(vc!, animated: true)
-    }
-    
-    //Sign in successful, move to home screen
-    func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?) {
-        print("user signed in")
-        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HomeVC") as? HomeViewController
-        self.navigationController?.pushViewController(vc!, animated: true)
-        //authDataResult?.user.displayName
-    }
-    
-    // Google and Facebook authentication handler
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
-        let sourceApplication = options[UIApplication.OpenURLOptionsKey.sourceApplication] as! String?
-      if FUIAuth.defaultAuthUI()?.handleOpen(url, sourceApplication: sourceApplication) ?? false {
-        return true
-      }
-      // other URL handling goes here.
-      return false
-    }
-    
-
-    func authPickerViewController(forAuthUI authUI: FUIAuth) -> FUIAuthPickerViewController {
-        let abc = FUIAuthPickerViewController(authUI: authUI)
-        abc.view.backgroundColor = UIColor.white
-        return abc
     }
 }
 

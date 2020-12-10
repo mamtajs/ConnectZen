@@ -3,34 +3,34 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>618880173361-vkl63a247k665aprmevb8a18g3ccliee.apps.googleusercontent.com</string>
+	<string>535800232509-m2uc52setsiektj2dqm1td77rt9offqg.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.618880173361-vkl63a247k665aprmevb8a18g3ccliee</string>
+	<string>com.googleusercontent.apps.535800232509-m2uc52setsiektj2dqm1td77rt9offqg</string>
 	<key>API_KEY</key>
-	<string>AIzaSyArIEyawdY57ZjD7MSvHvMd8n0pYxFtx9k</string>
+	<string>AIzaSyBs0wSE1joXCpZZHyinA1ebmuGhP15J8ng</string>
 	<key>GCM_SENDER_ID</key>
-	<string>618880173361</string>
+	<string>535800232509</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.mamta.ConnectZenn</string>
 	<key>PROJECT_ID</key>
-	<string>connectzen297p</string>
+	<string>connectzen-60dc8</string>
 	<key>STORAGE_BUCKET</key>
-	<string>connectzen297p.appspot.com</string>
+	<string>connectzen-60dc8.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<false/>
+	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false/>
+	<false></false>
 	<key>IS_APPINVITE_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>IS_GCM_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:618880173361:ios:dc9d3aeca4c52c0e38dc10</string>
+	<string>1:535800232509:ios:d057008feaff23c3fac854</string>
 	<key>DATABASE_URL</key>
-	<string>https://connectzen297p.firebaseio.com</string>
+	<string>https://connectzen-60dc8.firebaseio.com</string>
 </dict>
 </plist>
