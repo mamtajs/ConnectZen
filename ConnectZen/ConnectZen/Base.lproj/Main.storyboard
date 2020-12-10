@@ -792,14 +792,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ybG-tP-HZk">
-                                <rect key="frame" x="0.0" y="144" width="414" height="32.5"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="GC2-up-DMQ">
-                                <rect key="frame" x="107.5" y="802" width="199" height="40"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="6x8-D5-uYg">
+                                <rect key="frame" x="0.0" y="39" width="414" height="818"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ybG-tP-HZk">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="605.5"/>
@@ -846,30 +840,7 @@
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.84705882352941175" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                         <connections>
-                                            <action selector="SettingsButtonTapped:" destination="bfO-Vn-hQj" eventType="touchUpInside" id="Gzo-2a-e1W"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4dp-hF-FO3">
-                                        <rect key="frame" x="53" y="2.5" width="40" height="36.5"/>
-                                        <state key="normal" backgroundImage="chart.bar.xaxis" catalog="system">
-                                            <color key="titleShadowColor" systemColor="labelColor"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="AnalyticsButtonDashboard:" destination="bfO-Vn-hQj" eventType="touchUpInside" id="mqZ-Is-7fC"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qMN-9h-J1m">
-                                        <rect key="frame" x="106" y="1" width="40" height="37.5"/>
-                                        <state key="normal" backgroundImage="calendar" catalog="system"/>
-                                        <connections>
-                                            <action selector="CalendarButtonTapped:" destination="bfO-Vn-hQj" eventType="touchUpInside" id="eCW-xF-4MZ"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="va0-Kt-F9R">
-                                        <rect key="frame" x="159" y="0.5" width="40" height="39"/>
-                                        <state key="normal" backgroundImage="star.circle" catalog="system"/>
-                                        <connections>
-                                            <action selector="RewardsButtonTapped:" destination="bfO-Vn-hQj" eventType="touchUpInside" id="Xc0-LC-n9E"/>
+                                            <action selector="signOutTapped:" destination="bfO-Vn-hQj" eventType="touchUpInside" id="8Rm-6B-Owu"/>
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="GC2-up-DMQ" userLabel="NavBar">
@@ -2092,7 +2063,7 @@
                     </constraints>
                 </view>
             </objects>
-            <point key="canvasLocation" x="7833" y="60"/>
+            <point key="canvasLocation" x="8746" y="800"/>
         </scene>
         <!--Month View Controller-->
         <scene sceneID="qea-yH-6Sd">
@@ -2615,7 +2586,6 @@
                     <connections>
                         <outlet property="FrequencyLabel" destination="F1h-SH-0LD" id="Iyh-wZ-lo8"/>
                         <outlet property="FrequencyStepperElem" destination="hHR-tU-wqr" id="UzZ-VT-Jrp"/>
-                        <outlet property="NextButton" destination="uhb-Ww-k2V" id="Fxt-pR-s5F"/>
                         <outlet property="PrefTableView" destination="cbg-5B-h8i" id="mzs-Gl-X2a"/>
                         <outlet property="TimeLabel" destination="eJA-RA-zmw" id="rSg-uj-B2T"/>
                         <outlet property="TimeStepperElem" destination="4lc-Uj-fnY" id="LD9-qV-Nkn"/>
