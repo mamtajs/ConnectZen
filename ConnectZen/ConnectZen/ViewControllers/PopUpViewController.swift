@@ -10,9 +10,12 @@ import Contacts
 
 class PopUpViewController: UIViewController {
 
+    @IBOutlet weak var UseAddressBookButton: UIButton!
+    @IBOutlet weak var EnterContactsManuallyButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        Utilities.styleFilledButton(UseAddressBookButton)
+        Utilities.styleFilledButton(EnterContactsManuallyButton)
     }
     
     @IBAction func DismissPopUp(_ sender: Any) {
