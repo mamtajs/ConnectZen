@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		102B2A62178A42539B957E64 /* Pods_ConnectZen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39A789680A611C5450201D39 /* Pods_ConnectZen.framework */; };
 		22121FE92558B3EC0001BC05 /* TimeDayPrefViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22121FE82558B3EC0001BC05 /* TimeDayPrefViewController.swift */; };
-		221E32C8254638FA00310713 /* GoogleService-Info.plist in Sources */ = {isa = PBXBuildFile; fileRef = 221E32C7254638FA00310713 /* GoogleService-Info.plist */; };
 		221E32D1254804A200310713 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221E32D0254804A200310713 /* DesignableView.swift */; };
 		221E32D92548061000310713 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221E32D82548061000310713 /* PopUpViewController.swift */; };
 		221E32DE2548ED0900310713 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221E32DD2548ED0900310713 /* ContactsViewController.swift */; };
@@ -35,6 +34,18 @@
 		22FFCD26256318CC00A280F4 /* PrefDayTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FFCD25256318CC00A280F4 /* PrefDayTimeTableViewCell.swift */; };
 		22FFCD2825671A5C00A280F4 /* SchedulingActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FFCD2725671A5C00A280F4 /* SchedulingActivityViewController.swift */; };
 		97B94D01CA825C2E999F0346 /* Pods_ConnectZenTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86AEFA305D4B19BB93D3E5E7 /* Pods_ConnectZenTests.framework */; };
+		B615D632257EA3C1000866F2 /* MonthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B615D631257EA3C1000866F2 /* MonthViewController.swift */; };
+		B615D637257EA3CF000866F2 /* YearViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B615D636257EA3CF000866F2 /* YearViewController.swift */; };
+		B615D63C257EE4D1000866F2 /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B615D63B257EE4D1000866F2 /* BalloonMarker.swift */; };
+		B615D641257F1933000866F2 /* Quotes.json in Resources */ = {isa = PBXBuildFile; fileRef = B615D640257F1933000866F2 /* Quotes.json */; };
+		B615D64625802477000866F2 /* ViewAndEditFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B615D64525802477000866F2 /* ViewAndEditFriendsViewController.swift */; };
+		B615D64B25806FEE000866F2 /* ContactsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B615D64A25806FED000866F2 /* ContactsTableCell.swift */; };
+		B615D6502580B5FC000866F2 /* NotificationSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B615D64F2580B5FC000866F2 /* NotificationSettingsViewController.swift */; };
+		B615D65F25812D2A000866F2 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = B615D65E25812D2A000866F2 /* Protocols.swift */; };
+		B615D66A258152E6000866F2 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B615D669258152E6000866F2 /* ResetPasswordViewController.swift */; };
+		B615D66F258177F7000866F2 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B615D66E258177F6000866F2 /* ChangePasswordViewController.swift */; };
+		B6389F88257BF78C00219B6F /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6389F87257BF78C00219B6F /* FeedbackViewController.swift */; };
+		B63DB4152564B4C7008666AF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B63DB4142564B4C7008666AF /* GoogleService-Info.plist */; };
 		B64E0444255F7368002107A9 /* AnalyticsDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64E0443255F7368002107A9 /* AnalyticsDashboardViewController.swift */; };
 		B65E5D212558862900ED241F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65E5D202558862900ED241F /* HomeViewController.swift */; };
 		B69230AC254B573C0009295D /* FacebookShare in Frameworks */ = {isa = PBXBuildFile; productRef = B69230AB254B573C0009295D /* FacebookShare */; };
@@ -43,6 +54,7 @@
 		B6936AAA2558FF0B005E8DD9 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6936AA92558FF0B005E8DD9 /* Utilities.swift */; };
 		B6936AAF2559979C005E8DD9 /* NotificationBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6936AAE2559979B005E8DD9 /* NotificationBanner.swift */; };
 		B6936AB7255ED072005E8DD9 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6936AB6255ED072005E8DD9 /* CalendarViewController.swift */; };
+		B6E256F42565C6E5007989D2 /* InviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E256F32565C6E5007989D2 /* InviteViewController.swift */; };
 		D7AA1EADE4E0AA383A89E6EA /* Pods_ConnectZen_ConnectZenUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CB298A90B633170483794E6 /* Pods_ConnectZen_ConnectZenUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -67,7 +79,6 @@
 		00E53CAD04FBEB55BCD8D31E /* Pods-ConnectZen-ConnectZenUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConnectZen-ConnectZenUITests.release.xcconfig"; path = "Target Support Files/Pods-ConnectZen-ConnectZenUITests/Pods-ConnectZen-ConnectZenUITests.release.xcconfig"; sourceTree = "<group>"; };
 		1554B226CE837EF9EC89D405 /* Pods-ConnectZen-ConnectZenUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConnectZen-ConnectZenUITests.debug.xcconfig"; path = "Target Support Files/Pods-ConnectZen-ConnectZenUITests/Pods-ConnectZen-ConnectZenUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		22121FE82558B3EC0001BC05 /* TimeDayPrefViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeDayPrefViewController.swift; sourceTree = "<group>"; };
-		221E32C7254638FA00310713 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		221E32D0254804A200310713 /* DesignableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
 		221E32D82548061000310713 /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
 		221E32DD2548ED0900310713 /* ContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
@@ -104,12 +115,25 @@
 		7CB298A90B633170483794E6 /* Pods_ConnectZen_ConnectZenUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ConnectZen_ConnectZenUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		86AEFA305D4B19BB93D3E5E7 /* Pods_ConnectZenTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ConnectZenTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		985C2020BCBA2C044E716B46 /* Pods-ConnectZen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConnectZen.release.xcconfig"; path = "Target Support Files/Pods-ConnectZen/Pods-ConnectZen.release.xcconfig"; sourceTree = "<group>"; };
+		B615D631257EA3C1000866F2 /* MonthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthViewController.swift; sourceTree = "<group>"; };
+		B615D636257EA3CF000866F2 /* YearViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearViewController.swift; sourceTree = "<group>"; };
+		B615D63B257EE4D1000866F2 /* BalloonMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalloonMarker.swift; sourceTree = "<group>"; };
+		B615D640257F1933000866F2 /* Quotes.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Quotes.json; sourceTree = "<group>"; };
+		B615D64525802477000866F2 /* ViewAndEditFriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewAndEditFriendsViewController.swift; sourceTree = "<group>"; };
+		B615D64A25806FED000866F2 /* ContactsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableCell.swift; sourceTree = "<group>"; };
+		B615D64F2580B5FC000866F2 /* NotificationSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsViewController.swift; sourceTree = "<group>"; };
+		B615D65E25812D2A000866F2 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		B615D669258152E6000866F2 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
+		B615D66E258177F6000866F2 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
+		B6389F87257BF78C00219B6F /* FeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
+		B63DB4142564B4C7008666AF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B64E0443255F7368002107A9 /* AnalyticsDashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsDashboardViewController.swift; sourceTree = "<group>"; };
 		B65E5D202558862900ED241F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B69230CF254B5F9E0009295D /* ConnectZen.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ConnectZen.entitlements; sourceTree = "<group>"; };
 		B6936AA92558FF0B005E8DD9 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		B6936AAE2559979B005E8DD9 /* NotificationBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationBanner.swift; sourceTree = "<group>"; };
 		B6936AB6255ED072005E8DD9 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		B6E256F32565C6E5007989D2 /* InviteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteViewController.swift; sourceTree = "<group>"; };
 		C156D97748ADDF9209A16D9C /* Pods-ConnectZen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConnectZen.debug.xcconfig"; path = "Target Support Files/Pods-ConnectZen/Pods-ConnectZen.debug.xcconfig"; sourceTree = "<group>"; };
 		CF8E982FD369E8CD3C665413 /* Pods-ConnectZenTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConnectZenTests.release.xcconfig"; path = "Target Support Files/Pods-ConnectZenTests/Pods-ConnectZenTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -159,6 +183,7 @@
 				226E5E10254B901700834214 /* ContactTableViewCell.swift */,
 				22FFCD25256318CC00A280F4 /* PrefDayTimeTableViewCell.swift */,
 				2272E0612569F17C003AE627 /* EventTableViewCell.swift */,
+				B615D64A25806FED000866F2 /* ContactsTableCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -187,6 +212,14 @@
 				223DACE925620C78001FF194 /* UserPrefDayTimePopUpViewController.swift */,
 				22FFCD2725671A5C00A280F4 /* SchedulingActivityViewController.swift */,
 				2272E05F2569F14F003AE627 /* EventsViewController.swift */,
+				B6E256F32565C6E5007989D2 /* InviteViewController.swift */,
+				B6389F87257BF78C00219B6F /* FeedbackViewController.swift */,
+				B615D631257EA3C1000866F2 /* MonthViewController.swift */,
+				B615D636257EA3CF000866F2 /* YearViewController.swift */,
+				B615D64525802477000866F2 /* ViewAndEditFriendsViewController.swift */,
+				B615D64F2580B5FC000866F2 /* NotificationSettingsViewController.swift */,
+				B615D669258152E6000866F2 /* ResetPasswordViewController.swift */,
+				B615D66E258177F6000866F2 /* ChangePasswordViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -216,6 +249,7 @@
 		22D4C35D25315BD10028A57D /* ConnectZen */ = {
 			isa = PBXGroup;
 			children = (
+				B63DB4142564B4C7008666AF /* GoogleService-Info.plist */,
 				B6936AA92558FF0B005E8DD9 /* Utilities.swift */,
 				B69230CF254B5F9E0009295D /* ConnectZen.entitlements */,
 				22E911662551E0F300A00F00 /* Utilities */,
@@ -230,8 +264,9 @@
 				22D4C36725315BD30028A57D /* Assets.xcassets */,
 				22D4C36925315BD30028A57D /* LaunchScreen.storyboard */,
 				22D4C36C25315BD30028A57D /* Info.plist */,
-				221E32C7254638FA00310713 /* GoogleService-Info.plist */,
 				B6936AAE2559979B005E8DD9 /* NotificationBanner.swift */,
+				B615D63B257EE4D1000866F2 /* BalloonMarker.swift */,
+				B615D640257F1933000866F2 /* Quotes.json */,
 			);
 			path = ConnectZen;
 			sourceTree = "<group>";
@@ -259,6 +294,7 @@
 			children = (
 				22E911672551E36E00A00F00 /* UtilityFunctions.swift */,
 				225637EA25818356009DD435 /* CalendarFunctions.swift */,
+				B615D65E25812D2A000866F2 /* Protocols.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -407,7 +443,9 @@
 			files = (
 				22D4C36B25315BD30028A57D /* LaunchScreen.storyboard in Resources */,
 				22D4C36825315BD30028A57D /* Assets.xcassets in Resources */,
+				B63DB4152564B4C7008666AF /* GoogleService-Info.plist in Resources */,
 				223DACE525620B99001FF194 /* UserPrefDayTime.storyboard in Resources */,
+				B615D641257F1933000866F2 /* Quotes.json in Resources */,
 				22D4C36625315BD10028A57D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -572,27 +610,37 @@
 			files = (
 				2272E0622569F17C003AE627 /* EventTableViewCell.swift in Sources */,
 				B64E0444255F7368002107A9 /* AnalyticsDashboardViewController.swift in Sources */,
+				B615D64625802477000866F2 /* ViewAndEditFriendsViewController.swift in Sources */,
+				B615D64B25806FEE000866F2 /* ContactsTableCell.swift in Sources */,
 				B6936AAF2559979C005E8DD9 /* NotificationBanner.swift in Sources */,
 				226E5E14254BBA7900834214 /* ConstantStructs.swift in Sources */,
 				22D4C36325315BD10028A57D /* LoginViewController.swift in Sources */,
 				22E911652550F69000A00F00 /* ManualContactsViewController.swift in Sources */,
-				221E32C8254638FA00310713 /* GoogleService-Info.plist in Sources */,
 				B6936AAA2558FF0B005E8DD9 /* Utilities.swift in Sources */,
 				221E32D92548061000310713 /* PopUpViewController.swift in Sources */,
 				22FFCD242563162C00A280F4 /* Constants.swift in Sources */,
 				22FFCD26256318CC00A280F4 /* PrefDayTimeTableViewCell.swift in Sources */,
 				2272E0602569F14F003AE627 /* EventsViewController.swift in Sources */,
+				B615D63C257EE4D1000866F2 /* BalloonMarker.swift in Sources */,
+				B615D66F258177F7000866F2 /* ChangePasswordViewController.swift in Sources */,
 				221E32D1254804A200310713 /* DesignableView.swift in Sources */,
 				22E911682551E36E00A00F00 /* UtilityFunctions.swift in Sources */,
 				225637EB25818356009DD435 /* CalendarFunctions.swift in Sources */,
 				22D4C35F25315BD10028A57D /* AppDelegate.swift in Sources */,
+				B6E256F42565C6E5007989D2 /* InviteViewController.swift in Sources */,
+				B6389F88257BF78C00219B6F /* FeedbackViewController.swift in Sources */,
 				221E32DE2548ED0900310713 /* ContactsViewController.swift in Sources */,
+				B615D6502580B5FC000866F2 /* NotificationSettingsViewController.swift in Sources */,
 				223DACEA25620C78001FF194 /* UserPrefDayTimePopUpViewController.swift in Sources */,
 				22121FE92558B3EC0001BC05 /* TimeDayPrefViewController.swift in Sources */,
 				226E5E11254B901700834214 /* ContactTableViewCell.swift in Sources */,
 				22D4C36125315BD10028A57D /* SceneDelegate.swift in Sources */,
+				B615D637257EA3CF000866F2 /* YearViewController.swift in Sources */,
+				B615D632257EA3C1000866F2 /* MonthViewController.swift in Sources */,
 				B6936AB7255ED072005E8DD9 /* CalendarViewController.swift in Sources */,
 				22FFCD2825671A5C00A280F4 /* SchedulingActivityViewController.swift in Sources */,
+				B615D65F25812D2A000866F2 /* Protocols.swift in Sources */,
+				B615D66A258152E6000866F2 /* ResetPasswordViewController.swift in Sources */,
 				22C809492541FF0000BB1C18 /* RegisterViewController.swift in Sources */,
 				B65E5D212558862900ED241F /* HomeViewController.swift in Sources */,
 			);

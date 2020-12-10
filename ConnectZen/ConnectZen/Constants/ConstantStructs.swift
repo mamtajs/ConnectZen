@@ -37,4 +37,9 @@ struct Event{
     var MeetupHappened:Bool
     var documentID:String
     var calendarEventID:String
+
+struct registeredPerson {
+    var emailID: String
+    var ID: String
+
 }

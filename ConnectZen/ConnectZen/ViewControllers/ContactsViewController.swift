@@ -7,15 +7,25 @@
 
 import UIKit
 import Contacts
+import Firebase
+import FirebaseUI
 
 class ContactsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var contacts = [CNContact]()
     var contactNames = [String]()
     var connectWith = Dictionary<Int, Person>() // Saved selected contacts
+    var registeredPeople = Dictionary<String, [String]>()
+    var unRegisteredPeople = Dictionary<String, [String]>()
+    var allFriends = Dictionary<String, [String]>()
+    
     
    
     @IBOutlet weak var ContactsTableView: UITableView!
     @IBOutlet weak var ContactsSelectedButton: UIButton!
+
+    var authUI: FUIAuth?
+    let db = Firestore.firestore()
+
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // return number of rows
@@ -34,6 +44,8 @@ class ContactsViewController: UIViewController, UITableViewDataSource, UITableVi
         return cell
     }
     
+    
+    
     func fetchContacts(){
         let contactStore = CNContactStore()
         let keys = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactPhoneNumbersKey] as [CNKeyDescriptor]
@@ -48,14 +60,43 @@ class ContactsViewController: UIViewController, UITableViewDataSource, UITableVi
                 }
                    
             }
-            print(self.contacts)
-            ContactsTableView.reloadData()
         }
         catch {
             print("Error: unable to fetch contacts")
         }
-        
+        print(self.contacts)
+        for index in 0...self.contacts.count-1{
+            print(self.contacts[index].phoneNumbers[0].value.stringValue, index)
+        }
+        //exit(20)
+        self.db.collection("Users").document(Auth.auth().currentUser!.uid).getDocument{ (doc, err) in
+            if let doc = doc, doc.exists {
+                if doc.get("Friends") != nil{
+                    let userExistingFriends:[String:[String]] = doc["Friends"] as! [String : [String]]
+                    self.allFriends += userExistingFriends
+                    if userExistingFriends.isEmpty == false {
+                        let contactsTemp = self.contacts
+                        self.contacts.removeAll()
+                        for idx in 0...contactsTemp.count-1{
+                            if (userExistingFriends.index(forKey: contactsTemp[idx].phoneNumbers[0].value.stringValue) == nil){
+                                self.contacts.append(contactsTemp[idx])
+                            }
+                        }
+                        
+                    }
+                    
+                    print(self.contacts)
+                    self.ContactsTableView.reloadData()
+                }else{
+                    print("Document does not exist")
+                }
+            }
+            else{
+                print("Error getting the document")
+            }
+        }
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,17 +108,92 @@ class ContactsViewController: UIViewController, UITableViewDataSource, UITableVi
         Utilities.styleFilledButton(ContactsSelectedButton)
     }
     
-    @IBAction func ContactsSelectedTapped(_ sender: Any) {
-        // TODO: Find people already registered with app
-        
-        // TODO: For people not registered show popUp Message/Invitation screen
-        
-        // TODO: Add the people already registered on the app as friends
-        
-        // Direct to time and day preferences scene
-        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "TimeDayPref") as? TimeDayPrefViewController
-        self.navigationController?.pushViewController(vc!, animated: true)
+    func showInviteAlert(){
+        let alertController = UIAlertController(title: "Add Friends", message: "All of the \(connectWith.count) people have been added as your friends. However \(unRegisteredPeople.count) of these people are not currently registered on ConnectZen. You can go ahead and invite them. Do you want to invite them?", preferredStyle: .alert)
+        let confirmAction = UIAlertAction(title: "Invite", style: .default) { [self] (_) in
+            let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "InviteVC") as? InviteViewController
+            var names:[String] = []
+            for val in unRegisteredPeople.values{
+                names.append(val[0])
+            }
+            vc?.unRegisteredPeople = names
+            self.navigationController?.pushViewController(vc!, animated: true)
         }
+        let cancelAction = UIAlertAction(title: "Don't Invite", style: .default) { (_) in
+            if friendsPageFlag == 1 {
+                friendsPageFlag = 0
+                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HomeVC") as? HomeViewController
+                self.navigationController?.pushViewController(vc!, animated: true)
+            }else{
+                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "TimeDayPref") as? TimeDayPrefViewController
+                self.navigationController?.pushViewController(vc!, animated: true)
+            }
+        }
+        alertController.addAction(confirmAction)
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+
+    func loadFromFirebase() {
+      let query = db.collection("Users")
+      query.getDocuments { snapshot, error in
+        print(error ?? "No error.")
+        var IDSet = Dictionary<String, registeredPerson>()
+        for doc in snapshot!.documents {
+            IDSet[doc.get("Phone Number") as! String] = registeredPerson(emailID: doc.get("EmailID") as! String, ID: doc.documentID)
+        }
+        for eachPerson in self.connectWith {
+
+            
+            if IDSet.keys.contains((eachPerson.value.PhoneNumber)){
+                var tempArray:[String] = []
+                tempArray.append(eachPerson.value.contactName)
+                tempArray.append(IDSet[eachPerson.value.PhoneNumber]?.emailID ?? "")
+                tempArray.append(IDSet[eachPerson.value.PhoneNumber]?.ID ?? "")
+                self.registeredPeople[eachPerson.value.PhoneNumber] = tempArray
+            }else{
+                var tempArray:[String] = []
+                tempArray.append(eachPerson.value.contactName)
+                tempArray.append("")
+                tempArray.append("")
+                self.unRegisteredPeople[eachPerson.value.PhoneNumber] = tempArray
+            }
+        }
+        print("REG: \(self.registeredPeople)") // 1 what will this print now?
+        print(self.unRegisteredPeople)
+        self.completion()
+      }
+    }
+    
+    
+    func completion(){
+        self.allFriends += self.registeredPeople
+        self.allFriends += self.unRegisteredPeople
+        //self.db.collection("Users").document(Auth.auth().currentUser!.uid).setData(["Friends": self.registeredPeople], merge: true)
+        self.db.collection("Users").document(Auth.auth().currentUser!.uid).setData(["Friends": self.allFriends], merge: true)
+        if self.connectWith.count != self.registeredPeople.count{
+            self.showInviteAlert()
+        }else{
+            showToast(controller: self, message: "\(self.registeredPeople.count) people have been added as your friends on ConnectZen", seconds: 1, colorBackground: .systemGreen, title: "Success")
+            if friendsPageFlag == 1 {
+                friendsPageFlag = 0
+                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HomeVC") as? HomeViewController
+                self.navigationController?.pushViewController(vc!, animated: true)
+            }else{
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(4), execute: { [self] in
+                    let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "TimeDayPref") as? TimeDayPrefViewController
+                    self.navigationController?.pushViewController(vc!, animated: true)
+                })
+            }
+            
+        }
+    }
+
+    
+    @IBAction func ContactsSelected(_ sender: Any) {
+        loadFromFirebase()
+    }
     
 }
 
