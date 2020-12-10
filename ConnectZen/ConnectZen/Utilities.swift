@@ -28,20 +28,14 @@ class Utilities {
     }
     
     static func styleFilledButton(_ button:UIButton) {
-        
         // Filled rounded corner style
         button.backgroundColor = UIColor.init(red: 8/255, green: 232/255, blue: 222/255, alpha: 1)
         button.layer.cornerRadius = 15
         button.tintColor = UIColor.black
         button.setTitleColor(UIColor.black, for: .normal)
-        
-       
     }
-    
    
     static func styleHollowButton(_ button:UIButton) {
-        
-       // button.backgroundColor = UIColor.init(red: 8/255, green: 232/255, blue: 222/255, alpha: 1)
         button.layer.borderWidth = 2
         button.layer.borderColor = UIColor.black.cgColor
         button.layer.cornerRadius = 15
@@ -54,8 +48,8 @@ class Utilities {
     static func styleFilledButtonWithShadow(_ button:UIButton) {
         
         button.backgroundColor = UIColor.white
-        button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor.black.cgColor
+        //button.layer.borderWidth = 1
+        //button.layer.borderColor = UIColor.black.cgColor
         button.layer.cornerRadius = 10
         button.tintColor = UIColor.black
         button.layer.shadowColor = UIColor(named: "buttonShadow")?.cgColor
@@ -68,8 +62,8 @@ class Utilities {
     static func styleFilledButtonWithShadowDestructive(_ button:UIButton) {
         
         button.backgroundColor = UIColor.white
-        button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor.black.cgColor
+        //button.layer.borderWidth = 1
+        //button.layer.borderColor = UIColor.black.cgColor
         button.layer.cornerRadius = 10
         button.tintColor = UIColor.red
         button.layer.shadowColor = UIColor(named: "buttonShadow")?.cgColor

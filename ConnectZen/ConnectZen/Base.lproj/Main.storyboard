@@ -1221,8 +1221,8 @@
                                                                                         </label>
                                                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iex-8r-sm6" userLabel="Edit">
                                                                                             <rect key="frame" x="268.5" y="0.0" width="67.5" height="32.5"/>
-                                                                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                                                            <state key="normal" title="Edit" image="slider.horizontal.3" catalog="system">
+                                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                            <state key="normal" image="slider.horizontal.3" catalog="system">
                                                                                                 <color key="titleColor" systemColor="systemBlueColor"/>
                                                                                             </state>
                                                                                             <connections>
@@ -1232,6 +1232,7 @@
                                                                                     </subviews>
                                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                     <constraints>
+                                                                                        <constraint firstItem="iex-8r-sm6" firstAttribute="height" secondItem="tcG-Qb-T2F" secondAttribute="height" id="hdj-8e-dAv"/>
                                                                                         <constraint firstItem="j32-Di-N7z" firstAttribute="width" secondItem="tcG-Qb-T2F" secondAttribute="width" multiplier="0.8" id="xUX-P5-zDs"/>
                                                                                     </constraints>
                                                                                 </stackView>
@@ -1402,13 +1403,19 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="AbleToConnectSwitch" destination="514-qb-jKF" id="ows-jo-RtC"/>
+                        <outlet property="AbleToConnectSegment" destination="PPY-5Q-YAV" id="XdX-dy-va0"/>
                         <outlet property="BlurView" destination="fQY-Gb-rEX" id="InZ-P2-JU5"/>
                         <outlet property="DeleteMeetupButton" destination="6ea-eW-lcd" id="zwX-j2-JfK"/>
+                        <outlet property="EditEventButton" destination="irv-6A-NMe" id="WsE-Gm-3pF"/>
+                        <outlet property="EditEventView" destination="zie-LE-vqz" id="KiX-Op-hKB"/>
+                        <outlet property="EndTimeEditEventView" destination="EeU-GX-Uzi" id="cbf-JP-4wC"/>
                         <outlet property="EventType" destination="fNS-nm-Qtd" id="50Y-aL-Mqd"/>
                         <outlet property="EventsTableView" destination="h5Q-eH-3Yf" id="XQS-Hw-ObG"/>
+                        <outlet property="FriendEditEventView" destination="JRn-Nd-LJr" id="JWF-c8-phG"/>
                         <outlet property="OptionsViewPrevious" destination="e69-QI-D21" id="Wof-Eg-G7l"/>
                         <outlet property="OptionsViewUpcoming" destination="Mub-Vx-TQS" id="qEa-W0-5y9"/>
+                        <outlet property="SaveChangesButton" destination="rdx-mE-10x" id="Bak-iP-Yx4"/>
+                        <outlet property="StartTimeEditEventView" destination="Yua-Mg-FIk" id="XeC-MY-XVX"/>
                         <outlet property="sendEmailButton" destination="Ysj-3G-V8W" id="Xmr-TS-FT9"/>
                         <outlet property="sendMessageButton" destination="jjJ-yn-Y4E" id="GMf-Re-2Cr"/>
                     </connections>
@@ -1450,42 +1457,64 @@
                             <rect key="frame" x="12" y="13" width="216" height="102"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ysj-3G-V8W" userLabel="Send Email Reminder">
-                                    <rect key="frame" x="0.0" y="0.0" width="216" height="27.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="216" height="18"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     <state key="normal" title="Remind by Email" image="envelope" catalog="system">
                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
+                                    <connections>
+                                        <action selector="RemindByEmailTapped:" destination="6Se-PG-jme" eventType="touchUpInside" id="AEl-fs-2cw"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jjJ-yn-Y4E" userLabel="Send Message Reminder">
-                                    <rect key="frame" x="0.0" y="37.5" width="216" height="27"/>
+                                    <rect key="frame" x="0.0" y="28" width="216" height="18"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     <state key="normal" title="Remind by Message" image="message" catalog="system">
                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
+                                    <connections>
+                                        <action selector="RemindByMessageTapped:" destination="6Se-PG-jme" eventType="touchUpInside" id="jLf-ec-18E"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="irv-6A-NMe" userLabel="Edit Event">
+                                    <rect key="frame" x="0.0" y="56" width="216" height="18"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <state key="normal" title="Edit Event" image="pencil" catalog="system">
+                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="EditEvent:" destination="6Se-PG-jme" eventType="touchUpInside" id="gCj-op-X0O"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ea-eW-lcd" userLabel="Delete">
-                                    <rect key="frame" x="0.0" y="74.5" width="216" height="27.5"/>
+                                    <rect key="frame" x="0.0" y="84" width="216" height="18"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="tintColor" systemColor="systemRedColor"/>
-                                    <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     <state key="normal" title="Delete this Meetup" image="calendar.badge.minus" catalog="system">
                                         <color key="titleColor" systemColor="systemRedColor"/>
                                     </state>
+                                    <connections>
+                                        <action selector="DeleteMeetupTapped:" destination="6Se-PG-jme" eventType="touchUpInside" id="io1-CE-EXI"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <constraints>
                                 <constraint firstItem="jjJ-yn-Y4E" firstAttribute="width" secondItem="iCH-ML-tR7" secondAttribute="width" id="2ts-xD-7rH"/>
+                                <constraint firstItem="irv-6A-NMe" firstAttribute="width" secondItem="iCH-ML-tR7" secondAttribute="width" id="8hh-2B-ZZ6"/>
                                 <constraint firstItem="6ea-eW-lcd" firstAttribute="width" secondItem="iCH-ML-tR7" secondAttribute="width" id="RHC-MH-uRn"/>
                                 <constraint firstItem="Ysj-3G-V8W" firstAttribute="width" secondItem="iCH-ML-tR7" secondAttribute="width" id="x3B-fU-WrY"/>
                             </constraints>
                         </stackView>
                     </subviews>
                     <viewLayoutGuide key="safeArea" id="69n-45-QvX"/>
-                    <color key="backgroundColor" red="0.070601932699999995" green="0.9142068028" blue="0.87059062720000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <color key="backgroundColor" systemColor="systemGray6Color"/>
                     <constraints>
                         <constraint firstItem="iCH-ML-tR7" firstAttribute="centerX" secondItem="Mub-Vx-TQS" secondAttribute="centerX" id="A4q-dC-Pmp"/>
                         <constraint firstItem="iCH-ML-tR7" firstAttribute="width" secondItem="Mub-Vx-TQS" secondAttribute="width" multiplier="0.9" id="GAe-pg-8uT"/>
@@ -1493,6 +1522,141 @@
                         <constraint firstItem="H5O-aW-LvD" firstAttribute="top" secondItem="Mub-Vx-TQS" secondAttribute="top" multiplier="1.01" id="Xxb-b7-Y6z"/>
                         <constraint firstItem="iCH-ML-tR7" firstAttribute="height" secondItem="Mub-Vx-TQS" secondAttribute="height" multiplier="0.8" id="q3d-9Y-FdW"/>
                         <constraint firstItem="iCH-ML-tR7" firstAttribute="centerY" secondItem="Mub-Vx-TQS" secondAttribute="centerY" id="vav-YH-xK5"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" id="zie-LE-vqz" userLabel="EditEventView">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5p1-fD-ARh" userLabel="ViewDismissButton">
+                            <rect key="frame" x="222.5" y="2" width="17.5" height="15.5"/>
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" backgroundImage="xmark" catalog="system"/>
+                            <connections>
+                                <action selector="OptionsViewDismissButtonTapped:" destination="6Se-PG-jme" eventType="touchUpInside" id="NFG-bF-vOt"/>
+                                <action selector="dismissEditEventView:" destination="6Se-PG-jme" eventType="touchUpInside" id="Pq4-4d-LJf"/>
+                            </connections>
+                        </button>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="7XJ-ex-O5h">
+                            <rect key="frame" x="0.0" y="13" width="240" height="102"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" spacing="-1" translatesAutoresizingMaskIntoConstraints="NO" id="QrS-l5-hWo">
+                                    <rect key="frame" x="0.0" y="0.0" width="240" height="21.5"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Connecting with: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CbM-1K-0M2">
+                                            <rect key="frame" x="0.0" y="0.0" width="120" height="21.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JRn-Nd-LJr">
+                                            <rect key="frame" x="119" y="0.0" width="121" height="21.5"/>
+                                        </pickerView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="CbM-1K-0M2" firstAttribute="width" secondItem="QrS-l5-hWo" secondAttribute="width" multiplier="0.5" id="Sj1-Fu-QOZ"/>
+                                        <constraint firstItem="JRn-Nd-LJr" firstAttribute="height" secondItem="QrS-l5-hWo" secondAttribute="height" id="qYZ-Pz-GMW"/>
+                                    </constraints>
+                                </stackView>
+                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kqN-qL-UrH">
+                                    <rect key="frame" x="0.0" y="26.5" width="240" height="22"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Start Time:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mXy-gQ-5en">
+                                            <rect key="frame" x="0.0" y="0.0" width="120" height="22"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mrz-3u-QVx">
+                                            <rect key="frame" x="120" y="0.0" width="120" height="22"/>
+                                            <subviews>
+                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Yua-Mg-FIk" userLabel="Start Time">
+                                                    <rect key="frame" x="0.0" y="2.5" width="120" height="17.5"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <connections>
+                                                        <action selector="StartTimeChanged:" destination="6Se-PG-jme" eventType="valueChanged" id="aYL-8Y-Zxa"/>
+                                                    </connections>
+                                                </datePicker>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="Yua-Mg-FIk" firstAttribute="centerX" secondItem="Mrz-3u-QVx" secondAttribute="centerX" id="3wo-tO-AzL"/>
+                                                <constraint firstItem="Yua-Mg-FIk" firstAttribute="width" secondItem="Mrz-3u-QVx" secondAttribute="width" id="X5p-60-v0i"/>
+                                                <constraint firstItem="Yua-Mg-FIk" firstAttribute="centerY" secondItem="Mrz-3u-QVx" secondAttribute="centerY" id="bja-h7-9GJ"/>
+                                                <constraint firstItem="Yua-Mg-FIk" firstAttribute="height" secondItem="Mrz-3u-QVx" secondAttribute="height" multiplier="0.8" id="jFt-Go-Mua"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                </stackView>
+                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ast-rj-gVy">
+                                    <rect key="frame" x="0.0" y="53.5" width="240" height="22"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  End Time:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U6X-x9-p9a">
+                                            <rect key="frame" x="0.0" y="0.0" width="120" height="22"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EW9-RI-BzU">
+                                            <rect key="frame" x="120" y="0.0" width="120" height="22"/>
+                                            <subviews>
+                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="EeU-GX-Uzi" userLabel="End Time">
+                                                    <rect key="frame" x="0.0" y="2" width="120" height="17.5"/>
+                                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <connections>
+                                                        <action selector="EndTimeChanged:" destination="6Se-PG-jme" eventType="valueChanged" id="B81-Ds-X9d"/>
+                                                    </connections>
+                                                </datePicker>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="EeU-GX-Uzi" firstAttribute="centerY" secondItem="EW9-RI-BzU" secondAttribute="centerY" id="03P-sT-r1E"/>
+                                                <constraint firstItem="EeU-GX-Uzi" firstAttribute="width" secondItem="EW9-RI-BzU" secondAttribute="width" id="XIq-He-Wcx"/>
+                                                <constraint firstItem="EeU-GX-Uzi" firstAttribute="height" secondItem="EW9-RI-BzU" secondAttribute="height" multiplier="0.8" id="fS3-vz-wkj"/>
+                                                <constraint firstItem="EeU-GX-Uzi" firstAttribute="centerX" secondItem="EW9-RI-BzU" secondAttribute="centerX" id="gZv-be-L4v"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                </stackView>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dex-iQ-yH8">
+                                    <rect key="frame" x="0.0" y="80.5" width="240" height="21.5"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rdx-mE-10x">
+                                            <rect key="frame" x="60" y="3" width="120" height="15.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <state key="normal" title="Save Changes">
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="SaveChangesButtonTapped:" destination="6Se-PG-jme" eventType="touchUpInside" id="qss-qW-eXX"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="rdx-mE-10x" firstAttribute="height" secondItem="dex-iQ-yH8" secondAttribute="height" multiplier="0.7" id="0Sj-3h-OqK"/>
+                                        <constraint firstItem="rdx-mE-10x" firstAttribute="centerY" secondItem="dex-iQ-yH8" secondAttribute="centerY" id="AaY-Pb-Zhd"/>
+                                        <constraint firstItem="rdx-mE-10x" firstAttribute="width" secondItem="dex-iQ-yH8" secondAttribute="width" multiplier="0.5" id="cGB-KT-kKL"/>
+                                        <constraint firstItem="rdx-mE-10x" firstAttribute="centerX" secondItem="dex-iQ-yH8" secondAttribute="centerX" id="d05-NP-JJR"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="mXy-gQ-5en" firstAttribute="width" secondItem="CbM-1K-0M2" secondAttribute="width" id="JEv-Gk-VNg"/>
+                                <constraint firstItem="U6X-x9-p9a" firstAttribute="width" secondItem="CbM-1K-0M2" secondAttribute="width" id="ylC-1q-AkA"/>
+                            </constraints>
+                        </stackView>
+                    </subviews>
+                    <viewLayoutGuide key="safeArea" id="yAf-oV-Y0W"/>
+                    <color key="backgroundColor" systemColor="systemGray6Color"/>
+                    <constraints>
+                        <constraint firstItem="7XJ-ex-O5h" firstAttribute="centerX" secondItem="zie-LE-vqz" secondAttribute="centerX" id="5le-C8-HcH"/>
+                        <constraint firstItem="5p1-fD-ARh" firstAttribute="top" secondItem="zie-LE-vqz" secondAttribute="top" id="5qR-UL-o0R"/>
+                        <constraint firstItem="7XJ-ex-O5h" firstAttribute="centerY" secondItem="zie-LE-vqz" secondAttribute="centerY" id="9qp-y3-Uyu"/>
+                        <constraint firstAttribute="trailing" secondItem="5p1-fD-ARh" secondAttribute="trailing" id="D1h-hP-ghp"/>
+                        <constraint firstItem="7XJ-ex-O5h" firstAttribute="height" secondItem="zie-LE-vqz" secondAttribute="height" multiplier="0.8" id="MD5-Es-h5f"/>
+                        <constraint firstItem="7XJ-ex-O5h" firstAttribute="width" secondItem="zie-LE-vqz" secondAttribute="width" id="TgE-n4-5bT"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" id="e69-QI-D21" userLabel="OptionsViewPrevious">
@@ -1512,25 +1676,29 @@
                             <rect key="frame" x="12" y="13" width="216" height="102"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where you able to connect?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dG2-pe-Qih">
-                                    <rect key="frame" x="0.0" y="29.5" width="151" height="43"/>
+                                    <rect key="frame" x="0.0" y="29.5" width="129.5" height="43"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="514-qb-jKF" userLabel="AbleToConnectSwitch">
-                                    <rect key="frame" x="161" y="35.5" width="57" height="31"/>
+                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="PPY-5Q-YAV" userLabel="AbleToConnect">
+                                    <rect key="frame" x="139.5" y="35.5" width="76.5" height="32"/>
+                                    <segments>
+                                        <segment title="No"/>
+                                        <segment title="Yes"/>
+                                    </segments>
                                     <connections>
-                                        <action selector="AbleToConnectSwitchToggled:" destination="6Se-PG-jme" eventType="valueChanged" id="hqI-Z6-pz2"/>
+                                        <action selector="AbleToConnectSegmentChanged:" destination="6Se-PG-jme" eventType="valueChanged" id="Qge-OZ-E0l"/>
                                     </connections>
-                                </switch>
+                                </segmentedControl>
                             </subviews>
                             <constraints>
-                                <constraint firstItem="dG2-pe-Qih" firstAttribute="width" secondItem="QVi-Ue-sOA" secondAttribute="width" multiplier="0.7" id="IbG-RW-OxI"/>
+                                <constraint firstItem="dG2-pe-Qih" firstAttribute="width" secondItem="QVi-Ue-sOA" secondAttribute="width" multiplier="0.6" id="IbG-RW-OxI"/>
                             </constraints>
                         </stackView>
                     </subviews>
                     <viewLayoutGuide key="safeArea" id="Zcp-sa-AF7"/>
-                    <color key="backgroundColor" red="0.070601932699999995" green="0.9142068028" blue="0.87059062720000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <color key="backgroundColor" systemColor="systemGray6Color"/>
                     <constraints>
                         <constraint firstItem="QVi-Ue-sOA" firstAttribute="height" secondItem="e69-QI-D21" secondAttribute="height" multiplier="0.8" id="4qC-oE-clf"/>
                         <constraint firstItem="QVi-Ue-sOA" firstAttribute="width" secondItem="e69-QI-D21" secondAttribute="width" multiplier="0.9" id="QSd-1S-uIb"/>
@@ -1541,7 +1709,7 @@
                     </constraints>
                 </view>
             </objects>
-            <point key="canvasLocation" x="7498.5507246376819" y="59.598214285714285"/>
+            <point key="canvasLocation" x="7833" y="60"/>
         </scene>
         <!--Time and Day Preference-->
         <scene sceneID="Fnf-69-t0b">
@@ -1857,6 +2025,7 @@
         <image name="gearshape.fill" catalog="system" width="128" height="121"/>
         <image name="message" catalog="system" width="128" height="113"/>
         <image name="minus.circle" catalog="system" width="128" height="121"/>
+        <image name="pencil" catalog="system" width="128" height="113"/>
         <image name="plus.circle" catalog="system" width="128" height="121"/>
         <image name="slider.horizontal.3" catalog="system" width="128" height="100"/>
         <image name="star.circle" catalog="system" width="128" height="121"/>
@@ -1876,6 +2045,9 @@
         </systemColor>
         <systemColor name="systemBlueColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

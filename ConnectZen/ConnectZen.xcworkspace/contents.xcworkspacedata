@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:ConnectZen.xcodeproj">
+      location = "group:/Users/mshah/Desktop/Git_Repos/ConnectZen/ConnectZen/ConnectZen.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

@@ -35,9 +35,12 @@ class UserPrefDayTimePopUpViewController: UIViewController, UIPickerViewDelegate
         self.DaySelected = Days[0]
         self.StartTimeTimePicker.date = getTime(Time: "09:00 AM")
         self.EndTimeTimePicker.date = getTime(Time: "09:00 PM")
+        StartTimeTimePicker.preferredDatePickerStyle = .inline
+        EndTimeTimePicker.preferredDatePickerStyle = .inline
         
         Utilities.styleFilledButton(AddButton)
         setupPopUpView(popUpView: PopUpView)
+    
         
     }
     

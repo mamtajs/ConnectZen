@@ -14,6 +14,10 @@ struct Person {
    // var ID:String
 }
 
+struct Time{
+    var Hour:Int
+    var Minute:Int
+}
 struct PrefDayTime {
     var Day:String
     var StartTime:String
@@ -31,4 +35,6 @@ struct Event{
     var FriendEmail:String
     var FriendID:String
     var MeetupHappened:Bool
+    var documentID:String
+    var calendarEventID:String
 }

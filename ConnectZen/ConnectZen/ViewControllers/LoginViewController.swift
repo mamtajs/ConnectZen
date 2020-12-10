@@ -28,6 +28,8 @@ class LoginViewController: UIViewController, FUIAuthDelegate, UIApplicationDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpButtons()
+        
+        self.hideKeyboardWhenTappedAround()
     }
     
     

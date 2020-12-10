@@ -23,6 +23,8 @@ class HomeViewController: UIViewController {
     var durationOfMeetup:Int = 10 // minutes
     var numOfMeetupsPerMonth:Int = 5 // people
     var prefDayTime =  Dictionary<String, Dictionary<String, String>>() // Day -> {StartTime-> EndTime, ....}
+    var createCalendarEvents:Bool = false
+    
     let meetupDefaultStartTime:String = "09:00"
     let meetupDefaultEndTime:String = "21:00"
     var listFriends = Dictionary<String, Array<String>>() //: Array<Person> = []   // All friends excluding past 1 months meetups
@@ -52,6 +54,126 @@ class HomeViewController: UIViewController {
         popUpView.layer.borderColor = UIColor.white.cgColor
     }
    
+    func askNotificationPermission(){
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert, .sound, .badge, .provisional]) { granted, error in
+            
+            if let error = error {
+                // Handle the error here.
+            }
+            
+            // Provisional authorization granted.
+        }
+
+    }
+    
+    func scheduleQuotesNotification(){
+        askNotificationPermission()
+        
+        let valuesNextMonth = getNextMonth(today: Date())
+        let nextMonth: Int = valuesNextMonth.0
+        let year: Int = valuesNextMonth.1
+        let numDays = getDaysInNextMonth(nextMonth: nextMonth, year: year)
+        print("numDays: ", numDays)
+        
+        self.db.collection("Quotes").document("startIdDocument").getDocument{ (doc, err) in
+            if let doc = doc{
+                let startID:Int = (doc["startID"] as? Int)!
+                print(startID)
+                
+                self.db.collection("Quotes").order(by: "QuotesID").whereField("QuotesID", isGreaterThanOrEqualTo: startID).limit(to: numDays).getDocuments{(querySnapShot, error) in
+                    if let error = error{
+                        print("Error getting documents: \(error)")
+                    }
+                    else{
+                        var NotifIds = Array<String>()
+                        var date = 1
+                        for doc in querySnapShot!.documents{
+                            let content = UNMutableNotificationContent()
+                            content.title = "Today's Quote"
+                            content.body = ((doc["Title"] as? String)!) + "\n-" + ((doc["Author"] as? String)!)
+                            
+                            var dateComponents = DateComponents()
+                            dateComponents.calendar = Calendar.current
+
+                            dateComponents.weekday = date // Tuesday
+                            dateComponents.hour = 8    // 08:00 hours
+                           
+                            // Create the trigger as a repeating event.
+                            let trigger = UNCalendarNotificationTrigger(
+                                     dateMatching: dateComponents, repeats: false)
+                            
+                            date += 1
+                            
+                            // Create the request
+                            let uuidString = UUID().uuidString
+                            NotifIds.append(uuidString)
+                            print("New Notif ", uuidString)
+                            let request = UNNotificationRequest(identifier: uuidString,
+                                        content: content, trigger: trigger)
+
+                            // Schedule the request with the system.
+                            let notificationCenter = UNUserNotificationCenter.current()
+                            notificationCenter.add(request) { (error) in
+                               if error != nil {
+                                  // Handle any errors.
+                               }
+                            }
+                        }
+                        // update startID
+                        self.db.collection("Quotes").document("startIdDocument").updateData(["startID": startID + numDays], completion: {err in
+                            if let err = err {
+                                print("Error updating startID: \(err)")
+                                //NotificationBanner.show("Failed to update meetup status, Please try again later!")
+                            }
+                            else{
+                                // save notificationIDs
+                                self.db.collection("Users").document(Auth.auth().currentUser!.uid).updateData(["NotificationIDs": NotifIds], completion: {err in
+                                    if let err = err {
+                                        print("Error updating NotificationIDs: \(err)")
+                                        //NotificationBanner.show("Failed to update meetup status, Please try again later!")
+                                    }
+                                    else{
+                                       
+                                    }
+                                })
+                            }
+                        })
+                    }
+                    
+                }
+            }
+            else{
+                print("Error reading next QuoteID")
+            }
+            
+        }
+        
+    }
+    
+    /*func removeQuotesNotifications(){
+        self.db.collection("Users").document(Auth.auth().currentUser!.uid).getDocument{ (doc, err) in
+            if let doc = doc{
+                let center = UNUserNotificationCenter.current()
+                let NotificationIDs = doc["NotificationIDs"] as? [String]
+                if(NotificationIDs != nil){
+                    center.removePendingNotificationRequests(withIdentifiers: NotificationIDs!)
+                    
+                    // remove from firebase
+                    self.db.collection("Users").document(Auth.auth().currentUser!.uid).updateData([
+                        "NotificationIDs": FieldValue.delete(),
+                    ]) { err in
+                        if let err = err {
+                            print("Error deleting NotificationIDs: \(err)")
+                        }
+                        else {
+                            print("Document successfully deleted")
+                        }
+                    }
+                }
+            }
+        }
+    }*/
     
     @IBAction func scheduleButtonTapped(_ sender: Any) {
         // Start scheduling Meetups only if it is not already done for the next month
@@ -105,7 +227,8 @@ class HomeViewController: UIViewController {
                     self.prefDayTime =  document["Day and Time Preferences"] as! [String : [String : String]]
                 }
                 self.listFriends = document["Friends"] as! [String : [String]]
-              
+                self.createCalendarEvents = document["Calendar Updation Access"] as! Bool
+                
                 // Schedule events
                 self.scheduleEvents()
                 
@@ -394,14 +517,6 @@ class HomeViewController: UIViewController {
     
     func scheduleEvents(){
         // TODO: consider whole day events and remove them
-       
-        // TEST
-        //var timeDictMon = ["10:00":"12:00", "15:00":"18:00", "19:00":"20:00"]
-        //var timeDictFri = ["11:50":"13:10", "16:20":"19:20"]
-        
-        //prefDayTime["Monday"] = timeDictMon
-        //prefDayTime["Friday"] = timeDictFri
-        // TEST END
         
         let valuesNextMonth = getNextMonth(today: Date())
         let nextMonth: Int = valuesNextMonth.0
@@ -409,7 +524,6 @@ class HomeViewController: UIViewController {
         let daysInNextMonth:Int = getDaysInNextMonth(nextMonth: nextMonth, year: year)
         
         // TODO: If events for next month is scheduled then return
-        
         print(nextMonth, year)
         
         var DatesTimesAvailable : [Date: [[Int]]] = [:]
@@ -812,44 +926,69 @@ class HomeViewController: UIViewController {
         
         // Create Meetup objects
         var count = 0
-        //var newEvent:Event = Event(TimeStamp: 0, Day: "", Date: "", StartTime: "", EndTime: "", FriendPhoneNumber: "", MeetupHappened: false)
-         
-        //var UpcomingMeetups = Dictionary<Int, Event>()
-        
-        print("\n\nScheduled Meetups: ")
+       
+        print("\n\nScheduled Meetups: \(MeetupDatesTime.count), \(MeetupFriends.count)")
         for mdt in MeetupDatesTime{
             let secondsSinceBegin:Int = Int(mdt.key.timeIntervalSince1970)
             var UpcomingMeetups = Dictionary<String, String>()
-            /*newEvent.TimeStamp = secondsSinceBegin
-            newEvent.Day = self.getWeekDay(from: mdt.key)
-            newEvent.Date = self.getDateStringPST(date:  mdt.key)
-            newEvent.StartTime = self.getTimeString(time: MeetupDatesTime[mdt.key]![0])
-            newEvent.EndTime = self.getTimeString(time: MeetupDatesTime[mdt.key]![1])
-            //newEvent.FriendName = self.MeetupFriends[count].1
-            newEvent.FriendPhoneNumber = self.MeetupFriends[count]
-            //var FriendEmail:String
-            //var FriendID:String
-            newEvent.MeetupHappened = false*/
-            
-            count += 1
-           // UpcomingMeetups[Int(secondsSinceBegin)] = newEvent
+           
             UpcomingMeetups["TimeStamp"] = String(secondsSinceBegin)
             UpcomingMeetups["Day"] = self.getWeekDay(from: mdt.key)
             UpcomingMeetups["Date"] = self.getDateStringPST(date:  mdt.key)
-            UpcomingMeetups["StartTime"] = self.getTimeString(time: MeetupDatesTime[mdt.key]![0])
-            UpcomingMeetups["EndTime"] = self.getTimeString(time: MeetupDatesTime[mdt.key]![1])
+            UpcomingMeetups["StartTime"] = self.get12HourTimeString(time: MeetupDatesTime[mdt.key]![0])
+            UpcomingMeetups["EndTime"] = self.get12HourTimeString(time: MeetupDatesTime[mdt.key]![1])
             UpcomingMeetups["FriendPhoneNumber"] = self.MeetupFriends[count]
             UpcomingMeetups["MeetupHappened"] = String(false)
+            count += 1
+            print(count-1,". ",UpcomingMeetups["Day"]!,":" ,UpcomingMeetups["Date"]! ,"," , UpcomingMeetups["StartTime"]!, "-", UpcomingMeetups["EndTime"]!, UpcomingMeetups["FriendPhoneNumber"]!)
             
-            //print(newEvent.Day,":" ,newEvent.Date ,"," , newEvent.StartTime, "-", newEvent.EndTime, newEvent.FriendPhoneNumber )
+            // create calendar event
+            if(self.createCalendarEvents){
+                print("1. user wants events")
+                let eventStore = EKEventStore()
+                let cf:CalendarFunctions = CalendarFunctions()
+                if (cf.checkCalendarAccess()){ // access is given for calendar
+                    print("2. user had granted calendar access")
+                    let calendarEventID = cf.createCalendarEvent(store: eventStore, date: mdt.key, HourMin: MeetupDatesTime[mdt.key]![0], durationOfMeetup: self.durationOfMeetup, friendName: listFriends[UpcomingMeetups["FriendPhoneNumber"]!]![0])
+                    UpcomingMeetups["CalendarEventID"] = calendarEventID!
+                    print("3. Event created", calendarEventID!)
+                    // Insert meetup
+                    print("4. Meetup added to firebase")
+                    self.db.collection("Users").document(Auth.auth().currentUser!.uid).collection("Meetups").document().setData(UpcomingMeetups, merge: true)
+                }
+                else{ // access is not given for calendar
+                    print("2. user hadn't granted calendar access")
+                    /*if(cf.getCalendarAccess(eventStore: eventStore)){ // ask for permission and access granted by user
+                        print("3. user now granted calendar access")
+                        let calendarEventID = cf.createCalendarEvent(store: eventStore, date: mdt.key, HourMin: MeetupDatesTime[mdt.key]![0], durationOfMeetup: self.durationOfMeetup, friendName: listFriends[UpcomingMeetups["FriendPhoneNumber"]!]![0])
+                        UpcomingMeetups["CalendarEventID"] = calendarEventID!
+                        // Insert meetup
+                        print("4. Event created", calendarEventID!)
+                        
+                        print("5. Meetup added to firebase")
+                        self.db.collection("Users").document(Auth.auth().currentUser!.uid).collection("Meetups").document().setData(UpcomingMeetups, merge: true)
+                    }
+                    else{
+                        print("3. user now didn't grant calendar access")
+                        // Permission not granted by user so setting preference of adding calendar events to false
+                        self.db.collection("Users").document(Auth.auth().currentUser!.uid).setData(["Calendar Updation Access": false], merge: true)
+                        // Insert meetup
+                        print("4. Meetup added to firebase")
+                        self.db.collection("Users").document(Auth.auth().currentUser!.uid).collection("Meetups").document().setData(UpcomingMeetups, merge: true)
+                    }*/
+                    self.db.collection("Users").document(Auth.auth().currentUser!.uid).setData(["Calendar Updation Access": false], merge: true)
+                    self.db.collection("Users").document(Auth.auth().currentUser!.uid).collection("Meetups").document().setData(UpcomingMeetups, merge: true)
+                }
+            }
+            else{
+                print("1. Meetup added to firebase as user doesn't want it on calendar")
+                self.db.collection("Users").document(Auth.auth().currentUser!.uid).collection("Meetups").document().setData(UpcomingMeetups, merge: true)
+            }
             
-            self.db.collection("Users").document(Auth.auth().currentUser!.uid).collection("Meetups").document().setData(UpcomingMeetups, merge: true)
-
+            print("\n")
         }
         
         print("\n\n")
-        // Save to firebase
-                
     }
     
     func getDateStringPST(date: Date) -> String{
@@ -860,7 +999,7 @@ class HomeViewController: UIViewController {
         return (dateFormatter.string(from: date))
     }
     
-    func getTimeString(time: Array<Int>) -> String{
+    func get12HourTimeString(time: Array<Int>) -> String{
         var PM:Bool = false
         var hour = time[0]
         
@@ -964,14 +1103,17 @@ class HomeViewController: UIViewController {
     
     @IBAction func RewardsButtonTapped(_ sender: Any) {
     }
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+}
+
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
     }
-    */
-
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
 }
