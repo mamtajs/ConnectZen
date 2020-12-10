@@ -56,7 +56,9 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="ybV-9d-vmp" userLabel="Start Time Date Picker">
+
+                                                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="ybV-9d-vmp" userLabel="Start Time Date Picker">
+
                                                             <rect key="frame" x="107" y="0.0" width="161" height="62.5"/>
                                                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </datePicker>
@@ -75,7 +77,8 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="T6S-9W-OJU" userLabel="End Time Date Picker">
+                                                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="T6S-9W-OJU" userLabel="End Time Date Picker">
+
                                                             <rect key="frame" x="107" y="0.0" width="161" height="62.5"/>
                                                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </datePicker>
@@ -86,10 +89,10 @@
                                                 </stackView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tIC-IJ-tgs" userLabel="Add">
                                                     <rect key="frame" x="15" y="281" width="268" height="33"/>
-                                                    <color key="backgroundColor" red="0.005744885188" green="0.3975281417" blue="0.28626120090000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="backgroundColor" red="0.070601932699999995" green="0.9142068028" blue="0.87059062720000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="19"/>
                                                     <state key="normal" title="Add">
-                                                        <color key="titleColor" systemColor="systemBackgroundColor"/>
+                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
                                                     <connections>
                                                         <action selector="AddPreference:" destination="cXU-IA-9IK" eventType="touchUpInside" id="dak-um-c6O"/>
@@ -115,7 +118,7 @@
                                             </connections>
                                         </button>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.6243644357" green="0.94405275580000003" blue="0.73330658670000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="o3k-q5-Fdf" secondAttribute="trailing" id="0WD-ur-AeE"/>
                                         <constraint firstItem="o3k-q5-Fdf" firstAttribute="top" secondItem="eNg-hN-RNn" secondAttribute="top" id="GqN-cb-djC"/>
@@ -130,7 +133,7 @@
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                 </view>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LogoNoBackground" translatesAutoresizingMaskIntoConstraints="NO" id="gmL-g4-bej">
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LOGOTrans" translatesAutoresizingMaskIntoConstraints="NO" id="gmL-g4-bej">
                                     <rect key="frame" x="145" y="134.5" width="124" height="179"/>
                                 </imageView>
                             </subviews>
@@ -154,8 +157,11 @@
                         <blurEffect style="regular"/>
                     </visualEffectView>
                     <connections>
+                        <outlet property="AddButton" destination="tIC-IJ-tgs" id="JCO-41-0oj"/>
                         <outlet property="DayPickerView" destination="vG2-G6-eK3" id="ho9-oK-fpN"/>
                         <outlet property="EndTimeTimePicker" destination="T6S-9W-OJU" id="koY-4q-e0K"/>
+                        <outlet property="ParentView" destination="mL5-Ha-u6C" id="8fu-Ds-vvC"/>
+                        <outlet property="PopUpView" destination="eNg-hN-RNn" id="bIv-u1-n5p"/>
                         <outlet property="StartTimeTimePicker" destination="ybV-9d-vmp" id="Z0R-cZ-Qsy"/>
                     </connections>
                 </viewController>
@@ -165,13 +171,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="LogoNoBackground" width="249.5" height="250"/>
+        <image name="LOGOTrans" width="251" height="248.5"/>
         <image name="x.circle" catalog="system" width="128" height="121"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>

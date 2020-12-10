@@ -1,8 +1,8 @@
 //
-//  AnalyticsDashboardViewController.swift
-//  ConnectZen
+//  AnalyticsDashboardViewController.swift
+//  ConnectZen
 //
-//  Created by Shrishti Jain on 11/13/20.
+//  Created by Shrishti Jain on 11/13/20.
 //
 
 import UIKit
@@ -11,7 +11,10 @@ import TinyConstraints
 import Firebase
 
 class AnalyticsDashboardViewController: UIViewController, ChartViewDelegate {
+    @IBOutlet weak var AnalyticsStackView: UIStackView!
+    var months: [String]!
     
+
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var AnalyticsStackView: UIStackView!
     @IBOutlet weak var monthYearSegControl: UISegmentedControl!
@@ -24,6 +27,7 @@ class AnalyticsDashboardViewController: UIViewController, ChartViewDelegate {
         let ChartView = BarChartView()
         ChartView.backgroundColor = .systemBackground
         return ChartView
+
     }()
     private lazy var firstViewController: MonthViewController = {
             let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
@@ -83,6 +87,7 @@ class AnalyticsDashboardViewController: UIViewController, ChartViewDelegate {
                         add(asChildViewController: secondViewController)
         }
     }
+
 
     override func viewDidLoad() {
         super.viewDidLoad()

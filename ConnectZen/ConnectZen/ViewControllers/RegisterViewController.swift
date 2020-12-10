@@ -72,8 +72,7 @@ class RegisterViewController: UIViewController, FUIAuthDelegate, UIApplicationDe
         return nil
     }
     
-    
-    
+
     @IBAction func NextTapped(_ sender: Any) {
         let error = validateFields()
         if error != nil{
@@ -104,6 +103,8 @@ class RegisterViewController: UIViewController, FUIAuthDelegate, UIApplicationDe
                             print("Document successfully written!")
                         }
                     }
+
+                    // Going to calendar (for now) screen (ANOTHER WAY IN VIDEO)
                     let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "PopUpVC") as? PopUpViewController
                     self.navigationController?.pushViewController(vc!, animated: true)
                 }

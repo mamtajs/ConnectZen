@@ -47,7 +47,7 @@ class CalendarViewController: UIViewController {
                 default:
                     print("Case default")
         }
-        //exit(20)
+
         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HomeVC") as? HomeViewController
         self.navigationController?.pushViewController(vc!, animated: true)
     }

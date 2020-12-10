@@ -17,14 +17,14 @@ class ManualContactsViewController: UIViewController, UITableViewDataSource, UIT
     var connectWith = Array<Person>()
     var connectedWith = Array<Person>()
     let phoneNumberKit = PhoneNumberKit()
-
+  
     var authUI: FUIAuth?
     let db = Firestore.firestore()
     
     var registeredPeople = Dictionary<String, [String]>()
     var unRegisteredPeople = Dictionary<String, [String]>()
     var allFriends = Dictionary<String, [String]>()
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("Count \(connectWith.count)")
         if(connectWith.count != 0){
@@ -55,6 +55,8 @@ class ManualContactsViewController: UIViewController, UITableViewDataSource, UIT
         self.NewContactsTableView.dataSource = self
         self.contactsAddedButton.isEnabled = false
         
+      Utilities.styleFilledButton(ContactsAddedButton)
+
         /*self.db.collection("Users").document(Auth.auth().currentUser!.uid).getDocument{ (doc, err) in
             if let doc = doc{
                 let userExistingFriends:[String:[String]] = doc["Friends"] as! [String : [String]]

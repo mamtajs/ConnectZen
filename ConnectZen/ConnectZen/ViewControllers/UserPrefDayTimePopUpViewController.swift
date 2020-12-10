@@ -16,23 +16,43 @@ class UserPrefDayTimePopUpViewController: UIViewController, UIPickerViewDelegate
     @IBOutlet weak var StartTimeTimePicker: UIDatePicker!
     @IBOutlet weak var EndTimeTimePicker: UIDatePicker!
     
+    @IBOutlet weak var ParentView: UIView!
+    @IBOutlet weak var PopUpView: UIView!
+    
     var DaySelected:String = ""
     var delegate:PassBackPreference?
+    @IBOutlet weak var AddButton: UIButton!
     
     //@IBOutlet weak var DayDropDown: DropDown!
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
         self.DayPickerView.delegate = self
         self.DayPickerView.dataSource = self
         
         self.DaySelected = Days[0]
-        self.StartTimeTimePicker.date = getTime(Time: "10:00 AM")
-        self.EndTimeTimePicker.date = getTime(Time: "10:00 PM")
+        self.StartTimeTimePicker.date = getTime(Time: "09:00 AM")
+        self.EndTimeTimePicker.date = getTime(Time: "09:00 PM")
+        StartTimeTimePicker.preferredDatePickerStyle = .inline
+        EndTimeTimePicker.preferredDatePickerStyle = .inline
+        
+        Utilities.styleFilledButton(AddButton)
+        setupPopUpView(popUpView: PopUpView)
+    
         
     }
     
-
+    func setupPopUpView(popUpView:UIView){
+        popUpView.layer.cornerRadius = 10
+        popUpView.layer.shadowColor = UIColor.black.cgColor
+        popUpView.layer.shadowOpacity = 0.6
+        popUpView.layer.shadowOffset = .zero
+        popUpView.layer.shadowRadius = 6
+        popUpView.layer.borderWidth = 2
+        popUpView.layer.borderColor = UIColor.white.cgColor
+    }
     @IBAction func ClosePopUp(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }

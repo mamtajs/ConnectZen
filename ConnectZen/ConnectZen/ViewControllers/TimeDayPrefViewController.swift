@@ -15,7 +15,8 @@ class TimeDayPrefViewController: UIViewController, UITableViewDataSource, UITabl
     @IBOutlet weak var FrequencyStepperElem: UIStepper!
     @IBOutlet weak var TimeStepperElem: UIStepper!
     @IBOutlet weak var PrefTableView: UITableView!
-   
+    @IBOutlet weak var NextButton: UIButton!
+  
     var authUI: FUIAuth?
     let db = Firestore.firestore()
     
@@ -46,7 +47,9 @@ class TimeDayPrefViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+        super.viewDidLoad()        
+        Utilities.styleFilledButton(NextButton)
+        //print("Initial \(TimeStepperElem.value)")
         self.PrefTableView.delegate = self
         self.PrefTableView.dataSource = self
         setDataFromFirebase()
@@ -217,7 +220,7 @@ extension TimeDayPrefViewController: PrefDayTimeTableViewCellDelegate {
         else{ // Button color is red
             
             // Show tool tip of removed from connection
-            showToast(controller: self, message: "Preference removed", seconds: 0.5, colorBackground: .systemGreen, title: "Success")
+            //showToast(controller: self, message: "Preference removed", seconds: 0.5, colorBackground: .systemGreen, title: "Success")
             
             //Remove person from list of contacts
             SavedPreference.remove(at: indexPath.row)
