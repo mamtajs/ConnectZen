@@ -15,8 +15,9 @@ class TimeDayPrefViewController: UIViewController, UITableViewDataSource, UITabl
     @IBOutlet weak var FrequencyStepperElem: UIStepper!
     @IBOutlet weak var TimeStepperElem: UIStepper!
     @IBOutlet weak var PrefTableView: UITableView!
-    @IBOutlet weak var NextButton: UIButton!
-  
+    
+    @IBOutlet weak var preferencesAddedButton: UIButton!
+    
     var authUI: FUIAuth?
     let db = Firestore.firestore()
     
@@ -48,7 +49,7 @@ class TimeDayPrefViewController: UIViewController, UITableViewDataSource, UITabl
     
     override func viewDidLoad() {
         super.viewDidLoad()        
-        Utilities.styleFilledButton(NextButton)
+        Utilities.styleFilledButton(preferencesAddedButton)
         //print("Initial \(TimeStepperElem.value)")
         self.PrefTableView.delegate = self
         self.PrefTableView.dataSource = self

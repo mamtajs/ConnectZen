@@ -21,8 +21,8 @@ class ContactsViewController: UIViewController, UITableViewDataSource, UITableVi
     
    
     @IBOutlet weak var ContactsTableView: UITableView!
-    @IBOutlet weak var ContactsSelectedButton: UIButton!
-
+    @IBOutlet weak var contactsSelectedButton: UIButton!
+    
     var authUI: FUIAuth?
     let db = Firestore.firestore()
 
@@ -105,7 +105,7 @@ class ContactsViewController: UIViewController, UITableViewDataSource, UITableVi
         ContactsTableView.dataSource = self
         
         fetchContacts()
-        Utilities.styleFilledButton(ContactsSelectedButton)
+        Utilities.styleFilledButton(contactsSelectedButton)
     }
     
     func showInviteAlert(){
@@ -191,8 +191,9 @@ class ContactsViewController: UIViewController, UITableViewDataSource, UITableVi
     }
 
     
-    @IBAction func ContactsSelected(_ sender: Any) {
-        loadFromFirebase()
+ 
+    @IBAction func contactsSelected(_ sender: Any) {
+        self.loadFromFirebase()
     }
     
 }

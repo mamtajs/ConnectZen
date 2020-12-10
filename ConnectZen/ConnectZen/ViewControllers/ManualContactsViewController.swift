@@ -13,6 +13,7 @@ import FirebaseUI
 class ManualContactsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var NewContactsTableView: UITableView!
+    
     @IBOutlet weak var contactsAddedButton: UIButton!
     var connectWith = Array<Person>()
     var connectedWith = Array<Person>()
@@ -55,7 +56,7 @@ class ManualContactsViewController: UIViewController, UITableViewDataSource, UIT
         self.NewContactsTableView.dataSource = self
         self.contactsAddedButton.isEnabled = false
         
-      Utilities.styleFilledButton(ContactsAddedButton)
+      Utilities.styleFilledButton(contactsAddedButton)
 
         /*self.db.collection("Users").document(Auth.auth().currentUser!.uid).getDocument{ (doc, err) in
             if let doc = doc{

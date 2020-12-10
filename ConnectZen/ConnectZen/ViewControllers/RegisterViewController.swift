@@ -30,9 +30,9 @@ class RegisterViewController: UIViewController, FUIAuthDelegate, UIApplicationDe
         self.passwordText.adjustsFontSizeToFitWidth = false
         self.confirmPasswordText.adjustsFontSizeToFitWidth = false
         //self.passwordText.autocorrectionType = .no
-        self.passwordText.isSecureTextEntry = true
+        //self.passwordText.isSecureTextEntry = true
         //self.confirmPasswordText.autocorrectionType = .no
-        self.confirmPasswordText.isSecureTextEntry = true
+        //self.confirmPasswordText.isSecureTextEntry = true
         setUpButtons()
         // Do any additional setup after loading the view.
     }

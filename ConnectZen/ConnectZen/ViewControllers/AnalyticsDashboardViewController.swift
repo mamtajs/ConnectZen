@@ -11,7 +11,7 @@ import TinyConstraints
 import Firebase
 
 class AnalyticsDashboardViewController: UIViewController, ChartViewDelegate {
-    @IBOutlet weak var AnalyticsStackView: UIStackView!
+
     var months: [String]!
     
 
@@ -19,7 +19,6 @@ class AnalyticsDashboardViewController: UIViewController, ChartViewDelegate {
     @IBOutlet weak var AnalyticsStackView: UIStackView!
     @IBOutlet weak var monthYearSegControl: UISegmentedControl!
     let db = Firestore.firestore()
-    var months: [String]!
     var yForYearly: [Int] = []
     var xForYearly: [Int] = []
     

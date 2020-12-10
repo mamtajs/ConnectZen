@@ -28,11 +28,11 @@ class PopUpViewController: UIViewController {
             let contactStore = CNContactStore()
             contactStore.requestAccess(for: .contacts) { (access, error) in
                 if(access){ // contact Store access is granted by the user
-                    let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ContactsVC") as? ContactsViewController
-                    self.navigationController?.pushViewController(vc!, animated: true)
+                    //let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ContactsVC") as? ContactsViewController
+                    //self.navigationController?.pushViewController(vc!, animated: true)
                     self.dismiss(animated: true, completion: nil)
                     // Navigate to the contacts view controller using root navigation controller
-                    /*DispatchQueue.main.async{
+                    DispatchQueue.main.async{
                         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ContactsVC") as? ContactsViewController
                         self.navigationController?.pushViewController(vc!, animated: true)
                         /*let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ContactsVC") as? ContactsViewController
@@ -43,8 +43,8 @@ class PopUpViewController: UIViewController {
                         // dismiss the popup
                         self.dismiss(animated: true, completion: nil)
                         
-                    }*/
-                    
+                    }
+                
                 }
                 else{
                     // TODO: Error state

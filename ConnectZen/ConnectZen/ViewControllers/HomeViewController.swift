@@ -18,8 +18,6 @@ class HomeViewController: UIViewController, MenuControllerDelegate {
     let db = Firestore.firestore()
     
     private var sideMenu: SideMenuNavigationController?
-
-    let db = Firestore.firestore()
     @IBOutlet var popUpView: UIView!
     @IBOutlet var blurView: UIVisualEffectView!
     @IBOutlet weak var SchedulingActivityIndicator: UIActivityIndicatorView!
@@ -97,6 +95,7 @@ class HomeViewController: UIViewController, MenuControllerDelegate {
         SideMenuManager.default.addPanGestureToPresent(toView: view)
         present(sideMenu!, animated: true)
     }
+    
    
     func setupPopUpView(popUpView:UIView){
         popUpView.layer.cornerRadius = 10
