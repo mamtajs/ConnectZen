@@ -18,6 +18,7 @@ class ViewAndEditFriendsViewController: UIViewController, UITableViewDelegate, U
     var keysArraySorted:[String] = []
     var valuesArraySorted = [[String]]()
 
+    @IBOutlet weak var doneButton: UIButton!
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.valuesArraySorted.count
@@ -37,17 +38,20 @@ class ViewAndEditFriendsViewController: UIViewController, UITableViewDelegate, U
         
         contactsTableView.delegate = self
         contactsTableView.dataSource = self
+        Utilities.styleFilledButton(doneButton, cornerRadius: xLargeCornerRadius)
         
         self.db.collection("Users").document(Auth.auth().currentUser!.uid).getDocument{ (doc, err) in
             if let doc = doc{
-                self.userExistingFriends = doc["Friends"] as! [String : [String]]
-                let sorted = self.userExistingFriends.sorted { $0.key < $1.key }
-                print(sorted)
-                self.keysArraySorted = Array(sorted.map({ $0.key }))
-                print(self.keysArraySorted)
-                self.valuesArraySorted = Array(sorted.map({ $0.value }))
-                print(self.valuesArraySorted)
-                self.contactsTableView.reloadData()
+                if doc.get("Friends") != nil{
+                    self.userExistingFriends = doc["Friends"] as! [String : [String]]
+                    let sorted = self.userExistingFriends.sorted { $0.key < $1.key }
+                    print(sorted)
+                    self.keysArraySorted = Array(sorted.map({ $0.key }))
+                    print(self.keysArraySorted)
+                    self.valuesArraySorted = Array(sorted.map({ $0.value }))
+                    print(self.valuesArraySorted)
+                    self.contactsTableView.reloadData()
+                }
             }
             else{
                 print("Error reading the user document")

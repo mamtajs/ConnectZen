@@ -38,7 +38,7 @@ class UserPrefDayTimePopUpViewController: UIViewController, UIPickerViewDelegate
         StartTimeTimePicker.preferredDatePickerStyle = .inline
         EndTimeTimePicker.preferredDatePickerStyle = .inline
         
-        Utilities.styleFilledButton(AddButton)
+        Utilities.styleFilledButton(AddButton, cornerRadius: largeCornerRadius)
         setupPopUpView(popUpView: PopUpView)
     
         
@@ -76,12 +76,13 @@ class UserPrefDayTimePopUpViewController: UIViewController, UIPickerViewDelegate
     
     @IBAction func AddPreference(_ sender: Any) {
         //let sTime = self.datePicker.date
-        let sTime = self.StartTimeTimePicker.date.dateStringWith(strFormat: "hh:mm a")
+        
+       // let sTime = self.StartTimeTimePicker.date.dateStringWith(strFormat: "hh:mm a")
         //print(strTime)
-        let eTime = self.EndTimeTimePicker.date.dateStringWith(strFormat: "hh:mm a")
+        //let eTime = self.EndTimeTimePicker.date.dateStringWith(strFormat: "hh:mm a")
         //print(strTime)
-        print("Here we go ", self.DaySelected, sTime, eTime)
-        delegate?.OnPrefAddition(Day: self.DaySelected  , StartTime: sTime, EndTime: eTime)
+        //print("Here we go ", self.DaySelected, sTime, eTime)
+        delegate?.OnPrefAddition(Day: self.DaySelected  , StartDate: self.StartTimeTimePicker.date, EndDate: self.EndTimeTimePicker.date)
         dismiss(animated: true, completion: nil)
     }
     

@@ -14,17 +14,10 @@ class PopUpViewController: UIViewController {
     @IBOutlet weak var EnterContactsManuallyButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        Utilities.styleFilledButton(UseAddressBookButton)
-        Utilities.styleFilledButton(EnterContactsManuallyButton)
+        Utilities.styleFilledButton(UseAddressBookButton, cornerRadius: largeCornerRadius)
+        Utilities.styleFilledButton(EnterContactsManuallyButton, cornerRadius: largeCornerRadius)
     }
     
-    @IBAction func DismissPopUp(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction func CloseClicked(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
     
     @IBAction func UseAddressBookClicked(_ sender: Any) {
 
@@ -68,5 +61,15 @@ class PopUpViewController: UIViewController {
         // dismiss the popup
         self.dismiss(animated: true, completion: nil)
         
+    }
+    
+    //To hide navigation bar in a particular view controller
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
 }

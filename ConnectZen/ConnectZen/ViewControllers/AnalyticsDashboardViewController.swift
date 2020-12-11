@@ -90,6 +90,10 @@ class AnalyticsDashboardViewController: UIViewController, ChartViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let font = UIFont.systemFont(ofSize: 18)
+        monthYearSegControl.setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
+        
         updateView()
         
         /*view.addSubview(lineChartView)
@@ -102,11 +106,10 @@ class AnalyticsDashboardViewController: UIViewController, ChartViewDelegate {
         
     }
     
-    
-    
-    
-    
-    
+    override func viewDidAppear(_ animated: Bool) {
+        settingsIndex = 1
+        self.navigationController?.navigationBar.topItem?.title  = "Analytics Dashboard"
+    }
     
     
     func setChart(dataPoints: [String], values: [Int]) {

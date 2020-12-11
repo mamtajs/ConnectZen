@@ -27,6 +27,8 @@ class RegisterViewController: UIViewController, FUIAuthDelegate, UIApplicationDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setupToHideKeyboardOnTapOnView()
+        
         self.passwordText.adjustsFontSizeToFitWidth = false
         self.confirmPasswordText.adjustsFontSizeToFitWidth = false
         //self.passwordText.autocorrectionType = .no
@@ -38,7 +40,7 @@ class RegisterViewController: UIViewController, FUIAuthDelegate, UIApplicationDe
     }
     
     func setUpButtons(){
-        Utilities.styleFilledButton(nextButton)
+        Utilities.styleFilledButton(nextButton, cornerRadius: xLargeCornerRadius)
     }
 
     func validateFields() -> String?{
@@ -74,9 +76,15 @@ class RegisterViewController: UIViewController, FUIAuthDelegate, UIApplicationDe
     
 
     @IBAction func NextTapped(_ sender: Any) {
+        
+        
+        
+        
+        
+        
         let error = validateFields()
         if error != nil{
-            NotificationBanner.show(error!)
+            NotificationBanner.showFailure(error!)
         }else{
             //create the user
             let name = nameText.text!
@@ -84,18 +92,20 @@ class RegisterViewController: UIViewController, FUIAuthDelegate, UIApplicationDe
             let phoneNumber = phoneNumberText.text!
             let password = passwordText.text!
             let calUpdationAccess: Bool = false
+            let quotesEnabled: Bool = false
     
             
             Auth.auth().createUser(withEmail: email, password: password) { (result, err) in
                 if(err != nil){
-                    NotificationBanner.show(err!.localizedDescription)
+                    NotificationBanner.showFailure(err!.localizedDescription)
                 }
                 else{
                     self.db.collection("Users").document(result!.user.uid).setData([
                         "Name": name,
                         "EmailID": email,
                         "Phone Number": phoneNumber,
-                        "Calendar Updation Access": calUpdationAccess
+                        "Calendar Updation Access": calUpdationAccess,
+                        "Quotes Enabled": quotesEnabled
                     ]) { err in
                         if let err = err {
                             print("Error writing document: \(err)")

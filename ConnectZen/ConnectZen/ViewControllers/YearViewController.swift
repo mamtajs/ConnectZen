@@ -14,6 +14,7 @@ class YearViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     @IBOutlet weak var yearPickerView: UIPickerView!
     @IBOutlet weak var graphView: UIView!
+    @IBOutlet weak var generateChartButton: UIButton!
     var yearSelected: Int = 0
     let db = Firestore.firestore()
     var yForYearly: [Int] = []
@@ -30,6 +31,7 @@ class YearViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         yearPickerView.delegate = self
         yearPickerView.dataSource = self
         self.yearSelected = Int(Years[0])!
+        Utilities.styleFilledButton(generateChartButton, cornerRadius: xLargeCornerRadius)
     }
     
     @IBAction func generateChartTapped(_ sender: Any) {
@@ -123,7 +125,7 @@ class YearViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         view.addSubview(lineChartView)
         lineChartView.center(in: self.graphView)
         lineChartView.width(to: self.graphView, multiplier: 0.9)
-        lineChartView.heightToWidth(of: self.graphView)
+        lineChartView.heightToWidth(of: self.graphView, multiplier: 0.9)
         setChart(dataPoints: monthsShort, values: valuesArraySorted)
     }
 
@@ -140,17 +142,17 @@ class YearViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         lineChartView.legend.font = UIFont.systemFont(ofSize: 18)
         
         let chartData = LineChartData()
-        let marker: BalloonMarker = BalloonMarker(color: UIColor(red: 230/255, green: 126/255, blue: 34/255, alpha: 1), font: UIFont(name: "Helvetica", size: 12)!, textColor: UIColor.white, insets: UIEdgeInsets(top: 7.0, left: 7.0, bottom: 25.0, right: 7.0))
+        let marker: BalloonMarker = BalloonMarker(color: brightColor, font: .systemFont(ofSize: 14), textColor: UIColor.black, insets: UIEdgeInsets(top: 7.0, left: 7.0, bottom: 20.0, right: 7.0))
          marker.minimumSize = CGSize(width: 75.0, height: 35.0)//CGSize(75.0, 35.0)
       
         lineChartView.marker = marker
        
-        chartDataSet.colors = [UIColor(red: 230/255, green: 126/255, blue: 34/255, alpha: 1)]
-        chartDataSet.fillColor = UIColor(red: 180/255, green: 60/255, blue: 15/255, alpha: 1)
+        chartDataSet.colors = [brightColor]
+        chartDataSet.fillColor = lightColor
         chartDataSet.drawFilledEnabled = true // Draw the Gradient
         
         chartDataSet.drawCirclesEnabled = true
-        chartDataSet.circleColors = [UIColor(red: 230/255, green: 126/255, blue: 34/255, alpha: 1)]
+        chartDataSet.circleColors = [brightColor]
         chartDataSet.circleRadius = 4.0
         chartData.addDataSet(chartDataSet)
         chartData.setDrawValues(false)

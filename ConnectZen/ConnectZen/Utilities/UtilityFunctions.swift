@@ -20,6 +20,11 @@ func showToast(controller: UIViewController, message : String, seconds: Double, 
     }
 }
 
+func navigateToTabBar(){
+    let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "TabNavigationVC") as? UINavigationController
+    UIApplication.shared.windows.first?.rootViewController = vc
+    UIApplication.shared.windows.first?.makeKeyAndVisible()
+}
 
 func += <K, V> (left: inout [K:V], right: [K:V]) {
     for (k, v) in right {
@@ -28,5 +33,5 @@ func += <K, V> (left: inout [K:V], right: [K:V]) {
 }
 
 protocol PassBackPreference {
-    func OnPrefAddition(Day: String, StartTime: String, EndTime: String)
+    func OnPrefAddition(Day: String, StartDate: Date, EndDate: Date)
 }

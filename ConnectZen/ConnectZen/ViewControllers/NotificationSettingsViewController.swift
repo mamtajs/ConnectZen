@@ -21,10 +21,12 @@ class NotificationSettingsViewController: UIViewController {
     private func quoteUpdateView(){
         if quotesSegControl.selectedSegmentIndex == 0{ //NO
             removeQuotesNotifications()
-            NotificationBanner.show("You will no longer be receiving daily motivational messages.")
+            self.db.collection("Users").document(Auth.auth().currentUser!.uid).setData(["Quotes Enabled": false], merge: true)
+            NotificationBanner.successShow("You will no longer be receiving daily motivational messages.")
         }else{
             scheduleQuotesNotification()
-            NotificationBanner.show("Your daily motivational quotes have been setup.")
+            self.db.collection("Users").document(Auth.auth().currentUser!.uid).setData(["Quotes Enabled": true], merge: true)
+            NotificationBanner.successShow("Your daily motivational quotes have been setup.")
         }
     }
     private func meetupCalUpdateView(){
@@ -32,7 +34,7 @@ class NotificationSettingsViewController: UIViewController {
             self.db.collection("Users").document(Auth.auth().currentUser!.uid).setData(["Calendar Updation Access": false], merge: true)
         }else{
             if self.checkCalendarAccess() == false{
-                NotificationBanner.show("To enable this you need to give calendar acess to ConnectZen")
+                NotificationBanner.showFailure("To enable this you need to give calendar acess to ConnectZen")
                 let status = self.getCalendarAccess()
                 if status == true{
                     self.meetupsCalSegControl.selectedSegmentIndex = 1
@@ -50,7 +52,7 @@ class NotificationSettingsViewController: UIViewController {
     }
     private func calAccessUpdateView(){
         if self.calAccessSegControl.selectedSegmentIndex == 0{ //NO
-            NotificationBanner.show("To revoke this permission please proceed to your phone settings to make the necessary changes.")
+            NotificationBanner.successShow("To revoke this permission please proceed to your phone settings to make the necessary changes.")
             self.meetupsCalSegControl.selectedSegmentIndex = 0
             self.db.collection("Users").document(Auth.auth().currentUser!.uid).setData(["Calendar Updation Access": false], merge: true)
         }else{
@@ -208,6 +210,12 @@ class NotificationSettingsViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let font = UIFont.systemFont(ofSize: 18)
+        quotesSegControl.setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
+        meetupsCalSegControl.setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
+        calAccessSegControl.setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
+        
         let status = self.checkCalendarAccess()
         print("iCal status ", status)
         if status == true{

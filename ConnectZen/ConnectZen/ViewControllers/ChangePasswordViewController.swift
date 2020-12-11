@@ -14,10 +14,14 @@ class ChangePasswordViewController: UIViewController {
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var confirmPasswordText: UITextField!
     
+    @IBOutlet weak var changePasswordButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.setupToHideKeyboardOnTapOnView()
+        
         // Do any additional setup after loading the view.
+        Utilities.styleFilledButton(changePasswordButton, cornerRadius: xLargeCornerRadius)
     }
     
     func reAuthenticateUser(){
@@ -56,7 +60,7 @@ class ChangePasswordViewController: UIViewController {
               print("Error message: \(error.localizedDescription)")
             }
           } else {
-            NotificationBanner.show("Password updated successfully")
+            NotificationBanner.successShow("Password updated successfully")
             let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HomeVC") as? HomeViewController
             self.navigationController?.pushViewController(vc!, animated: true)
             print("User signs up successfully")
@@ -76,7 +80,7 @@ class ChangePasswordViewController: UIViewController {
     @IBAction func changePasswordTapped(_ sender: Any) {
         let error = validateFields()
         if error != nil{
-            NotificationBanner.show(error!)
+            NotificationBanner.showFailure(error!)
         }else{
             self.changePassword()
         }

@@ -23,7 +23,7 @@ class TimeDayPrefViewController: UIViewController, UITableViewDataSource, UITabl
     
     var SavedPreference: [PrefDayTime] = [] // saved preferences of user
     var durationVal = 15
-    var frequencyVal = 4
+    var frequencyVal = 1
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("Count \(SavedPreference.count)")
@@ -49,12 +49,18 @@ class TimeDayPrefViewController: UIViewController, UITableViewDataSource, UITabl
     
     override func viewDidLoad() {
         super.viewDidLoad()        
-        Utilities.styleFilledButton(preferencesAddedButton)
+        Utilities.styleFilledButton(preferencesAddedButton, cornerRadius: xLargeCornerRadius)
         //print("Initial \(TimeStepperElem.value)")
         self.PrefTableView.delegate = self
         self.PrefTableView.dataSource = self
         setDataFromFirebase()
     }
+    //To hide navigation bar in a particular view controller
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationItem.setHidesBackButton(true, animated: true)
+    }
+    
     
     func setDataFromFirebase(){
         self.db.collection("Users").document(Auth.auth().currentUser!.uid).getDocument{ (doc, err) in
@@ -71,19 +77,22 @@ class TimeDayPrefViewController: UIViewController, UITableViewDataSource, UITabl
                     
                     let dayTimePref = doc["Day and Time Preferences"] as! [String:[String:String]]
                     let keysArray = Array(dayTimePref.keys)
-                    for dayIndex in 0...keysArray.count-1{
-                        let day = keysArray[dayIndex]
-                        let startTimeArray = Array(dayTimePref[day]!.keys)
-                        for timeIndex in 0...startTimeArray.count-1{
-                            let startTime = startTimeArray[timeIndex]
-                            let endTime = dayTimePref[day]![startTime]
-                            let startTimeFinal = self.convertTo12HourFormat(time: startTime)
-                            let endTimeFinal = self.convertTo12HourFormat(time: endTime!)
-                            print(day, startTimeFinal, endTimeFinal)
-                            self.SavedPreference.append(PrefDayTime(Day: day, StartTime: startTimeFinal, EndTime: endTimeFinal))
+                   
+                    if keysArray.count != 0{
+                        for dayIndex in 0...keysArray.count-1{
+                            let day = keysArray[dayIndex]
+                            let startTimeArray = Array(dayTimePref[day]!.keys)
+                            for timeIndex in 0...startTimeArray.count-1{
+                                let startTime = startTimeArray[timeIndex]
+                                let endTime = dayTimePref[day]![startTime]
+                                let startTimeFinal = self.convertTo12HourFormat(time: startTime)
+                                let endTimeFinal = self.convertTo12HourFormat(time: endTime!)
+                                print(day, startTimeFinal, endTimeFinal)
+                                self.SavedPreference.append(PrefDayTime(Day: day, StartTime: startTimeFinal, EndTime: endTimeFinal))
+                            }
                         }
+                        self.PrefTableView.reloadData()
                     }
-                    self.PrefTableView.reloadData()
                 }else{
                     print("Document does not exist")
                     self.TimeStepperElem.value = 15
@@ -136,12 +145,45 @@ class TimeDayPrefViewController: UIViewController, UITableViewDataSource, UITabl
     @IBAction func AddDayTimeClicked(_ sender: Any) {
     }
     
-    func OnPrefAddition(Day: String, StartTime: String, EndTime: String) {
-        print("Got back \(Day) \(StartTime) \(EndTime)")
+    func compareTime(hour1:Int, minute1:Int, hour2:Int, minute2:Int) -> Int{ // return 1 when firstTime>secondTime return -1 when secondTime>firstTime 11>10 else 0
+        if(hour1 > hour2){
+            return 1
+        }
+        else if(hour1 < hour2){
+            return -1
+        }
+        else{ //hou1 == hour2
+            if(minute1 > minute2){
+                return 1
+            }
+            else if(minute1 < minute2){
+                return -1
+            }
+        }
         
-        self.SavedPreference.append(PrefDayTime(Day: Day, StartTime: StartTime, EndTime: EndTime))
+        return 0
+    }
+    
+    func OnPrefAddition(Day: String,  StartDate: Date, EndDate: Date) {
+        print("Got back \(Day) \(StartDate) \(EndDate)")
         
-        PrefTableView.reloadData()
+        var sHrMin:Time = Time(Hour: 0,Minute: 0)
+        sHrMin.Hour = Calendar.current.component(.hour, from: StartDate)
+        sHrMin.Minute = Calendar.current.component(.minute, from: StartDate)
+        
+        var eHrMin:Time = Time(Hour: 0,Minute: 0)
+        eHrMin.Hour = Calendar.current.component(.hour, from: EndDate)
+        eHrMin.Minute = Calendar.current.component(.minute, from: EndDate)
+        
+        // check if startTime is less than endTime
+        if(compareTime(hour1: sHrMin.Hour, minute1: sHrMin.Minute, hour2: eHrMin.Hour, minute2: eHrMin.Minute) >= 0){
+            NotificationBanner.showFailure("Start time of event can not be greater than or equal to the end time, please correct and try again!")
+        }
+        else{
+            self.SavedPreference.append(PrefDayTime(Day: Day, StartTime: StartDate.dateStringWith(strFormat: "hh:mm a"), EndTime: EndDate.dateStringWith(strFormat: "hh:mm a")))
+        
+            PrefTableView.reloadData()
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
@@ -170,6 +212,40 @@ class TimeDayPrefViewController: UIViewController, UITableViewDataSource, UITabl
         return formedTime
     }
     
+    func getHourMinuteFrom(String date: String) -> [Int]{
+        var time:[Int] = []
+        
+        for val in date.split(separator: ":"){
+            time.append(Int(val) ?? 0)
+        }
+        
+        return time
+    }
+    
+    func compareTime2(firstTime: Array<Int>, secondTime: Array<Int>) -> Int{ // return 1 when firstTime>secondTime return -1 when secondTime>firstTime 10>11 else 0
+        if(firstTime[0] > secondTime[0]){
+            return 1
+        }
+        else if(firstTime[0] < secondTime[0]){
+            return -1
+        }
+        else{ //firstTime[0] == secondTime[0]
+            if(firstTime[1] > secondTime[1]){
+                return 1
+            }
+            else if(firstTime[1] < secondTime[1]){
+                return -1
+            }
+        }
+        
+        return 0
+    }
+    
+    func getMinutes(time: String) -> Int{
+        let hrMin = getHourMinuteFrom(String: time)
+        return hrMin[0]*60 + hrMin[1]
+    }
+    
     @IBAction func nextTapped(_ sender: Any) {
         // Adding duration and frequency preferences
         self.db.collection("Users").document(Auth.auth().currentUser!.uid).setData(["Preferred Duration": durationVal], merge: true)
@@ -179,18 +255,89 @@ class TimeDayPrefViewController: UIViewController, UITableViewDataSource, UITabl
         var preferences = Dictionary<String, Dictionary<String, String>>()
         for prefDay in SavedPreference{
             var timesOnDay = Dictionary<String, String>()
+            var minutesToSort =  Dictionary<Int, Array<String>>()
             for prefTimes in SavedPreference{
                 if(prefTimes.Day == prefDay.Day){
                     
                 // TO DO: Convert to 24 hour format
                     let startTimeUpdated: String = convertTo24HourFormat(time: prefTimes.StartTime)
                     let endTimeUpdated: String = convertTo24HourFormat(time: prefTimes.EndTime)
-                    print("startTime: ", startTimeUpdated)
-                    print("endTime: ", endTimeUpdated)
+                    //print("startTime: ", startTimeUpdated)
+                    //print("endTime: ", endTimeUpdated)
+                    let timeStamp = getMinutes(time: startTimeUpdated)
+                    
                     //print("H: \(hour) M: \(minute) TP: \(timePeriod)")
                     timesOnDay[startTimeUpdated] = endTimeUpdated
+                    minutesToSort[timeStamp] = [startTimeUpdated, endTimeUpdated]
                 }
             }
+            // sort dictionary timesOnDay
+            let sorted = minutesToSort.sorted { $0.key < $1.key }
+            var startTimesSorted = Array<String>()
+            var endTimesSorted = Array<String>()
+            let times = Array(sorted.map({ $0.value }))
+            for time in times{
+                startTimesSorted.append(time[0])
+                endTimesSorted.append(time[1])
+            }
+            
+            //print("Sorted Arrays")
+            //print(startTimesSorted)
+            //print(endTimesSorted)
+            // processing
+            var curIndex = 0
+            var curTimeS = Array<Int>()
+            var curTimeE = Array<Int>()
+            
+            var nextTimeS = Array<Int>()
+            var nextTimeE = Array<Int>()
+            
+            timesOnDay.removeAll()
+            
+            curTimeS = getHourMinuteFrom(String: startTimesSorted[curIndex])
+            curTimeE = getHourMinuteFrom(String: endTimesSorted[curIndex])
+            
+            //var key = String(curTimeS[0]) + ":" + String(curTimeS[1])
+            //var val = String(curTim[0]) + ":" + String(curTimeS[1])
+            timesOnDay[startTimesSorted[0]] = endTimesSorted[0]
+            var overlapStatus:Bool = false
+            for index in 1..<startTimesSorted.count{
+                nextTimeS = getHourMinuteFrom(String: startTimesSorted[index])
+                nextTimeE = getHourMinuteFrom(String: endTimesSorted[index])
+                
+                if(compareTime2(firstTime: curTimeS, secondTime: nextTimeS) <= 0 && compareTime2(firstTime: curTimeE, secondTime: nextTimeS) >= 0){
+                    // overlapping
+                    if(compareTime2(firstTime: curTimeE, secondTime: nextTimeE) < 0){
+                        //print("Overlapped", curIndex ,curTimeS, curTimeE, nextTimeS, nextTimeE)
+                        curTimeE = nextTimeE
+                        timesOnDay[startTimesSorted[curIndex]] = String(curTimeE[0]) + ":" + String(curTimeE[1])
+                        overlapStatus = true
+                    }
+                    
+                }
+                else{
+                    if(overlapStatus){
+                        //print("Not Overlapped", curIndex ,curTimeS, curTimeE, nextTimeS, nextTimeE)
+                        overlapStatus = false
+                        timesOnDay[startTimesSorted[curIndex]] = String(curTimeE[0]) + ":" + String(curTimeE[1])
+                        curIndex = index
+                        curTimeS = nextTimeS
+                        curTimeE = nextTimeE
+                        timesOnDay[startTimesSorted[curIndex]] = String(nextTimeE[0]) + ":" + String(nextTimeE[1])
+                    }
+                    else{
+                        //print("Not Overlapped 2", curIndex ,curTimeS, curTimeE, nextTimeS, nextTimeE)
+                        timesOnDay[startTimesSorted[index]] = endTimesSorted[index]
+                        curIndex = index
+                        curTimeS = nextTimeS
+                        curTimeE = nextTimeE
+                    }
+                }
+                
+            }
+            
+            print(prefDay.Day, "-> ",timesOnDay)
+            exit(20)
             preferences[prefDay.Day] = timesOnDay
         }
         //exit(20)

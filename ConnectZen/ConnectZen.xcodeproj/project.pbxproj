@@ -15,6 +15,8 @@
 		223DACE525620B99001FF194 /* UserPrefDayTime.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 223DACE425620B99001FF194 /* UserPrefDayTime.storyboard */; };
 		223DACEA25620C78001FF194 /* UserPrefDayTimePopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223DACE925620C78001FF194 /* UserPrefDayTimePopUpViewController.swift */; };
 		225637EB25818356009DD435 /* CalendarFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225637EA25818356009DD435 /* CalendarFunctions.swift */; };
+		225637ED2582F04C009DD435 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225637EC2582F04C009DD435 /* TabBarViewController.swift */; };
+		225637EF258303F7009DD435 /* SettingsMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225637EE258303F7009DD435 /* SettingsMenuViewController.swift */; };
 		226E5E11254B901700834214 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E5E10254B901700834214 /* ContactTableViewCell.swift */; };
 		226E5E14254BBA7900834214 /* ConstantStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E5E13254BBA7900834214 /* ConstantStructs.swift */; };
 		2272E0602569F14F003AE627 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2272E05F2569F14F003AE627 /* EventsViewController.swift */; };
@@ -85,6 +87,8 @@
 		223DACE425620B99001FF194 /* UserPrefDayTime.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserPrefDayTime.storyboard; sourceTree = "<group>"; };
 		223DACE925620C78001FF194 /* UserPrefDayTimePopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPrefDayTimePopUpViewController.swift; sourceTree = "<group>"; };
 		225637EA25818356009DD435 /* CalendarFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarFunctions.swift; sourceTree = "<group>"; };
+		225637EC2582F04C009DD435 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		225637EE258303F7009DD435 /* SettingsMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsMenuViewController.swift; sourceTree = "<group>"; };
 		226E5E10254B901700834214 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
 		226E5E13254BBA7900834214 /* ConstantStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantStructs.swift; sourceTree = "<group>"; };
 		2272E05F2569F14F003AE627 /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
@@ -220,6 +224,8 @@
 				B615D64F2580B5FC000866F2 /* NotificationSettingsViewController.swift */,
 				B615D669258152E6000866F2 /* ResetPasswordViewController.swift */,
 				B615D66E258177F6000866F2 /* ChangePasswordViewController.swift */,
+				225637EC2582F04C009DD435 /* TabBarViewController.swift */,
+				225637EE258303F7009DD435 /* SettingsMenuViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -612,6 +618,7 @@
 				B64E0444255F7368002107A9 /* AnalyticsDashboardViewController.swift in Sources */,
 				B615D64625802477000866F2 /* ViewAndEditFriendsViewController.swift in Sources */,
 				B615D64B25806FEE000866F2 /* ContactsTableCell.swift in Sources */,
+				225637ED2582F04C009DD435 /* TabBarViewController.swift in Sources */,
 				B6936AAF2559979C005E8DD9 /* NotificationBanner.swift in Sources */,
 				226E5E14254BBA7900834214 /* ConstantStructs.swift in Sources */,
 				22D4C36325315BD10028A57D /* LoginViewController.swift in Sources */,
@@ -626,6 +633,7 @@
 				221E32D1254804A200310713 /* DesignableView.swift in Sources */,
 				22E911682551E36E00A00F00 /* UtilityFunctions.swift in Sources */,
 				225637EB25818356009DD435 /* CalendarFunctions.swift in Sources */,
+				225637EF258303F7009DD435 /* SettingsMenuViewController.swift in Sources */,
 				22D4C35F25315BD10028A57D /* AppDelegate.swift in Sources */,
 				B6E256F42565C6E5007989D2 /* InviteViewController.swift in Sources */,
 				B6389F88257BF78C00219B6F /* FeedbackViewController.swift in Sources */,

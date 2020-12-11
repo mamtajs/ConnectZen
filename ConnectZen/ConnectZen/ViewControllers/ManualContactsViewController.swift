@@ -28,9 +28,14 @@ class ManualContactsViewController: UIViewController, UITableViewDataSource, UIT
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("Count \(connectWith.count)")
-        if(connectWith.count != 0){
+        if(connectWith.count > 0){
             print("Enabling add contact button")
             contactsAddedButton.isEnabled = true
+            Utilities.styleFilledButton(contactsAddedButton, cornerRadius: xLargeCornerRadius)
+        }
+        else{
+            contactsAddedButton.isEnabled = false
+            Utilities.disabledFilledButton(contactsAddedButton, cornerRadius: xLargeCornerRadius)
         }
         return connectWith.count
     }
@@ -55,8 +60,9 @@ class ManualContactsViewController: UIViewController, UITableViewDataSource, UIT
         self.NewContactsTableView.delegate = self
         self.NewContactsTableView.dataSource = self
         self.contactsAddedButton.isEnabled = false
+
         
-      Utilities.styleFilledButton(contactsAddedButton)
+        Utilities.disabledFilledButton(contactsAddedButton, cornerRadius: xLargeCornerRadius)
 
         /*self.db.collection("Users").document(Auth.auth().currentUser!.uid).getDocument{ (doc, err) in
             if let doc = doc{
@@ -75,6 +81,7 @@ class ManualContactsViewController: UIViewController, UITableViewDataSource, UIT
             
         }*/
     }
+    
 
     @IBAction func AddNewContact(_ sender: Any) {
         showAlertWithTextField()
@@ -116,15 +123,17 @@ class ManualContactsViewController: UIViewController, UITableViewDataSource, UIT
                     NewContactsTableView.reloadData()
                     
                     // show message of added
-                    showToast(controller: self, message: "Contact \(text!) added", seconds: 2, colorBackground: .systemGreen, title: "Success")
+                    //showToast(controller: self, message: "Contact \(text!) added", seconds: 2, colorBackground: .systemGreen, title: "Success")
                 }
                 else{
-                    showToast(controller: self, message: "Contact Number is Invalid! ", seconds: 3, colorBackground: .systemRed, title: "Error")
+                    NotificationBanner.showFailure("Contact Number is Invalid! ")
+                    //showToast(controller: self, message: "Contact Number is Invalid! ", seconds: 3, colorBackground: .systemRed, title: "Error")
                 }
             }
             else{
                 // Show error
-                showToast(controller: self, message: "Error: Please enter both contact name and phone number to connect.", seconds: 2, colorBackground: .systemRed, title: "Error")
+                NotificationBanner.showFailure("Please enter both contact name and phone number to connect.")
+                //showToast(controller: self, message: "Error: Please enter both contact name and phone number to connect.", seconds: 2, colorBackground: .systemRed, title: "Error")
             }
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
@@ -252,7 +261,7 @@ extension ManualContactsViewController: ContactTableViewCellDelegate {
         else{ // Button color is red
             
             // Show tool tip of removed from connection
-            showToast(controller: self, message: "\(String(cell.ContactName.text!)) removed", seconds: 0.5, colorBackground: .systemGreen, title: "Success")
+            //showToast(controller: self, message: "\(String(cell.ContactName.text!)) removed", seconds: 0.5, colorBackground: .systemGreen, title: "Success")
             
             //Remove person from list of contacts
             connectWith.remove(at: indexPath.row)

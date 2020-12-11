@@ -30,6 +30,7 @@ class ContactsViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // return number of rows
         print("Number of Contacts: ", contactNames.count)
+        
         return self.contacts.count
     }
     
@@ -105,8 +106,13 @@ class ContactsViewController: UIViewController, UITableViewDataSource, UITableVi
         ContactsTableView.dataSource = self
         
         fetchContacts()
-        Utilities.styleFilledButton(contactsSelectedButton)
+        contactsSelectedButton.isEnabled = false
+        Utilities.disabledFilledButton(contactsSelectedButton, cornerRadius: xLargeCornerRadius)
+        print("Button disabled")
+        //navigationController?.navigationItem.hidesBackButton = true
+        
     }
+    
     
     func showInviteAlert(){
         let alertController = UIAlertController(title: "Add Friends", message: "All of the \(connectWith.count) people have been added as your friends. However \(unRegisteredPeople.count) of these people are not currently registered on ConnectZen. You can go ahead and invite them. Do you want to invite them?", preferredStyle: .alert)
@@ -215,7 +221,16 @@ extension ContactsViewController: ContactTableViewCellDelegate {
             // Add person to dictonary of contacts
             let p = Person(contactName: String(cell.ContactName.text!), PhoneNumber: contacts[indexPath.row].phoneNumbers[0].value.stringValue);
             connectWith[indexPath.row] = p
-            
+            if(self.connectWith.count > 0){
+                contactsSelectedButton.isEnabled = true
+                Utilities.styleFilledButton(contactsSelectedButton, cornerRadius: xLargeCornerRadius)
+                print("Button enabled")
+            }
+            else{
+                contactsSelectedButton.isEnabled = false
+                Utilities.disabledFilledButton(contactsSelectedButton, cornerRadius: xLargeCornerRadius)
+                print("Button disabled")
+            }
             // Show tool tip of added to contacts
             //showToast(controller: self, message: "\(String(cell.ContactName.text!)) added", seconds: 0.5, colorBackground: .systemGreen, title: "Success")
             
@@ -230,7 +245,16 @@ extension ContactsViewController: ContactTableViewCellDelegate {
             
             //Remove person from dictonary of contacts
             connectWith[indexPath.row] = nil
-            
+            if(self.connectWith.count > 0){
+                contactsSelectedButton.isEnabled = true
+                Utilities.styleFilledButton(contactsSelectedButton, cornerRadius: xLargeCornerRadius)
+                print("Button enabled")
+            }
+            else{
+                contactsSelectedButton.isEnabled = false
+                Utilities.disabledFilledButton(contactsSelectedButton, cornerRadius: xLargeCornerRadius)
+                print("Button disabled")
+            }
             // Show tool tip of removed from connection
             //showToast(controller: self, message: "\(String(cell.ContactName.text!)) removed", seconds: 0.5, colorBackground: .systemGreen, title: "Success")
             

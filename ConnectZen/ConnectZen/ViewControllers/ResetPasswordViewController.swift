@@ -13,10 +13,15 @@ class ResetPasswordViewController: UIViewController, FUIAuthDelegate {
 
     var authUI: FUIAuth?
     @IBOutlet weak var emailAddressText: UITextField!
+    
+    @IBOutlet weak var sendEmailButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.setupToHideKeyboardOnTapOnView()
+        
         // Do any additional setup after loading the view.
+        Utilities.styleFilledButton(sendEmailButton, cornerRadius: xLargeCornerRadius)
     }
     
     func resetPassword(){
@@ -33,7 +38,7 @@ class ResetPasswordViewController: UIViewController, FUIAuthDelegate {
             }
           } else {
             print("Reset password email has been successfully sent")
-            NotificationBanner.show("Reset password email has been sent to your given email address.")
+            NotificationBanner.successShow("Reset password email has been sent to your given email address.")
           }
         }
     }

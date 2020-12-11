@@ -23,3 +23,9 @@ var dayTimePrefPageFlag = 0
 var userEmail: String = ""
 var userPassword: String = ""
 
+let smallCornerRadius:CGFloat = 5
+let mediumCornerRadius:CGFloat = 10
+let largeCornerRadius:CGFloat = 15
+let xLargeCornerRadius:CGFloat = 22
+let xxLargeCornerRadius:CGFloat = 25
+var settingsIndex:Int = 0

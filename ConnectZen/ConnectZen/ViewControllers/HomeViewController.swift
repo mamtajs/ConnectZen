@@ -13,11 +13,11 @@ import SideMenu
 
 
 
-class HomeViewController: UIViewController, MenuControllerDelegate {
+class HomeViewController: UIViewController {
     
     let db = Firestore.firestore()
     
-    private var sideMenu: SideMenuNavigationController?
+    
     @IBOutlet var popUpView: UIView!
     @IBOutlet var blurView: UIVisualEffectView!
     @IBOutlet weak var SchedulingActivityIndicator: UIActivityIndicatorView!
@@ -38,18 +38,19 @@ class HomeViewController: UIViewController, MenuControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+        
        // setup other views after loading the view.
         blurView.bounds = self.view.bounds
         schedButton.layer.cornerRadius = 10
         popUpView.bounds = CGRect(x: 0, y: 0, width: self.view.bounds.width * 0.9, height: self.view.bounds.height * 0.4)
-        Utilities.styleFilledButton(ScheduleMeetingsButton)
+        Utilities.styleFilledButton(ScheduleMeetingsButton, cornerRadius: xLargeCornerRadius)
         
         setupPopUpView(popUpView: popUpView)
     }
     
     //To hide navigation bar in a particular view controller
     override func viewWillAppear(_ animated: Bool) {
+        settingsIndex = 2
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
@@ -60,41 +61,11 @@ class HomeViewController: UIViewController, MenuControllerDelegate {
     
     
     @IBAction func SettingsButtonTapped(_ sender: Any) {
-        print("Settings button tapped")
-        let menu = MenuController(with: ["View/Edit Friends", "View/Edit Day-Time Preferences", "Notifications Settings", "Provide Feedback", "Change Password", "Delete Account", "Sign Out"])
-        menu.delegate = self
         
         
-        let navigationView = UIView()
-        let label = UILabel()
-        label.text = "ConnectZen"
-        label.sizeToFit()
-        label.center = navigationView.center
-        label.textAlignment = NSTextAlignment.center
-        let image = UIImageView()
-        image.image = UIImage(named: "Logo.png")
-        // To maintain the image's aspect ratio:
-        let imageAspect = image.image!.size.width/image.image!.size.height
-        // Setting the image frame so that it's immediately before the text:
-        image.frame = CGRect(x: label.frame.origin.x-label.frame.size.height*imageAspect, y: label.frame.origin.y, width: label.frame.size.height*imageAspect, height: label.frame.size.height)
-        image.contentMode = UIView.ContentMode.scaleAspectFit
-        navigationView.addSubview(label)
-        navigationView.addSubview(image)
-        menu.navigationItem.titleView = navigationView
-        navigationView.sizeToFit()
-        sideMenu = SideMenuNavigationController(rootViewController: menu)
-        sideMenu?.leftSide = true
-        sideMenu?.menuWidth = min(view.frame.width, view.frame.height) * 0.80
-        sideMenu?.title = "ConnectZen"
-       
-        
-        //sideMenu?.setNavigationBarHidden(true, animated: false)
-        
-        SideMenuSettings().presentationStyle.presentingEndAlpha = 0.5
-        SideMenuManager.default.leftMenuNavigationController = sideMenu
-        SideMenuManager.default.addPanGestureToPresent(toView: view)
-        present(sideMenu!, animated: true)
     }
+    
+    
     
    
     func setupPopUpView(popUpView:UIView){
@@ -228,7 +199,35 @@ class HomeViewController: UIViewController, MenuControllerDelegate {
         }
     }*/
     
+    
     @IBAction func scheduleButtonTapped(_ sender: Any) {
+        
+        self.db.collection("Users").document(Auth.auth().currentUser!.uid).getDocument{ (doc, err) in
+            if let doc = doc, doc.exists{
+                let quoteStatus = doc["Quotes Enabled"] as? Bool
+                let numFriends = doc["Friends"] as? [String : [String]]
+                let duration = doc["Preferred Duration"] as? Int
+                let numMeetups = doc["Preferred Frequency"] as? Int
+
+                if(quoteStatus != nil) {
+                    if (quoteStatus!) {
+                        self.scheduleQuotesNotification()
+                    }
+                }
+                if(numFriends == nil || duration == nil || numMeetups == nil){
+                    NotificationBanner.showFailure("Your app setup is incomplete, please head over to the settings page and add some friends to get started!")
+                    return
+                }
+                
+                self.scheduleMeetups()
+            }else{
+                print("Document does not exist")
+            }
+        }
+        
+    }
+    
+    func scheduleMeetups(){
         // Start scheduling Meetups only if it is not already done for the next month
         var nextMonthEventsScheduled = false
         
@@ -257,12 +256,11 @@ class HomeViewController: UIViewController, MenuControllerDelegate {
                     
                 }
                 else{
-                    NotificationBanner.show("All your Meetups for the nextmonth are already scheduled! Checkout your scheduled Meetups page.")
+                    NotificationBanner.successShow("All your Meetups for the nextmonth are already scheduled! Checkout your scheduled Meetups page.")
                     
                 }
             }
         }
-        
     }
     
     func loadFromFirebase(){
@@ -274,13 +272,13 @@ class HomeViewController: UIViewController, MenuControllerDelegate {
                 //print("Duration", document["Preferred Duration"] as String)
                 print(dataDescription)
                 
-                self.durationOfMeetup = document["Preferred Duration"] as! Int
-                self.numOfMeetupsPerMonth = document["Preferred Frequency"] as! Int
+                self.durationOfMeetup = document["Preferred Duration"] as? Int ?? 0
+                self.numOfMeetupsPerMonth = document["Preferred Frequency"] as? Int ?? 0
                 if(document["Day and Time Preferences"] != nil){
                     self.prefDayTime =  document["Day and Time Preferences"] as! [String : [String : String]]
                 }
-                self.listFriends = document["Friends"] as! [String : [String]]
-                self.createCalendarEvents = document["Calendar Updation Access"] as! Bool
+                self.listFriends = document["Friends"] as? [String : [String]] ?? self.listFriends
+                self.createCalendarEvents = document["Calendar Updation Access"] as? Bool ?? false
                 
                 // Schedule events
                 self.scheduleEvents()
@@ -292,9 +290,10 @@ class HomeViewController: UIViewController, MenuControllerDelegate {
                 
                 // Show Scheduled Events page
                 let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EventsVC") as? EventsViewController
+                self.tabBarController?.selectedIndex = 3
                 vc?.MeetupDatesTime = self.MeetupDatesTime
                 vc?.MeetupFriends = self.MeetupFriends
-                self.navigationController?.pushViewController(vc!, animated: true)
+                //self.navigationController?.pushViewController(vc!, animated: true)
             }
             else{
                 print("Document not found")
@@ -303,7 +302,7 @@ class HomeViewController: UIViewController, MenuControllerDelegate {
                 self.animateOut(desiredView: self.blurView)
                 
                 // show error message
-                NotificationBanner.show("Meetups could not be scheduled because of incomplete preferences. Go to the Settings page to complete them.")
+                NotificationBanner.showFailure("Meetups could not be scheduled because of incomplete preferences. Go to the Settings page to complete them.")
             }
         }
         
@@ -1192,73 +1191,38 @@ class HomeViewController: UIViewController, MenuControllerDelegate {
     @IBAction func CalendarButtonTapped(_ sender: Any) {
         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EventsVC") as? EventsViewController
         self.navigationController?.pushViewController(vc!, animated: true)
+        
     }
     
     @IBAction func RewardsButtonTapped(_ sender: Any) {
     }
   
-    func showDeleteAccountConfirmAlert(){
-        let alertController = UIAlertController(title: "Confirm Delete", message: "Are you sure that you want to delete your account? Once deleted you will not be able to recover your account again.", preferredStyle: .alert)
-        let yesAction = UIAlertAction(title: "Yes", style: .default) { [self] (_) in
-            let user = Auth.auth().currentUser
-            user?.delete { error in
-              if let error = error {
-                // An error happened.
-              } else {
-                self.db.collection("Users").document(Auth.auth().currentUser!.uid).delete()
-                self.navigationController?.popToRootViewController(animated: true)
-              }
-            }
-        }
-        let noAction = UIAlertAction(title: "No", style: .default) { (_) in
-        }
-        alertController.addAction(yesAction)
-        alertController.addAction(noAction)
-        self.present(alertController, animated: true, completion: nil)
-    }
     
     
-    func didSelectMenuItem(named: String) {
-        sideMenu?.dismiss(animated: true, completion: {
-            if named == "Notifications Settings"{
-                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "NotificationsVC") as? NotificationSettingsViewController
-                self.navigationController?.pushViewController(vc!, animated: true)
-            }
-            else if named == "Change Password"{
-                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ChangePassVC") as? ChangePasswordViewController
-                self.navigationController?.pushViewController(vc!, animated: true)
-            }
-            else if named == "Provide Feedback"{
-                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "FeedbackVC") as? FeedbackViewController
-                self.navigationController?.pushViewController(vc!, animated: true)
-            }
-            else if named == "View/Edit Friends"{
-                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ViewEditVC") as? ViewAndEditFriendsViewController
-                self.navigationController?.pushViewController(vc!, animated: true)
-            }
-            else if named == "View/Edit Day-Time Preferences"{
-                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "TimeDayPref") as? TimeDayPrefViewController
-                self.navigationController?.pushViewController(vc!, animated: true)
-            }
-            else if named == "Delete Account"{
-                self.showDeleteAccountConfirmAlert()
-            }
-            else if named == "Sign Out"{
-                let firebaseAuth = Auth.auth()
-                do{
-                    try firebaseAuth.signOut()
-                } catch let signOutError as NSError {
-                    print("Error Signing out- %@", signOutError)
-                }
-                self.navigationController?.popToRootViewController(animated: true)
-               
-            }
-        })
-    }
+    
+    
 
 }
 
-extension UIViewController {
+/*extension UIViewController
+{
+    func setupToHideKeyboardOnTapOnView()
+    {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(
+            target: self,
+            action: #selector(UIViewController.dismissKeyboard))
+
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+
+    @objc func dismissKeyboard()
+    {
+        view.endEditing(true)
+    }
+}*/
+
+/*extension UIViewController {
     func hideKeyboardWhenTappedAround() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
         tap.cancelsTouchesInView = false
@@ -1268,51 +1232,7 @@ extension UIViewController {
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
-}
+}*/
 
 
-protocol MenuControllerDelegate{
-    func didSelectMenuItem(named: String)
-}
 
-class MenuController: UITableViewController{
-    
-    public var delegate: MenuControllerDelegate?
-    private let menuItems: [String]
-    let menuSymbols = ["person.2", "square.and.pencil", "bell.badge", "ellipsis.bubble", "lock.rotation", "trash", "lock"]
-    
-    init(with menuItems: [String]) {
-        self.menuItems = menuItems
-        super.init(nibName: nil, bundle: nil)
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-    }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        tableView.backgroundColor = .white
-        tableView.separatorStyle = .none
-        view.backgroundColor = .white
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return menuItems.count
-    }
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = menuItems[indexPath.row]
-        let image:UIImage = UIImage(systemName: self.menuSymbols[indexPath.row])!
-        print("The loaded image: \(image)")
-        cell.imageView!.image = image
-        cell.imageView?.tintColor = .black
-        cell.backgroundColor = .white
-        cell.selectionStyle = .gray
-        return cell
-    }
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        let selectedItem = menuItems[indexPath.row]
-        delegate?.didSelectMenuItem(named: selectedItem)
-    }
-}

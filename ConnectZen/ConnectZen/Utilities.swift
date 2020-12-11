@@ -27,10 +27,20 @@ class Utilities {
         
     }
     
-    static func styleFilledButton(_ button:UIButton) {
+    static func styleFilledButton(_ button:UIButton, cornerRadius:CGFloat) {
         // Filled rounded corner style
         button.backgroundColor = UIColor.init(red: 8/255, green: 232/255, blue: 222/255, alpha: 1)
-        button.layer.cornerRadius = 15
+        button.layer.cornerRadius = cornerRadius
+        button.layer.opacity = 1
+        button.tintColor = UIColor.black
+        button.setTitleColor(UIColor.black, for: .normal)
+    }
+    
+    static func disabledFilledButton(_ button:UIButton, cornerRadius:CGFloat) {
+        // Filled rounded corner style
+        button.backgroundColor = UIColor.init(red: 8/255, green: 232/255, blue: 222/255, alpha: 1)
+        button.layer.cornerRadius = cornerRadius
+        button.layer.opacity = 0.5
         button.tintColor = UIColor.black
         button.setTitleColor(UIColor.black, for: .normal)
     }

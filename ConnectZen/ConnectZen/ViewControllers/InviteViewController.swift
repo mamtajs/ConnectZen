@@ -13,11 +13,24 @@ class InviteViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var UnregisteredTableView: UITableView!
     var unRegisteredPeople: [String] = []
     
+    @IBOutlet weak var DoneButton: UIButton!
+    @IBOutlet weak var shareInvitationButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         UnregisteredTableView.dataSource = self
         UnregisteredTableView.delegate = self
+        
+        Utilities.styleFilledButton(shareInvitationButton, cornerRadius: xLargeCornerRadius)
+        Utilities.styleFilledButton(DoneButton, cornerRadius: xLargeCornerRadius)
     }
+    //To hide navigation bar in a particular view controller
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationItem.setHidesBackButton(true, animated: true)
+    }
+    
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.unRegisteredPeople.count
     }

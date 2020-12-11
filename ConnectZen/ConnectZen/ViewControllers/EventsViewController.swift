@@ -43,6 +43,7 @@ class EventsViewController: UIViewController,UITableViewDelegate, UITableViewDat
     var listFriends = Dictionary<String , Array<String>>()
     var createCalendarEvents:Bool = false
     var allFriends = Array<Person>()
+    var EventDates = Set<String>()
     var UpComingMeetings = Array<Event>()
     var PreviousMeetings = Array<Event>()
     var indexInData:Int = 0
@@ -51,6 +52,7 @@ class EventsViewController: UIViewController,UITableViewDelegate, UITableViewDat
     var selectedFriendIndex:Int = 0
     @IBOutlet weak var StartTimeEditEventView: UIDatePicker!
     @IBOutlet weak var EndTimeEditEventView: UIDatePicker!
+    
     var startTime24HrPrev:Time = Time(Hour: 0, Minute: 0)
     var endTime24HrPrev:Time = Time(Hour: 0, Minute: 0)
     var startTime24Hr:Time = Time(Hour: 0, Minute: 0)
@@ -61,13 +63,16 @@ class EventsViewController: UIViewController,UITableViewDelegate, UITableViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        let font = UIFont.systemFont(ofSize: 18)
+        EventType.setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
+        AbleToConnectSegment.setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
+        
         EventsTableView.dataSource = self
         EventsTableView.delegate = self
         FriendEditEventView.delegate = self
         FriendEditEventView.dataSource = self
         
-        initializeUpComingMeetings()
+        //initializeUpComingMeetings()
         
         // setup other views after loading the view.
         BlurView.bounds = self.view.bounds
@@ -93,6 +98,16 @@ class EventsViewController: UIViewController,UITableViewDelegate, UITableViewDat
         EndTimeEditEventView.preferredDatePickerStyle = .inline
         Utilities.styleFilledButtonWithShadowDestructive(DeleteMeetupButton)
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        settingsIndex = 3
+        self.navigationController?.navigationBar.topItem?.title  = "Scheduled Meetings"
+        EventType.selectedSegmentIndex = 0
+        UpComingMeetings.removeAll()
+        PreviousMeetings.removeAll()
+        EventDates.removeAll()
+        initializeUpComingMeetings()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -326,8 +341,9 @@ class EventsViewController: UIViewController,UITableViewDelegate, UITableViewDat
             else{
                 var newEvent:Event = Event(TimeStamp: 0, Day: "", Date: "", StartTime: "", EndTime: "", FriendName:"", FriendPhoneNumber: "", FriendEmail: "", FriendID: "", MeetupHappened: false, documentID: "", calendarEventID: "")
                 var count = 0
+                print("Got UpComing Meetups in Events")
                 for document in querySnapShot!.documents {
-                    //print("\(document.documentID) => \(document.data())")
+                    print("\(document.documentID) => \(document.data())")
                     newEvent.Day = document.data()["Day"] as! String
                     newEvent.Date = document.data()["Date"] as! String
                     newEvent.StartTime = document.data()["StartTime"] as! String
@@ -339,8 +355,10 @@ class EventsViewController: UIViewController,UITableViewDelegate, UITableViewDat
                     newEvent.calendarEventID = document.data()["CalendarEventID"] as? String ?? ""
                     count += 1
                     
-                    self.UpComingMeetings.append(newEvent)
-                    
+                    if(!self.EventDates.contains(newEvent.Date)){
+                        self.UpComingMeetings.append(newEvent)
+                        self.EventDates.insert(newEvent.Date)
+                    }
                 }
                 
                 // Fetch friends data
@@ -355,8 +373,8 @@ class EventsViewController: UIViewController,UITableViewDelegate, UITableViewDat
         query.getDocument{ [self](document, error) in
             if let document = document, document.exists{
                 
-                self.listFriends = document["Friends"] as! [String : [String]]
-                self.createCalendarEvents = document["Calendar Updation Access"] as! Bool
+                self.listFriends = document["Friends"] as? [String : [String]] ?? self.listFriends
+                self.createCalendarEvents = document["Calendar Updation Access"] as? Bool ?? false
                 
                 // Map Friends
                 var count = 0
@@ -369,6 +387,7 @@ class EventsViewController: UIViewController,UITableViewDelegate, UITableViewDat
                 
                 self.EventsTableView.reloadData()
                 
+                self.allFriends.removeAll()
                 for friend in listFriends{
                     let newVal = Person(contactName: friend.value[0], PhoneNumber: friend.key)
                     listFriends[newVal.PhoneNumber]?.append(String(allFriends.count))
@@ -405,8 +424,9 @@ class EventsViewController: UIViewController,UITableViewDelegate, UITableViewDat
             else{
                 var newEvent:Event = Event(TimeStamp: 0, Day: "", Date: "", StartTime: "", EndTime: "", FriendName:"", FriendPhoneNumber: "", FriendEmail: "", FriendID: "", MeetupHappened: false, documentID: "", calendarEventID: "")
                 var count = 0
+                print("Got Previous Meetups in Events")
                 for document in querySnapShot!.documents {
-                    //print("\(document.documentID) => \(document.data())")
+                    print("\(document.documentID) => \(document.data())")
                     newEvent.Day = document.data()["Day"] as! String
                     newEvent.Date = document.data()["Date"] as! String
                     newEvent.StartTime = document.data()["StartTime"] as! String
@@ -418,7 +438,11 @@ class EventsViewController: UIViewController,UITableViewDelegate, UITableViewDat
                     newEvent.calendarEventID = document.data()["CalendarEventID"] as? String ?? ""
                     count += 1
                     
-                    self.PreviousMeetings.append(newEvent)
+                    if(!EventDates.contains(newEvent.Date)){
+                        self.PreviousMeetings.append(newEvent)
+                        EventDates.insert(newEvent.Date)
+                    }
+                    
                 }
                 
                 // Map Friends
@@ -527,7 +551,7 @@ class EventsViewController: UIViewController,UITableViewDelegate, UITableViewDat
         guard MFMailComposeViewController.canSendMail() else{
             // show error to user and return
             print("Device doesn't support email")
-            NotificationBanner.show("Please setup \"Mail\" application on your device to enable this feature.")
+            NotificationBanner.showFailure("Please setup \"Mail\" application on your device to enable this feature.")
             return
         }
         
@@ -544,22 +568,22 @@ class EventsViewController: UIViewController,UITableViewDelegate, UITableViewDat
         if let _ = error{
             // show error alert233
             controller.dismiss(animated: true)
-            NotificationBanner.show("Error occured while sending email, please try again later!")
+            NotificationBanner.showFailure("Error occured while sending email, please try again later!")
         }
         
         controller.dismiss(animated: true)
         
         switch result{
-        case .cancelled:
-            NotificationBanner.show("Email cancelled")
+        //case .cancelled:
+          //  NotificationBanner.show("Email cancelled")
         case .failed:
-            NotificationBanner.show("Email failed to send, please try again later!")
-        case .saved:
-            NotificationBanner.show("Email saved!")
+            NotificationBanner.showFailure("Email failed to send, please try again later!")
+        //case .saved:
+         //   NotificationBanner.show("Email saved!")
         case .sent:
-            NotificationBanner.showWithColor("Reminder email sent!", UIColor(red: 0, green: 102/255, blue: 0, alpha: 1), UIColor.white)
+            NotificationBanner.successShow("Reminder email sent!")
         @unknown default:
-            print("eMail Error")
+            print("Email cancelled or saved or default")
         }
         
     }
@@ -582,7 +606,7 @@ class EventsViewController: UIViewController,UITableViewDelegate, UITableViewDat
         }
         //This is just for testing purpose as when you run in the simulator, you cannot send the message.
         else{
-            NotificationBanner.show("Please setup \"Messages\" application on your device to enable this feature.")
+            NotificationBanner.showFailure("Please setup \"Messages\" application on your device to enable this feature.")
             print("Cannot send the message: not supported on device!")
         }
     }
@@ -592,14 +616,14 @@ class EventsViewController: UIViewController,UITableViewDelegate, UITableViewDat
         //Displaying the message screen with animation.
         self.dismiss(animated: true, completion: nil)
         switch result {
-        case .cancelled:
-            NotificationBanner.show("Message cancelled!")
+        //case .cancelled:
+            //NotificationBanner.show("Message cancelled!")
         case .sent:
-            NotificationBanner.showWithColor("Reminder message sent!", UIColor(red: 0, green: 102/255, blue: 0, alpha: 1), UIColor.white)
+            NotificationBanner.successShow("Reminder message sent!")
         case .failed:
-            NotificationBanner.show("Failed to send message, Please try again later!")
+            NotificationBanner.showFailure("Failed to send message, Please try again later!")
         default:
-            print("Error in message sending")
+            print("Default in message sending")
         }
         
     }
@@ -627,7 +651,7 @@ class EventsViewController: UIViewController,UITableViewDelegate, UITableViewDat
                     db.collection("Users").document(Auth.auth().currentUser!.uid).collection("Meetups").document(self.UpComingMeetings[self.indexInData].documentID).delete() { err in
                         if let err = err {
                             print("Error removing document: \(err)")
-                            NotificationBanner.show("Failed to delete meetup, Please try again later!")
+                            NotificationBanner.showFailure("Failed to delete meetup, Please try again later!")
                         }
                         else {
                             print("Document successfully removed!")
@@ -659,7 +683,7 @@ class EventsViewController: UIViewController,UITableViewDelegate, UITableViewDat
         db.collection("Users").document(Auth.auth().currentUser!.uid).collection("Meetups").document(self.PreviousMeetings[self.indexInData].documentID).updateData(["MeetupHappened": toSave], completion: {err in
             if let err = err {
                 print("Error updating document: \(err)")
-                NotificationBanner.show("Failed to update meetup status, Please try again later!")
+                NotificationBanner.showFailure("Failed to update meetup status, Please try again later!")
             }
             else{
                 self.PreviousMeetings[self.indexInData].MeetupHappened = (self.AbleToConnectSegment.selectedSegmentIndex == 1)
@@ -803,7 +827,7 @@ class EventsViewController: UIViewController,UITableViewDelegate, UITableViewDat
             db.collection("Users").document(Auth.auth().currentUser!.uid).collection("Meetups").document(self.UpComingMeetings[self.indexInData].documentID).updateData(["FriendPhoneNumber": self.allFriends[self.rowToSelectForPickerView[1]].PhoneNumber], completion: {err in
                 if let err = err {
                     print("Error updating document: \(err)")
-                    NotificationBanner.show("Failed to update event, Please try again later!")
+                    NotificationBanner.showFailure("Failed to update event, Please try again later!")
                 }
                 else{
                     self.someDataUpdatedInEvent = true
@@ -827,7 +851,7 @@ class EventsViewController: UIViewController,UITableViewDelegate, UITableViewDat
         // Check if startTime has changed if so update it, is less than endTime if not then show error
         
         if(compareTime(hour1: startTime24Hr.Hour, minute1: startTime24Hr.Minute, hour2: endTime24Hr.Hour, minute2: endTime24Hr.Minute) >= 0){
-            NotificationBanner.show("Start time of event can not be greater than or equal to the end time, please correct and try again!")
+            NotificationBanner.showFailure("Start time of event can not be greater than or equal to the end time, please correct and try again!")
         }
         else{
             // if startTime is changed
@@ -838,7 +862,7 @@ class EventsViewController: UIViewController,UITableViewDelegate, UITableViewDat
                 db.collection("Users").document(Auth.auth().currentUser!.uid).collection("Meetups").document(self.UpComingMeetings[self.indexInData].documentID).updateData(["StartTime": newTimeString], completion: {err in
                     if let err = err {
                         print("Error updating document: \(err)")
-                        NotificationBanner.show("Failed to update event, Please try again later!")
+                        NotificationBanner.showFailure("Failed to update event, Please try again later!")
                     }
                     else{
                         self.someDataUpdatedInEvent = true
@@ -863,7 +887,7 @@ class EventsViewController: UIViewController,UITableViewDelegate, UITableViewDat
             db.collection("Users").document(Auth.auth().currentUser!.uid).collection("Meetups").document(self.UpComingMeetings[self.indexInData].documentID).updateData(["EndTime": newTimeString], completion: {err in
                 if let err = err {
                     print("Error updating document: \(err)")
-                    NotificationBanner.show("Failed to update event, Please try again later!")
+                    NotificationBanner.showFailure("Failed to update event, Please try again later!")
                 }
                 else{
                     self.someDataUpdatedInEvent = true

@@ -19,9 +19,9 @@ class LoginViewController: UIViewController, FUIAuthDelegate, UIApplicationDeleg
     var changePassFlag = 0
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpButtons()
+        self.setupToHideKeyboardOnTapOnView()
         
-        self.hideKeyboardWhenTappedAround()
+        setUpButtons()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -33,7 +33,7 @@ class LoginViewController: UIViewController, FUIAuthDelegate, UIApplicationDeleg
     
     
     func setUpButtons(){
-        Utilities.styleFilledButton(loginButton)
+        Utilities.styleFilledButton(loginButton, cornerRadius: xxLargeCornerRadius)
     }
 
     func validateFields() -> String?{
@@ -46,7 +46,7 @@ class LoginViewController: UIViewController, FUIAuthDelegate, UIApplicationDeleg
     @IBAction func LoginNormal(_ sender: Any) {
         let error = validateFields()
         if error != nil{
-            NotificationBanner.show(error!)
+            NotificationBanner.showFailure(error!)
         }else{
             let email = emailIDText.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let password = passwordText.text!.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -57,15 +57,15 @@ class LoginViewController: UIViewController, FUIAuthDelegate, UIApplicationDeleg
                     //NotificationBanner.show(err!.localizedDescription)
                     switch AuthErrorCode(rawValue: err.code) {
                     case .operationNotAllowed:
-                        NotificationBanner.show("This operation is not allowed")
+                        NotificationBanner.showFailure("This operation is not allowed")
                     case .userDisabled:
-                        NotificationBanner.show("This user has been disabled")
+                        NotificationBanner.showFailure("This user has been disabled")
                     case .invalidEmail:
-                        NotificationBanner.show("The email-ID entered is ill-formed")
+                        NotificationBanner.showFailure("The email-ID entered is ill-formed")
                     case .wrongPassword:
-                        NotificationBanner.show("Wrong password has been entered")
+                        NotificationBanner.showFailure("Wrong password has been entered")
                     default:
-                        NotificationBanner.show("There is no registered user with given credentials")
+                        NotificationBanner.showFailure("There is no registered user with given credentials")
                         print(err.localizedDescription)
                     }
                 }else{
@@ -73,8 +73,7 @@ class LoginViewController: UIViewController, FUIAuthDelegate, UIApplicationDeleg
                         self.changePassFlag = 0
                         self.navigationController?.popViewController(animated: true)
                     }
-                    let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HomeVC") as? HomeViewController
-                    self.navigationController?.pushViewController(vc!, animated: true)
+                    navigateToTabBar()
                 }
             }
         }
@@ -90,6 +89,24 @@ class LoginViewController: UIViewController, FUIAuthDelegate, UIApplicationDeleg
     @IBAction func RegisterNewUser(_ sender: Any) {
         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "RegisterVC") as? RegisterViewController
         self.navigationController?.pushViewController(vc!, animated: true)
+    }
+}
+
+extension UIViewController
+{
+    func setupToHideKeyboardOnTapOnView()
+    {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(
+            target: self,
+            action: #selector(UIViewController.dismissKeyboard))
+
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+
+    @objc func dismissKeyboard()
+    {
+        view.endEditing(true)
     }
 }
 

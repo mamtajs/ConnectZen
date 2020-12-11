@@ -10,19 +10,20 @@ import EventKit
 
 class CalendarViewController: UIViewController {
 
-    @IBOutlet weak var yesButton: UIButton!
-    @IBOutlet weak var noButton: UIButton!
+    
+    @IBOutlet weak var noCalendarAccessButton: UIButton!
+    @IBOutlet weak var calendarAccessGrantedButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpButtons()
     }
     func setUpButtons(){
-        Utilities.styleFilledButton(yesButton)
-        Utilities.styleFilledButton(noButton)
+        Utilities.styleFilledButton(noCalendarAccessButton, cornerRadius: largeCornerRadius)
+        Utilities.styleFilledButton(calendarAccessGrantedButton, cornerRadius: largeCornerRadius)
     }
     
-    @IBAction func YesTapped(_ sender: Any) {
+    @IBAction func calendarAccessGranted(_ sender: Any) {
         let eventStore = EKEventStore()
         switch EKEventStore.authorizationStatus(for: .event) {
         case .authorized:
@@ -48,9 +49,14 @@ class CalendarViewController: UIViewController {
                     print("Case default")
         }
 
-        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HomeVC") as? HomeViewController
-        self.navigationController?.pushViewController(vc!, animated: true)
+        navigateToTabBar()
     }
+    
+    @IBAction func noCalendarAccess(_ sender: Any) {
+        NotificationBanner.successShow("Calendar access not given. You can change this later in notification settings.")
+        navigateToTabBar()
+    }
+   
     
     func getHourMinuteOfEvent(date: Date) -> [Int]{
             let dateFormatter = DateFormatter()
@@ -68,11 +74,6 @@ class CalendarViewController: UIViewController {
             return [hour, minute]
         }
     
-    @IBAction func NoTapped(_ sender: Any) {
-        NotificationBanner.show("Calendar access not given. You can change this later in notification settings.")
-        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HomeVC") as? HomeViewController
-        self.navigationController?.pushViewController(vc!, animated: true)
-    }
     
     func getDate(day: Int, nextMonth: Int, year: Int, hour: Int, minute: Int) -> Date{
             let calendar = Calendar.current
