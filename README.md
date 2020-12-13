@@ -12,8 +12,9 @@ ConnectZen helps you connect with your loved ones in 3 easy steps. Just add in y
 
 ## Team Members
 Thank you for you time and feel free to connect with the ConnectZen team!
-Shrishti Jain 
--shrishtj@uci.edu
+
+Shrishti Jain
+- shrishtj@uci.edu
 Mamta Shah
 - mamtajs@uci.edu
 Shreya Kunjibettu
