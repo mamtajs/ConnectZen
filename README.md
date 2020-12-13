@@ -8,14 +8,12 @@ This is where ConnectZen comes in! We’ve developed an app that provides a conv
 
 ## OVERVIEW
 ![ConnectZen](https://github.com/mamatajs/ConnectZen/blob/main/Overview-ConnectZen.png?raw=true)
+
 ConnectZen helps you connect with your loved ones in 3 easy steps. Just add in your favorite contacts to stay in touch with, feed in any preferences for when and how often you want to meet them and finally hit the “sheh dule schedule events” button. The app will then work diligently to schedule your meetings for the upcoming month in accordance with your preferences. All your future meetings can be scheduled with just a tap, as your preferences are automatically saved by the app. 
 
 ## Team Members
 Thank you for you time and feel free to connect with the ConnectZen team!
 
-Shrishti Jain
-- shrishtj@uci.edu
-Mamta Shah
-- mamtajs@uci.edu
-Shreya Kunjibettu
-- skunjibe@uci.edu
+Mamta Shah (mamtajs@uci.edu)
+Shrishti Jain (shrishtj@uci.edu)
+Shreya Kunjibettu (skunjibe@uci.edu)
