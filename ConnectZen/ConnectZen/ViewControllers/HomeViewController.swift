@@ -24,11 +24,13 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var schedButton: UIButton!
     @IBOutlet weak var ScheduleMeetingsButton: UIButton!
     
+    @IBOutlet weak var welcomeLabel: UILabel!
     // User preferences for schedule meetups
     var durationOfMeetup:Int = 10 // minutes
     var numOfMeetupsPerMonth:Int = 5 // people
     var prefDayTime =  Dictionary<String, Dictionary<String, String>>() // Day -> {StartTime-> EndTime, ....}
     var createCalendarEvents:Bool = false
+    let defaultMeetupHappened:Bool = true
     
     let meetupDefaultStartTime:String = "09:00"
     let meetupDefaultEndTime:String = "21:00"
@@ -39,7 +41,17 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.db.collection("Users").document(Auth.auth().currentUser!.uid).getDocument{ (doc, err) in
+            if let doc = doc, doc.exists{
+                let userName = doc["Name"] as? String
+                self.welcomeLabel.text = "Welcome, " + userName!
+                
+            }else{
+                print("Document does not exist")
+            }
+        }
        // setup other views after loading the view.
+        
         blurView.bounds = self.view.bounds
         schedButton.layer.cornerRadius = 10
         popUpView.bounds = CGRect(x: 0, y: 0, width: self.view.bounds.width * 0.9, height: self.view.bounds.height * 0.4)
@@ -47,6 +59,8 @@ class HomeViewController: UIViewController {
         
         setupPopUpView(popUpView: popUpView)
     }
+    
+    
     
     //To hide navigation bar in a particular view controller
     override func viewWillAppear(_ animated: Bool) {
@@ -115,13 +129,13 @@ class HomeViewController: UIViewController {
                         for doc in querySnapShot!.documents{
                             let content = UNMutableNotificationContent()
                             content.title = "Today's Quote"
-                            content.body = ((doc["Title"] as? String)!) + "\n-" + ((doc["Author"] as? String)!)
+                            content.body = ((doc["Title"] as? String)!) + "\n- " + ((doc["Author"] as? String)!)
                             
                             var dateComponents = DateComponents()
                             dateComponents.calendar = Calendar.current
 
                             dateComponents.weekday = date // Tuesday
-                            dateComponents.hour = 8    // 08:00 hours
+                            dateComponents.hour = 20    // 08:00 hours
                            
                             // Create the trigger as a repeating event.
                             let trigger = UNCalendarNotificationTrigger(
@@ -243,7 +257,9 @@ class HomeViewController: UIViewController {
                 
             }
             else{
-                let count = querySnapShot!.documents.count
+                // Change
+                //let count = querySnapShot!.documents.count
+                let count = 0
                 nextMonthEventsScheduled = (count != 0)
                 
                 if(!nextMonthEventsScheduled){
@@ -569,14 +585,13 @@ class HomeViewController: UIViewController {
     
     func scheduleEvents(){
         // TODO: consider whole day events and remove them
-        
         let valuesNextMonth = getNextMonth(today: Date())
-        let nextMonth: Int = valuesNextMonth.0
-        let year: Int = valuesNextMonth.1
+        let nextMonth: Int = 1//valuesNextMonth.0
+        let year: Int = 2022//valuesNextMonth.1
         let daysInNextMonth:Int = getDaysInNextMonth(nextMonth: nextMonth, year: year)
         
         // TODO: If events for next month is scheduled then return
-        print(nextMonth, year)
+        print("Find me", nextMonth, year)
         
         var DatesTimesAvailable : [Date: [[Int]]] = [:]
         let calendarAccess:Bool = getStatusOfCalendarAccess()
@@ -990,7 +1005,7 @@ class HomeViewController: UIViewController {
             UpcomingMeetups["StartTime"] = self.get12HourTimeString(time: MeetupDatesTime[mdt.key]![0])
             UpcomingMeetups["EndTime"] = self.get12HourTimeString(time: MeetupDatesTime[mdt.key]![1])
             UpcomingMeetups["FriendPhoneNumber"] = self.MeetupFriends[count]
-            UpcomingMeetups["MeetupHappened"] = String(false)
+            UpcomingMeetups["MeetupHappened"] = String(self.defaultMeetupHappened)//String(false)
             count += 1
             print(count-1,". ",UpcomingMeetups["Day"]!,":" ,UpcomingMeetups["Date"]! ,"," , UpcomingMeetups["StartTime"]!, "-", UpcomingMeetups["EndTime"]!, UpcomingMeetups["FriendPhoneNumber"]!)
             

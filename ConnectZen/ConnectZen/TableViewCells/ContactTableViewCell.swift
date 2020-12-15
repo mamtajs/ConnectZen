@@ -16,7 +16,7 @@ class ContactTableViewCell: UITableViewCell {
 
     @IBOutlet weak var ContactName: UILabel!
     @IBOutlet weak var ActionButton: UIButton!
-    
+    var type:Bool = false
     //Delegate property as weak
     weak var cellDelegate:ContactTableViewCellDelegate?
     

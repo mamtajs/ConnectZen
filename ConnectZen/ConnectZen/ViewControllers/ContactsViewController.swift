@@ -17,7 +17,7 @@ class ContactsViewController: UIViewController, UITableViewDataSource, UITableVi
     var registeredPeople = Dictionary<String, [String]>()
     var unRegisteredPeople = Dictionary<String, [String]>()
     var allFriends = Dictionary<String, [String]>()
-    
+    var addedFriends = Set<String>()
     
    
     @IBOutlet weak var ContactsTableView: UITableView!
@@ -37,10 +37,20 @@ class ContactsViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // return the cell
         let cell = tableView.dequeueReusableCell(withIdentifier: "ContactTableViewCell") as! ContactTableViewCell
-        cell.ActionButton.tintColor = brightColor
+       
         cell.cellDelegate = self
         print(indexPath)
         cell.ContactName.text = "\(String(contacts[indexPath.row].givenName) + " " + String(contacts[indexPath.row].familyName))"
+        if(addedFriends.firstIndex(of: cell.ContactName.text!) == nil){
+            let image = UIImage(systemName: "plus.circle")
+            cell.ActionButton.setBackgroundImage(image, for: .normal)
+            cell.ActionButton.tintColor = brightColor
+        }
+        else{
+            let image = UIImage(systemName: "minus.circle")
+            cell.ActionButton.setBackgroundImage(image, for: .normal)
+            cell.ActionButton.tintColor = UIColor.red
+        }
         
         return cell
     }
@@ -109,8 +119,23 @@ class ContactsViewController: UIViewController, UITableViewDataSource, UITableVi
         contactsSelectedButton.isEnabled = false
         Utilities.disabledFilledButton(contactsSelectedButton, cornerRadius: xLargeCornerRadius)
         print("Button disabled")
+        self.addedFriends.removeAll()
         //navigationController?.navigationItem.hidesBackButton = true
         
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationItem.setHidesBackButton(true, animated: true)
+        if friendsPageFlag == 1{
+            self.navigationController?.setNavigationBarHidden(true, animated: animated)
+            self.tabBarController?.navigationController?.navigationBar.topItem?.title  = "Select Contacts"
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        //friendsPageFlag = 0
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
     
@@ -128,8 +153,9 @@ class ContactsViewController: UIViewController, UITableViewDataSource, UITableVi
         let cancelAction = UIAlertAction(title: "Don't Invite", style: .default) { (_) in
             if friendsPageFlag == 1 {
                 friendsPageFlag = 0
-                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HomeVC") as? HomeViewController
-                self.navigationController?.pushViewController(vc!, animated: true)
+                /*let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HomeVC") as? HomeViewController
+                self.navigationController?.pushViewController(vc!, animated: true)*/
+                navigateToTabBar()
             }else{
                 let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "TimeDayPref") as? TimeDayPrefViewController
                 self.navigationController?.pushViewController(vc!, animated: true)
@@ -184,8 +210,7 @@ class ContactsViewController: UIViewController, UITableViewDataSource, UITableVi
             showToast(controller: self, message: "\(self.registeredPeople.count) people have been added as your friends on ConnectZen", seconds: 1, colorBackground: .systemGreen, title: "Success")
             if friendsPageFlag == 1 {
                 friendsPageFlag = 0
-                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HomeVC") as? HomeViewController
-                self.navigationController?.pushViewController(vc!, animated: true)
+                navigateToTabBar()
             }else{
                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(4), execute: { [self] in
                     let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "TimeDayPref") as? TimeDayPrefViewController
@@ -216,11 +241,12 @@ extension ContactsViewController: ContactTableViewCellDelegate {
             let image = UIImage(systemName: "minus.circle")
             cell.ActionButton.setBackgroundImage(image, for: .normal)
             // Change color to red
-            cell.ActionButton.tintColor = UIColor(red: 0.836095, green: 0.268795, blue: 0.178868, alpha: 1)
-            
+            cell.ActionButton.tintColor = UIColor.red
+            cell.type = true
             // Add person to dictonary of contacts
             let p = Person(contactName: String(cell.ContactName.text!), PhoneNumber: contacts[indexPath.row].phoneNumbers[0].value.stringValue);
             connectWith[indexPath.row] = p
+            addedFriends.insert(cell.ContactName.text!)
             if(self.connectWith.count > 0){
                 contactsSelectedButton.isEnabled = true
                 Utilities.styleFilledButton(contactsSelectedButton, cornerRadius: xLargeCornerRadius)
@@ -238,12 +264,14 @@ extension ContactsViewController: ContactTableViewCellDelegate {
         }
         else{ // Button color is red
             // Change image to plus
+            
             let image = UIImage(systemName: "plus.circle")
             cell.ActionButton.setBackgroundImage(image, for: .normal)
             // Change color to green
             cell.ActionButton.tintColor = brightColor
-            
+            cell.type = false
             //Remove person from dictonary of contacts
+            addedFriends.remove(at: addedFriends.firstIndex(of: cell.ContactName.text!)!)
             connectWith[indexPath.row] = nil
             if(self.connectWith.count > 0){
                 contactsSelectedButton.isEnabled = true

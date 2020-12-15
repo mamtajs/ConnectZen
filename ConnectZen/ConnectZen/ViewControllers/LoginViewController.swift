@@ -82,11 +82,13 @@ class LoginViewController: UIViewController, FUIAuthDelegate, UIApplicationDeleg
     
     
     @IBAction func ForgotPassword(_ sender: Any) {
+        print("reset password clicked")
         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ResetPassVC") as? ResetPasswordViewController
         self.navigationController?.pushViewController(vc!, animated: true)
     }
     
     @IBAction func RegisterNewUser(_ sender: Any) {
+        print("register user clicked")
         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "RegisterVC") as? RegisterViewController
         self.navigationController?.pushViewController(vc!, animated: true)
     }

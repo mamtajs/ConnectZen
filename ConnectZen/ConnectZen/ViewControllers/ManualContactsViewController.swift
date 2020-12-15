@@ -44,6 +44,8 @@ class ManualContactsViewController: UIViewController, UITableViewDataSource, UIT
         print("Adding new cell")
         let cell = tableView.dequeueReusableCell(withIdentifier: "ContactTableViewCell") as! ContactTableViewCell
         cell.ActionButton.tintColor =  UIColor(red: 0.836095, green: 0.268795, blue: 0.178868, alpha: 1)
+        let image = UIImage(systemName: "minus.circle")
+        cell.ActionButton.setBackgroundImage(image, for: .normal)
         cell.cellDelegate = self
        
         //let cell = UITableViewCell()
@@ -80,6 +82,21 @@ class ManualContactsViewController: UIViewController, UITableViewDataSource, UIT
             }
             
         }*/
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationItem.setHidesBackButton(true, animated: true)
+        if friendsPageFlag == 1{
+            self.navigationController?.setNavigationBarHidden(true, animated: animated)
+            self.tabBarController?.navigationController?.navigationBar.topItem?.title  = "Enter Contacts"
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        friendsPageFlag = 0
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
 
@@ -168,8 +185,9 @@ class ManualContactsViewController: UIViewController, UITableViewDataSource, UIT
         let cancelAction = UIAlertAction(title: "Don't Invite", style: .default) { (_) in
             if friendsPageFlag == 1 {
                 friendsPageFlag = 0
-                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HomeVC") as? HomeViewController
-                self.navigationController?.pushViewController(vc!, animated: true)
+                /*let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HomeVC") as? HomeViewController
+                self.navigationController?.pushViewController(vc!, animated: true)*/
+                navigateToTabBar()
             }else{
                 let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "TimeDayPref") as? TimeDayPrefViewController
                 self.navigationController?.pushViewController(vc!, animated: true)
@@ -228,11 +246,13 @@ class ManualContactsViewController: UIViewController, UITableViewDataSource, UIT
         if self.connectWith.count != self.registeredPeople.count{
             self.showInviteAlert()
         }else{
-            showToast(controller: self, message: "\(self.registeredPeople.count) people have been added as your friends on ConnectZen", seconds: 4, colorBackground: .systemGreen, title: "Success")
+            //showToast(controller: self, message: "\(self.registeredPeople.count) people have been added as your friends on ConnectZen", seconds: 4, colorBackground: .systemGreen, title: "Success")
+            NotificationBanner.successShow("\(self.registeredPeople.count) people have been added as your friends on ConnectZen")
             if friendsPageFlag == 1 {
                 friendsPageFlag = 0
-                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HomeVC") as? HomeViewController
-                self.navigationController?.pushViewController(vc!, animated: true)
+                /*let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HomeVC") as? HomeViewController
+                self.navigationController?.pushViewController(vc!, animated: true)*/
+                navigateToTabBar()
             }else{
                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(4), execute: { [self] in
                     let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "TimeDayPref") as? TimeDayPrefViewController

@@ -332,8 +332,8 @@ class EventsViewController: UIViewController,UITableViewDelegate, UITableViewDat
         //let endTimeStamp = String(getDateTime(day: lastDate, month: nextMonth, year: year, hour: 23, minute: 59).timeIntervalSince1970)
         //print("Before query", startTimeStamp)
         
-        
-        let query = db.collection("Users").document(Auth.auth().currentUser!.uid).collection("Meetups").whereField("TimeStamp", isGreaterThanOrEqualTo: startTimeStamp)
+        // Change 1640851200 to startTimeStamp
+        let query = db.collection("Users").document(Auth.auth().currentUser!.uid).collection("Meetups").whereField("TimeStamp", isGreaterThanOrEqualTo: "1640851201")
         query.getDocuments{(querySnapShot, error) in
             if let error = error{
                 print("Error getting documents: \(error)")
@@ -414,7 +414,7 @@ class EventsViewController: UIViewController,UITableViewDelegate, UITableViewDat
         
         print("Current Date: \(curDate)-\(curMonth)-\(curYear):\(curHour):\(curMinute)")
         
-        let startTimeStamp = String(getDateTime(day: curDate, month: curMonth, year: curYear, hour: curHour, minute: curMinute).timeIntervalSince1970)
+        let startTimeStamp = "1640851201"//String(getDateTime(day: curDate, month: curMonth, year: curYear, hour: curHour, minute: curMinute).timeIntervalSince1970)
         
         let query = db.collection("Users").document(Auth.auth().currentUser!.uid).collection("Meetups").whereField("TimeStamp", isLessThan: startTimeStamp)
         query.getDocuments{ [self](querySnapShot, error) in

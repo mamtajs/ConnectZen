@@ -18,6 +18,15 @@ class CalendarViewController: UIViewController {
         super.viewDidLoad()
         setUpButtons()
     }
+    //To hide navigation bar in a particular view controller
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
     func setUpButtons(){
         Utilities.styleFilledButton(noCalendarAccessButton, cornerRadius: largeCornerRadius)
         Utilities.styleFilledButton(calendarAccessGrantedButton, cornerRadius: largeCornerRadius)

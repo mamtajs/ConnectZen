@@ -118,13 +118,14 @@ class NotificationSettingsViewController: UIViewController {
                         for doc in querySnapShot!.documents{
                             let content = UNMutableNotificationContent()
                             content.title = "Today's Quote"
-                            content.body = ((doc["Title"] as? String)!) + "\n-" + ((doc["Author"] as? String)!)
+                            content.body = ((doc["Title"] as? String)!) + "\n- " + ((doc["Author"] as? String)!)
                             
                             var dateComponents = DateComponents()
                             dateComponents.calendar = Calendar.current
                             
                             dateComponents.weekday = date // Tuesday
-                            dateComponents.hour = 8    // 08:00 hours
+                            dateComponents.hour = 20    // 08:00 hours
+                            //dateComponents.minute = 0
                             
                             // Create the trigger as a repeating event.
                             let trigger = UNCalendarNotificationTrigger(
@@ -223,5 +224,30 @@ class NotificationSettingsViewController: UIViewController {
         }else{
             self.calAccessSegControl.selectedSegmentIndex = 0
         }
+        
+        self.db.collection("Users").document(Auth.auth().currentUser!.uid).getDocument{ (doc, err) in
+            if let doc = doc{
+                if doc.get("Quotes Enabled") != nil{
+                    let quotesStatus = doc["Quotes Enabled"] as? Bool
+                    if quotesStatus == true{
+                        self.quotesSegControl.selectedSegmentIndex = 1
+                    }else{
+                        self.quotesSegControl.selectedSegmentIndex = 0
+                    }
+                }
+            }
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        /*let navigationController2 = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "settingNavigationControllerVC") as? UINavigationController
+        navigationController2?.setNavigationBarHidden(true, animated: animated)*/
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        self.tabBarController?.navigationController?.navigationBar.topItem?.title  = "Notification Settings"
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
 }

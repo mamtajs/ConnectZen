@@ -24,6 +24,18 @@ class ChangePasswordViewController: UIViewController {
         Utilities.styleFilledButton(changePasswordButton, cornerRadius: xLargeCornerRadius)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        /*let navigationController2 = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "settingNavigationControllerVC") as? UINavigationController
+        navigationController2?.setNavigationBarHidden(true, animated: animated)*/
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        self.tabBarController?.navigationController?.navigationBar.topItem?.title  = "Change Password"
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
     func reAuthenticateUser(){
         let user = Auth.auth().currentUser
         var credential: AuthCredential
@@ -61,8 +73,9 @@ class ChangePasswordViewController: UIViewController {
             }
           } else {
             NotificationBanner.successShow("Password updated successfully")
-            let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HomeVC") as? HomeViewController
-            self.navigationController?.pushViewController(vc!, animated: true)
+            /*let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HomeVC") as? HomeViewController
+            self.navigationController?.pushViewController(vc!, animated: true)*/
+            navigateToTabBar()
             print("User signs up successfully")
           }
         })

@@ -123,40 +123,45 @@ class MonthViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
                             if (meetUpTimeStamp as! String) <= week1EndTimestamp{
                                 if meetupStatus == "true"{
                                     //weeksWithValues["Week1"] +=
+                                    print("meeting in week1")
                                     let week1Val = self.weeksWithValues["Week1"]
-                                    self.weeksWithValues.updateValue(week1Val ?? 0 + 1, forKey: "Week1")
+                                    self.weeksWithValues.updateValue((week1Val ?? 0) + 1, forKey: "Week1")
                                 }
                             }
                             else if(meetUpTimeStamp as! String) <= week2EndTimestamp{
                                 if meetupStatus == "true"{
                                     //weeksWithValues["Week1"] +=
+                                    print("meeting in week2")
                                     let week2Val = self.weeksWithValues["Week2"]
-                                    self.weeksWithValues.updateValue(week2Val ?? 0 + 1, forKey: "Week2")
+                                    self.weeksWithValues.updateValue((week2Val ?? 0) + 1, forKey: "Week2")
                                 }
                             }
                             else if (meetUpTimeStamp as! String) <= week3EndTimestamp{
                                 if meetupStatus == "true"{
                                     //weeksWithValues["Week1"] +=
+                                    print("meeting in week3")
                                     let week3Val = self.weeksWithValues["Week3"]
-                                    self.weeksWithValues.updateValue(week3Val ?? 0 + 1, forKey: "Week3")
+                                    self.weeksWithValues.updateValue((week3Val ?? 0) + 1, forKey: "Week3")
                                 }
                             }
                             else if (meetUpTimeStamp as! String) <= week4EndTimestamp{
                                 if meetupStatus == "true"{
                                     //weeksWithValues["Week1"] +=
+                                    print("meeting in week4")
                                     let week4Val = self.weeksWithValues["Week4"]
-                                    self.weeksWithValues.updateValue(week4Val ?? 0 + 1, forKey: "Week4")
+                                    self.weeksWithValues.updateValue((week4Val ?? 0) + 1, forKey: "Week4")
                                 }
                             }
                             else{
                                 if meetupStatus == "true"{
                                     //weeksWithValues["Week1"] +=
+                                    print("meeting in week5")
                                     let week5Val = self.weeksWithValues["Week5"]
-                                    self.weeksWithValues.updateValue(week5Val ?? 0 + 1, forKey: "Week5")
+                                    self.weeksWithValues.updateValue((week5Val ?? 0) + 1, forKey: "Week5")
                                 }
                             }
                         }
-                        print(self.weeksWithValues)
+                        print("Printing with values ", self.weeksWithValues)
                         if (self.weeksWithValues.index(forKey: "Week1") == nil){
                             self.weeksWithValues["Week1"] = 0
                         }

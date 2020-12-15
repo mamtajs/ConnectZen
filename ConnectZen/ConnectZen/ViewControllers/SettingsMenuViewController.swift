@@ -62,7 +62,16 @@ class SettingsMenuViewController: UIViewController, MenuControllerDelegate, Side
         //SideMenuManager.default.addPanGestureToPresent(toView: view)
         present(sideMenu!, animated: true)
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        self.tabBarController?.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        self.tabBarController?.navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
     
     
     override func viewDidAppear(_ animated: Bool) {
@@ -92,10 +101,12 @@ class SettingsMenuViewController: UIViewController, MenuControllerDelegate, Side
                 self.navigationController?.pushViewController(vc!, animated: true)
             }
             else if named == "View/Edit Friends"{
+
                 let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ViewEditVC") as? ViewAndEditFriendsViewController
                 self.navigationController?.pushViewController(vc!, animated: true)
             }
             else if named == "View/Edit Day-Time Preferences"{
+                dayTimePrefPageFlag = 1
                 let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "TimeDayPref") as? TimeDayPrefViewController
                 self.navigationController?.pushViewController(vc!, animated: true)
             }
@@ -109,8 +120,11 @@ class SettingsMenuViewController: UIViewController, MenuControllerDelegate, Side
                 } catch let signOutError as NSError {
                     print("Error Signing out- %@", signOutError)
                 }
-                self.navigationController?.popToRootViewController(animated: true)
+                print("view controllers stackkkkkkkkkkkkkkk", self.navigationController?.viewControllers)
                 
+                let navigationController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Navigator") as! LoginNavigationViewController
+               UIApplication.shared.windows.first?.rootViewController = navigationController
+               UIApplication.shared.windows.first?.makeKeyAndVisible()
             }
             else if named == "Close Settings"{
                 let vcs = self.tabBarController?.viewControllers

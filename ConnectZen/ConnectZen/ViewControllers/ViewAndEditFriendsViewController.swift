@@ -59,7 +59,17 @@ class ViewAndEditFriendsViewController: UIViewController, UITableViewDelegate, U
             
         }
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        /*let navigationController2 = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "settingNavigationControllerVC") as? UINavigationController
+        navigationController2?.setNavigationBarHidden(true, animated: animated)*/
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        self.tabBarController?.navigationController?.navigationBar.topItem?.title  = "View/Edit friends"
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
     
     @IBAction func addContactTapped(_ sender: Any) {
         friendsPageFlag = 1
@@ -69,8 +79,9 @@ class ViewAndEditFriendsViewController: UIViewController, UITableViewDelegate, U
     
     
     @IBAction func updateContactsTapped(_ sender: Any) {
-        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HomeVC") as? HomeViewController
-        self.navigationController?.pushViewController(vc!, animated: true)
+        /*let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HomeVC") as? HomeViewController
+        self.navigationController?.pushViewController(vc!, animated: true)*/
+        navigateToTabBar()
     }
     
     

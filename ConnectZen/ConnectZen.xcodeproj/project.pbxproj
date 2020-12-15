@@ -12,6 +12,8 @@
 		221E32D1254804A200310713 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221E32D0254804A200310713 /* DesignableView.swift */; };
 		221E32D92548061000310713 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221E32D82548061000310713 /* PopUpViewController.swift */; };
 		221E32DE2548ED0900310713 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221E32DD2548ED0900310713 /* ContactsViewController.swift */; };
+		221EE20625858A8B00FEEB6D /* TestingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221EE20525858A8B00FEEB6D /* TestingViewController.swift */; };
+		221EE20B25859EE400FEEB6D /* LoginNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221EE20A25859EE400FEEB6D /* LoginNavigationViewController.swift */; };
 		223DACE525620B99001FF194 /* UserPrefDayTime.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 223DACE425620B99001FF194 /* UserPrefDayTime.storyboard */; };
 		223DACEA25620C78001FF194 /* UserPrefDayTimePopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223DACE925620C78001FF194 /* UserPrefDayTimePopUpViewController.swift */; };
 		225637EB25818356009DD435 /* CalendarFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225637EA25818356009DD435 /* CalendarFunctions.swift */; };
@@ -84,6 +86,8 @@
 		221E32D0254804A200310713 /* DesignableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
 		221E32D82548061000310713 /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
 		221E32DD2548ED0900310713 /* ContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
+		221EE20525858A8B00FEEB6D /* TestingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingViewController.swift; sourceTree = "<group>"; };
+		221EE20A25859EE400FEEB6D /* LoginNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNavigationViewController.swift; sourceTree = "<group>"; };
 		223DACE425620B99001FF194 /* UserPrefDayTime.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserPrefDayTime.storyboard; sourceTree = "<group>"; };
 		223DACE925620C78001FF194 /* UserPrefDayTimePopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPrefDayTimePopUpViewController.swift; sourceTree = "<group>"; };
 		225637EA25818356009DD435 /* CalendarFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarFunctions.swift; sourceTree = "<group>"; };
@@ -226,6 +230,8 @@
 				B615D66E258177F6000866F2 /* ChangePasswordViewController.swift */,
 				225637EC2582F04C009DD435 /* TabBarViewController.swift */,
 				225637EE258303F7009DD435 /* SettingsMenuViewController.swift */,
+				221EE20525858A8B00FEEB6D /* TestingViewController.swift */,
+				221EE20A25859EE400FEEB6D /* LoginNavigationViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -623,6 +629,8 @@
 				226E5E14254BBA7900834214 /* ConstantStructs.swift in Sources */,
 				22D4C36325315BD10028A57D /* LoginViewController.swift in Sources */,
 				22E911652550F69000A00F00 /* ManualContactsViewController.swift in Sources */,
+				221EE20625858A8B00FEEB6D /* TestingViewController.swift in Sources */,
+				221EE20B25859EE400FEEB6D /* LoginNavigationViewController.swift in Sources */,
 				B6936AAA2558FF0B005E8DD9 /* Utilities.swift in Sources */,
 				221E32D92548061000310713 /* PopUpViewController.swift in Sources */,
 				22FFCD242563162C00A280F4 /* Constants.swift in Sources */,

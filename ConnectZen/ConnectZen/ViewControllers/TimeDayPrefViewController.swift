@@ -53,12 +53,24 @@ class TimeDayPrefViewController: UIViewController, UITableViewDataSource, UITabl
         //print("Initial \(TimeStepperElem.value)")
         self.PrefTableView.delegate = self
         self.PrefTableView.dataSource = self
+        
+        
         setDataFromFirebase()
     }
     //To hide navigation bar in a particular view controller
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationItem.setHidesBackButton(true, animated: true)
+        if dayTimePrefPageFlag == 1{
+            self.navigationController?.setNavigationBarHidden(true, animated: animated)
+            self.tabBarController?.navigationController?.navigationBar.topItem?.title  = "Time and Day preferences"
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        dayTimePrefPageFlag = 0
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
     
@@ -66,7 +78,7 @@ class TimeDayPrefViewController: UIViewController, UITableViewDataSource, UITabl
         self.db.collection("Users").document(Auth.auth().currentUser!.uid).getDocument{ (doc, err) in
             if let doc = doc, doc.exists{
                 if doc.get("Preferred Duration") != nil{
-                    dayTimePrefPageFlag = 1
+                    //dayTimePrefPageFlag = 1
                     let prefDuration = doc["Preferred Duration"] as! Double
                     let prefFrequency = doc["Preferred Frequency"] as! Double
                     self.TimeStepperElem.value = prefDuration
@@ -95,16 +107,16 @@ class TimeDayPrefViewController: UIViewController, UITableViewDataSource, UITabl
                     }
                 }else{
                     print("Document does not exist")
-                    self.TimeStepperElem.value = 15
-                    self.FrequencyStepperElem.value = 1
+                    self.TimeStepperElem.value = Double(self.durationVal)
+                    self.FrequencyStepperElem.value = Double(self.frequencyVal)
                 }
                 
                 
             }
             else{
                 print("Error reading the user document")
-                self.TimeStepperElem.value = 15
-                self.FrequencyStepperElem.value = 1
+                self.TimeStepperElem.value = Double(self.durationVal)
+                self.FrequencyStepperElem.value = Double(self.frequencyVal)
             }
         }
     }
@@ -337,7 +349,7 @@ class TimeDayPrefViewController: UIViewController, UITableViewDataSource, UITabl
             }
             
             print(prefDay.Day, "-> ",timesOnDay)
-            exit(20)
+            //exit(20)
             preferences[prefDay.Day] = timesOnDay
         }
         //exit(20)
@@ -345,8 +357,9 @@ class TimeDayPrefViewController: UIViewController, UITableViewDataSource, UITabl
         
         if dayTimePrefPageFlag == 1{
             dayTimePrefPageFlag = 0
-            let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HomeVC") as? HomeViewController
-            self.navigationController?.pushViewController(vc!, animated: true)
+            /*let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HomeVC") as? HomeViewController
+            self.navigationController?.pushViewController(vc!, animated: true)*/
+            navigateToTabBar()
         }else{
             let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "CalendarVC") as? CalendarViewController
             self.navigationController?.pushViewController(vc!, animated: true)

@@ -27,6 +27,16 @@ class InviteViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationItem.setHidesBackButton(true, animated: true)
+        if friendsPageFlag == 1{
+            self.navigationController?.setNavigationBarHidden(true, animated: animated)
+            self.tabBarController?.navigationController?.navigationBar.topItem?.title  = "Send Invitations"
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        friendsPageFlag = 0
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
     
@@ -43,7 +53,7 @@ class InviteViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     @IBAction func ShareTapped(_ sender: Any) {
-        let message = "Hi, I would like to invite you to start using ConnectZen application. <INSERT LINK>"
+        let message = "Hi, I would like to invite you to start using ConnectZen application."
         let objectsToShare = [message]
         let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
         activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop,
@@ -57,8 +67,7 @@ class InviteViewController: UIViewController, UITableViewDataSource, UITableView
         self.unRegisteredPeople.removeAll()
         if friendsPageFlag == 1 {
             friendsPageFlag = 0
-            let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HomeVC") as? HomeViewController
-            self.navigationController?.pushViewController(vc!, animated: true)
+            navigateToTabBar()
         }else{
             let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "TimeDayPref") as? TimeDayPrefViewController
             self.navigationController?.pushViewController(vc!, animated: true)
