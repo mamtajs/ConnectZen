@@ -34,7 +34,7 @@ class InviteViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        friendsPageFlag = 0
+        //friendsPageFlag = 0
         super.viewWillDisappear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }

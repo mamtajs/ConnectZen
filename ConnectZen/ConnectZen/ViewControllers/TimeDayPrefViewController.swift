@@ -55,7 +55,7 @@ class TimeDayPrefViewController: UIViewController, UITableViewDataSource, UITabl
         self.PrefTableView.dataSource = self
         
         
-        setDataFromFirebase()
+        //setDataFromFirebase()
     }
     //To hide navigation bar in a particular view controller
     override func viewWillAppear(_ animated: Bool) {
@@ -65,6 +65,9 @@ class TimeDayPrefViewController: UIViewController, UITableViewDataSource, UITabl
             self.navigationController?.setNavigationBarHidden(true, animated: animated)
             self.tabBarController?.navigationController?.navigationBar.topItem?.title  = "Time and Day preferences"
         }
+        self.PrefTableView.delegate = self
+        self.PrefTableView.dataSource = self
+        setDataFromFirebase()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -104,6 +107,8 @@ class TimeDayPrefViewController: UIViewController, UITableViewDataSource, UITabl
                             }
                         }
                         self.PrefTableView.reloadData()
+                        self.durationVal = Int(prefDuration)
+                        self.frequencyVal = Int(prefFrequency)
                     }
                 }else{
                     print("Document does not exist")
@@ -353,7 +358,7 @@ class TimeDayPrefViewController: UIViewController, UITableViewDataSource, UITabl
             preferences[prefDay.Day] = timesOnDay
         }
         //exit(20)
-        self.db.collection("Users").document(Auth.auth().currentUser!.uid).setData(["Day and Time Preferences": preferences], merge: true)
+        self.db.collection("Users").document(Auth.auth().currentUser!.uid).updateData(["Day and Time Preferences": preferences])
         
         if dayTimePrefPageFlag == 1{
             dayTimePrefPageFlag = 0

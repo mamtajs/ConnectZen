@@ -66,19 +66,24 @@ class ContactsViewController: UIViewController, UITableViewDataSource, UITableVi
             try contactStore.enumerateContacts(with: request) {
                 (contact, stop) in
                 // Array containing all unified contacts from everywhere
-                if(contact.givenName != ""){
+                if(contact.givenName != "" && contact.phoneNumbers.count != 0){
                     self.contacts.append(contact)
                 }
                    
             }
+            
+            print(self.contacts)
+            if(self.contacts.count != 0){
+                for index in 0...self.contacts.count-1{
+                    print(self.contacts[index].phoneNumbers[0].value.stringValue, index)
+                }
+            }
+            
         }
         catch {
             print("Error: unable to fetch contacts")
         }
-        print(self.contacts)
-        for index in 0...self.contacts.count-1{
-            print(self.contacts[index].phoneNumbers[0].value.stringValue, index)
-        }
+        
         //exit(20)
         self.db.collection("Users").document(Auth.auth().currentUser!.uid).getDocument{ (doc, err) in
             if let doc = doc, doc.exists {
@@ -100,6 +105,7 @@ class ContactsViewController: UIViewController, UITableViewDataSource, UITableVi
                     self.ContactsTableView.reloadData()
                 }else{
                     print("Document does not exist")
+                    self.ContactsTableView.reloadData()
                 }
             }
             else{

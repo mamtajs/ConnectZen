@@ -32,14 +32,16 @@ class NotificationSettingsViewController: UIViewController {
     private func meetupCalUpdateView(){
         if meetupsCalSegControl.selectedSegmentIndex == 0{ //NO
             self.db.collection("Users").document(Auth.auth().currentUser!.uid).setData(["Calendar Updation Access": false], merge: true)
+            //NotificationBanner.showFailure("Your scheduled meetups will not be added to your calendar")
         }else{
             if self.checkCalendarAccess() == false{
-                NotificationBanner.showFailure("To enable this you need to give calendar acess to ConnectZen")
+                NotificationBanner.showFailure("To enable this you need to give calendar access to ConnectZen")
                 let status = self.getCalendarAccess()
                 if status == true{
                     self.meetupsCalSegControl.selectedSegmentIndex = 1
                     self.calAccessSegControl.selectedSegmentIndex = 1
                     self.db.collection("Users").document(Auth.auth().currentUser!.uid).setData(["Calendar Updation Access": true], merge: true)
+                    NotificationBanner.successShow("Your scheduled meetups will now be added to your calendar.")
                 }else{
                     self.meetupsCalSegControl.selectedSegmentIndex = 0
                 }
@@ -47,6 +49,7 @@ class NotificationSettingsViewController: UIViewController {
                 print("iCal access already given")
                 self.calAccessSegControl.selectedSegmentIndex = 1
                 self.db.collection("Users").document(Auth.auth().currentUser!.uid).setData(["Calendar Updation Access": true], merge: true)
+                NotificationBanner.successShow("Your scheduled meetups will now be added to your calendar.")
             }
         }
     }
@@ -59,6 +62,7 @@ class NotificationSettingsViewController: UIViewController {
             let status = self.getCalendarAccess()
             if status == false{
                 self.calAccessSegControl.selectedSegmentIndex = 0
+                NotificationBanner.showFailure("You have chosen not to give ConnectZen access to your calendar. If you wish to give this access in future please proceed to your phone settings.")
             }
         }
     }
@@ -233,6 +237,18 @@ class NotificationSettingsViewController: UIViewController {
                         self.quotesSegControl.selectedSegmentIndex = 1
                     }else{
                         self.quotesSegControl.selectedSegmentIndex = 0
+                    }
+                }
+            }
+        }
+        self.db.collection("Users").document(Auth.auth().currentUser!.uid).getDocument{ (doc, err) in
+            if let doc = doc{
+                if doc.get("Calendar Updation Access") != nil{
+                    let meetUpStatus = doc["Calendar Updation Access"] as? Bool
+                    if meetUpStatus == true{
+                        self.meetupsCalSegControl.selectedSegmentIndex = 1
+                    }else{
+                        self.meetupsCalSegControl.selectedSegmentIndex = 0
                     }
                 }
             }

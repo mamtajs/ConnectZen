@@ -16,12 +16,18 @@ class LoginViewController: UIViewController, FUIAuthDelegate, UIApplicationDeleg
     @IBOutlet weak var emailIDText: UITextField!
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var notRegisteredButton: UIButton!
     var changePassFlag = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupToHideKeyboardOnTapOnView()
         
         setUpButtons()
+        if self.changePassFlag == 1{
+            notRegisteredButton.isEnabled = false
+        }
+        
+        emailIDText.keyboardType = UIKeyboardType.emailAddress
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -71,7 +77,9 @@ class LoginViewController: UIViewController, FUIAuthDelegate, UIApplicationDeleg
                 }else{
                     if self.changePassFlag == 1{
                         self.changePassFlag = 0
-                        self.navigationController?.popViewController(animated: true)
+                        //self.navigationController?.popViewController(animated: true)
+                        self.dismiss(animated: true)
+                        
                     }
                     navigateToTabBar()
                 }

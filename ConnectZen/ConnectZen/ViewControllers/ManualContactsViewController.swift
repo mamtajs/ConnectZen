@@ -94,7 +94,7 @@ class ManualContactsViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        friendsPageFlag = 0
+        //friendsPageFlag = 0
         super.viewWillDisappear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }

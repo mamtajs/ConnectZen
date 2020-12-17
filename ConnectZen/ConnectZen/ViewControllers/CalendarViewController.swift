@@ -48,7 +48,7 @@ class CalendarViewController: UIViewController {
                 eventStore.requestAccess(to: .event, completion:
                   {[weak self] (granted: Bool, error: Error?) -> Void in
                       if granted {
-                        self!.insertEvent(store: eventStore)
+                        self?.insertEvent(store: eventStore)
                         //self!.loadEvents(store: eventStore)
                       } else {
                             print("Access denied")

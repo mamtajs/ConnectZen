@@ -42,8 +42,8 @@ class ChangePasswordViewController: UIViewController {
         
         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "LoginVC") as? LoginViewController
         vc?.changePassFlag = 1
-        self.navigationController?.pushViewController(vc!, animated: true)
-        
+        //self.navigationController?.pushViewController(vc!, animated: true)
+        self.present(vc!, animated: true)
         
         credential = EmailAuthProvider.credential(withEmail: userEmail, password: userPassword)
         user?.reauthenticate(with: credential, completion: { (result, err) in
@@ -72,10 +72,8 @@ class ChangePasswordViewController: UIViewController {
               print("Error message: \(error.localizedDescription)")
             }
           } else {
-            NotificationBanner.successShow("Password updated successfully")
-            /*let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HomeVC") as? HomeViewController
-            self.navigationController?.pushViewController(vc!, animated: true)*/
             navigateToTabBar()
+            NotificationBanner.successShow("Password updated successfully")
             print("User signs up successfully")
           }
         })

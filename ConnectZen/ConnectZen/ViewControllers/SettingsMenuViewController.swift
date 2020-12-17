@@ -64,21 +64,20 @@ class SettingsMenuViewController: UIViewController, MenuControllerDelegate, Side
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        //self.navigationController?.popToRootViewController(animated: true)
+        self.presetingSideMenu()
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
-        self.tabBarController?.navigationController?.setNavigationBarHidden(true, animated: animated)
+        //self.tabBarController?.navigationController?.setNavigationBarHidden(true, animated: animated)
+        self.tabBarController?.navigationController?.navigationBar.topItem?.title  = "Settings"
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
         self.tabBarController?.navigationController?.setNavigationBarHidden(false, animated: animated)
+        
     }
     
-    
-    override func viewDidAppear(_ animated: Bool) {
-        print("View appeared")
-        self.navigationController?.navigationBar.topItem?.title  = "Settings"
-        self.presetingSideMenu()
-    }
+   
     
     func sideMenuWillDisappear(menu: SideMenuNavigationController, animated: Bool) {
         print("side meny disappearing")
@@ -89,28 +88,35 @@ class SettingsMenuViewController: UIViewController, MenuControllerDelegate, Side
     func didSelectMenuItem(named: String) {
         //sideMenu?.dismiss(animated: true, completion: {
             if named == "Notifications Settings"{
+                
                 let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "NotificationsVC") as? NotificationSettingsViewController
                 self.navigationController?.pushViewController(vc!, animated: true)
+                sideMenu?.dismiss(animated: true, completion: nil)
             }
             else if named == "Change Password"{
                 let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ChangePassVC") as? ChangePasswordViewController
                 self.navigationController?.pushViewController(vc!, animated: true)
+                sideMenu?.dismiss(animated: true, completion: nil)
             }
             else if named == "Provide Feedback"{
                 let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "FeedbackVC") as? FeedbackViewController
                 self.navigationController?.pushViewController(vc!, animated: true)
+                sideMenu?.dismiss(animated: true, completion: nil)
             }
             else if named == "View/Edit Friends"{
 
                 let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ViewEditVC") as? ViewAndEditFriendsViewController
                 self.navigationController?.pushViewController(vc!, animated: true)
+                sideMenu?.dismiss(animated: true, completion: nil)
             }
             else if named == "View/Edit Day-Time Preferences"{
                 dayTimePrefPageFlag = 1
                 let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "TimeDayPref") as? TimeDayPrefViewController
                 self.navigationController?.pushViewController(vc!, animated: true)
+                sideMenu?.dismiss(animated: true, completion: nil)
             }
             else if named == "Delete Account"{
+                print("delete account clicked")
                 self.showDeleteAccountConfirmAlert()
             }
             else if named == "Sign Out"{
@@ -129,28 +135,26 @@ class SettingsMenuViewController: UIViewController, MenuControllerDelegate, Side
             else if named == "Close Settings"{
                 let vcs = self.tabBarController?.viewControllers
                 print(vcs)
-                self.tabBarController?.selectedIndex = settingsIndex
-                //sideMenu?.dismiss(animated: true, completion: nil)
-                
-                
-
-                //print(self.navigationController?.vi)
-                //self.tabBarController?.selectedIndex = 2
+                self.tabBarController?.selectedIndex = 2
+                sideMenu?.dismiss(animated: true, completion: nil)
             }
-        sideMenu?.dismiss(animated: true, completion: nil)
         //})
     }
     
     func showDeleteAccountConfirmAlert(){
+        sideMenu?.dismiss(animated: true, completion: nil)
+        print("delete alert")
         let alertController = UIAlertController(title: "Confirm Delete", message: "Are you sure that you want to delete your account? Once deleted you will not be able to recover your account again.", preferredStyle: .alert)
         let yesAction = UIAlertAction(title: "Yes", style: .default) { [self] (_) in
             let user = Auth.auth().currentUser
+            self.db.collection("Users").document(Auth.auth().currentUser!.uid).delete()
             user?.delete { error in
               if let error = error {
                 // An error happened.
               } else {
-                self.db.collection("Users").document(Auth.auth().currentUser!.uid).delete()
-                self.navigationController?.popToRootViewController(animated: true)
+                let navigationController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Navigator") as! LoginNavigationViewController
+               UIApplication.shared.windows.first?.rootViewController = navigationController
+               UIApplication.shared.windows.first?.makeKeyAndVisible()
               }
             }
         }
@@ -158,6 +162,7 @@ class SettingsMenuViewController: UIViewController, MenuControllerDelegate, Side
         }
         alertController.addAction(yesAction)
         alertController.addAction(noAction)
+        print("presenting")
         self.present(alertController, animated: true, completion: nil)
     }
     

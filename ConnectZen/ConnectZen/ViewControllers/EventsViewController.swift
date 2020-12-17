@@ -333,7 +333,7 @@ class EventsViewController: UIViewController,UITableViewDelegate, UITableViewDat
         //print("Before query", startTimeStamp)
         
         // Change 1640851200 to startTimeStamp
-        let query = db.collection("Users").document(Auth.auth().currentUser!.uid).collection("Meetups").whereField("TimeStamp", isGreaterThanOrEqualTo: "1640851201")
+        let query = db.collection("Users").document(Auth.auth().currentUser!.uid).collection("Meetups").whereField("TimeStamp", isGreaterThanOrEqualTo: startTimeStamp)
         query.getDocuments{(querySnapShot, error) in
             if let error = error{
                 print("Error getting documents: \(error)")
@@ -414,7 +414,7 @@ class EventsViewController: UIViewController,UITableViewDelegate, UITableViewDat
         
         print("Current Date: \(curDate)-\(curMonth)-\(curYear):\(curHour):\(curMinute)")
         
-        let startTimeStamp = "1640851201"//String(getDateTime(day: curDate, month: curMonth, year: curYear, hour: curHour, minute: curMinute).timeIntervalSince1970)
+        let startTimeStamp = String(getDateTime(day: curDate, month: curMonth, year: curYear, hour: curHour, minute: curMinute).timeIntervalSince1970)
         
         let query = db.collection("Users").document(Auth.auth().currentUser!.uid).collection("Meetups").whereField("TimeStamp", isLessThan: startTimeStamp)
         query.getDocuments{ [self](querySnapShot, error) in
@@ -476,7 +476,7 @@ class EventsViewController: UIViewController,UITableViewDelegate, UITableViewDat
         //cell.cellDelegate = self
         //print(indexPath)
         if(EventType.selectedSegmentIndex == 0){ // Upcoming
-            cell.DayLabel.text = "\(UpComingMeetings[indexPath.row].Day), \(UpComingMeetings[indexPath.row].StartTime) - \(UpComingMeetings[indexPath.row].EndTime)"
+            cell.DayLabel.text = "\(UpComingMeetings[indexPath.row].Day), \(UpComingMeetings[indexPath.row].StartTime)-\(UpComingMeetings[indexPath.row].EndTime)"
             cell.NameLabel.text = "\(UpComingMeetings[indexPath.row].FriendName)"
             cell.DateLabel.text = "\(UpComingMeetings[indexPath.row].Date)"
             cell.editButton.tag = indexPath.row

@@ -69,6 +69,8 @@ class ViewAndEditFriendsViewController: UIViewController, UITableViewDelegate, U
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        //print("View controllers", self.navigationController?.viewControllers)
+        //self.navigationController?.popToRootViewController(animated: true)
     }
     
     @IBAction func addContactTapped(_ sender: Any) {

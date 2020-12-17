@@ -135,7 +135,7 @@ class HomeViewController: UIViewController {
                             dateComponents.calendar = Calendar.current
 
                             dateComponents.weekday = date // Tuesday
-                            dateComponents.hour = 20    // 08:00 hours
+                            dateComponents.hour = 8    // 08:00 hours
                            
                             // Create the trigger as a repeating event.
                             let trigger = UNCalendarNotificationTrigger(
@@ -228,7 +228,7 @@ class HomeViewController: UIViewController {
                         self.scheduleQuotesNotification()
                     }
                 }
-                if(numFriends == nil || duration == nil || numMeetups == nil){
+                if(numFriends == nil || duration == nil || numMeetups == nil || numFriends?.count == 0){
                     NotificationBanner.showFailure("Your app setup is incomplete, please head over to the settings page and add some friends to get started!")
                     return
                 }
@@ -258,8 +258,8 @@ class HomeViewController: UIViewController {
             }
             else{
                 // Change
-                //let count = querySnapShot!.documents.count
-                let count = 0
+                let count = querySnapShot!.documents.count
+                //let count = 0
                 nextMonthEventsScheduled = (count != 0)
                 
                 if(!nextMonthEventsScheduled){
@@ -585,13 +585,14 @@ class HomeViewController: UIViewController {
     
     func scheduleEvents(){
         // TODO: consider whole day events and remove them
+        // Change
         let valuesNextMonth = getNextMonth(today: Date())
-        let nextMonth: Int = 1//valuesNextMonth.0
-        let year: Int = 2022//valuesNextMonth.1
+        let nextMonth: Int = valuesNextMonth.0
+        let year: Int = valuesNextMonth.1
         let daysInNextMonth:Int = getDaysInNextMonth(nextMonth: nextMonth, year: year)
         
         // TODO: If events for next month is scheduled then return
-        print("Find me", nextMonth, year)
+        print("Find me", nextMonth, year, self.numOfMeetupsPerMonth)
         
         var DatesTimesAvailable : [Date: [[Int]]] = [:]
         let calendarAccess:Bool = getStatusOfCalendarAccess()

@@ -15,6 +15,7 @@ class TabBarViewController: UITabBarController {
         self.tabBarController?.navigationController?.navigationBar.isHidden = true
         // Do any additional setup after loading the view.
         self.selectedIndex = 2
+        
     }
 
 }
